@@ -1,0 +1,124 @@
+#-------------------------------------------------------------------------------
+#  The file declares application build options
+#  \author
+#    Atmel Corporation: http://www.atmel.com \n
+#    Support email: avr@atmel.com
+#
+#  Copyright (c) 2008 , Atmel Corporation. All rights reserved.
+#  Licensed under Atmel's Limited License Agreement (BitCloudTM).
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Components path definition
+#-------------------------------------------------------------------------------
+#COMPONENTS_PATH = ../../../BitCloud/Components
+COMPONENTS_PATH = ../../BitCloud/Components
+
+#-------------------------------------------------------------------------------
+# Application path
+#-------------------------------------------------------------------------------
+APP_PATH = .
+
+#-------------------------------------------------------------------------------
+# Project name
+#-------------------------------------------------------------------------------
+PROJNAME  = peer2peer
+
+#-------------------------------------------------------------------------------
+# Compiler type:
+#-------------------------------------------------------------------------------
+COMPILER_TYPE = GCC
+
+#-------------------------------------------------------------------------------
+# Boards selection:
+#-------------------------------------------------------------------------------
+BOARD = BOARD_MESHBEAN
+
+#-------------------------------------------------------------------------------
+# BOARD_MESHBEAN board specific options:
+#-------------------------------------------------------------------------------
+ifeq ($(BOARD), BOARD_MESHBEAN)
+  # Microcontroller's type declaration. The following variants are possible:
+  HAL = ATMEGA1281
+
+  # Controller reference frequency.
+  HAL_FREQUENCY = HAL_8MHz
+
+  # RF chip type declaration.  The following variants are possible:
+  RFCHIP = AT86RF230
+  
+  APP_INTERFACE = APP_USE_USART
+  APP_USART_CHANNEL=USART_CHANNEL_1
+endif # BOARD_MESHBEAN
+
+#-------------------------------------------------------------------------------
+# Stack type to use
+#-------------------------------------------------------------------------------
+STACK_TYPE = ALL_DEVICES_TYPES
+#STACK_TYPE = COORDINATOR
+#STACK_TYPE = ROUTER
+
+#-------------------------------------------------------------------------------
+# Security usage option
+#-------------------------------------------------------------------------------
+SECURITY_MODE = NO_SECURITY_MODE
+#SECURITY_MODE = STANDARD_SECURITY_MODE
+
+#-------------------------------------------------------------------------------
+# Application parameters
+#-------------------------------------------------------------------------------
+# Switches on "debug info" compiler key and debug port for ARM platforms.
+DEBUG = ON
+#DEBUG = OFF
+
+# Segmentation and reassembly of messages longer than the payload of a single NWK layer frame.
+#APP_FRAGMENTATION = ON
+APP_FRAGMENTATION = OFF
+
+#-------------------------------------------------------------------------------
+# Stack parameters being set to Config Server
+#-------------------------------------------------------------------------------
+CS_NWK_UNIQUE_ADDR = true
+CS_RX_ON_WHEN_IDLE = true
+CS_EXT_PANID = 0xAAAAAAAAAAAAAAAALL
+CS_MAX_NETWORK_DEPTH = 3
+CS_NEIB_TABLE_SIZE = 5
+CS_MAX_CHILDREN_AMOUNT = 4
+CS_MAX_CHILDREN_ROUTER_AMOUNT = 4
+CS_ROUTE_TABLE_SIZE = 8
+CS_CHANNEL_MASK = "(1l<<0x0f)"
+CS_CHANNEL_PAGE = 0
+CS_POWER_FAILURE = false
+CS_APS_MAX_BLOCKS_AMOUNT = 4
+
+#-------------------------------------------------------------------------------
+# Settings for security
+#-------------------------------------------------------------------------------
+# Preconfigured key which is used by NWK
+# If it is not Trust Center and CS_ZDO_SECURITY_STATUS=3 then key is cleared by ZDO
+CS_NETWORK_KEY = "{0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC}"
+
+# 0 - preconfigured network key
+# 1 - preconfigured trust center link key
+# 2 - preconfigured trust center master key
+# 3 - not preconfigured
+CS_ZDO_SECURITY_STATUS = 0
+CS_APS_TRUST_CENTER_ADDRESS = 0xAAAAAAAAAAAAAAAALL
+CS_APS_SECURITY_TIMEOUT_PERIOD = 10000
+
+#-------------------------------------------------------------------------------
+# Settings for the platforms without UID
+#-------------------------------------------------------------------------------
+# Extended address value
+# Please note: CS_UID must be unique for every device
+CS_UID = 0x0000000000000002LL
+
+#-------------------------------------------------------------------------------
+# Settings for the platforms without dip switches
+#-------------------------------------------------------------------------------
+# NWK address value
+# Should have one of the following value:
+# 0 - coordinator
+# 1-7 - routers
+CS_NWK_ADDR = 0x0000
+

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>BitCloud Stack Documentation: ZigBee Device Objects</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="classes.html"><span>Data&nbsp;Structures</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Functions&nbsp;Summary</span></a></li>
+    <li><a href="Sample_app.html"><span>Sample&nbsp;Applications</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="APS.html"><span>APS</span></a></li>
+	<li id="current"><a href="ZDO.html"><span>ZDO</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="discovery.html"><span>Device&nbsp;and&nbsp;Service&nbsp;Discovery</span></a></li>
+	<li><a href="nwkmgmt.html"><span>Network&nbsp;Management</span></a></li>
+	<li id="current"><a href="pwrmgmt.html"><span>Power&nbsp;Management</span></a></li>
+  </ul></div>
+<h2>Power Management</h2>
+<P>In many applications devices are battery powered, and battery replacement or recharging in relatively short intervals is impractical. Therefore, the power consumption is of significant concern. Though in certain applications some of these devices could be mains powered, the BitCloud Stack has been developed to favor battery-powered devices, which will spend most of their operational life in a sleep state and hence require a duty-cycling to reduce power consumption.</P>
+<P>The folowing commands are available for power management:</P>
+<UL>
+	<LI><a href="struct_z_d_o___sleep_req__t.html" class="el">Sleep Request</A> command puts the device to sleep mode.<BR>Upon receipt of this command, device shall return the <a href="struct_z_d_o___sleep_conf__t.html" class="el">confirmation.</A></LI>
+	<LI><a href="zdo_8h.html#804e1ae1009e26264a9b6f351b03a61b" class="el">Sleep Indication</A> function indicates to an application that the stack is ready to sleep. In responce to this function stack shall call <a href="zdo_8h.html#240dff9bef452019d22b55bd2575cb2f" class="el">Sleep Responce</A> function and go to sleep mode. </LI>
+	<LI><a href="struct_z_d_o___wake_up_req__t.html" class="el">Wake Up Request</A> command forces the stack to wake up from the sleep mode.<BR>Upon receipt of this command, <a href="struct_z_d_o___wake_up_conf__t.html" class="el">confirmation</A> shall be returned.</LI>
+	<LI><a href="zdo_8h.html#380de225cf020fe8e9ea521f98571c73" class="el">Wake Up Indication</A> function indicates to an application that the stack is ready to wake up.</LI>
+</UL>
+
+<hr size="1"><address style="align: right;"><small>Generated on Tue Jun 3 12:45:19 2008 for BitCloud Stack Documentation by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1-p1 </small></address>
+</body>
+</html>

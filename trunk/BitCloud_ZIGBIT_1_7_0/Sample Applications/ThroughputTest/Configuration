@@ -1,0 +1,109 @@
+#-------------------------------------------------------------------------------
+#  The file declares application build options
+#  \author
+#    Atmel Corporation: http://www.atmel.com \n
+#    Support email: avr@atmel.com
+#
+#  Copyright (c) 2008 , Atmel Corporation. All rights reserved.
+#  Licensed under Atmel's Limited License Agreement (BitCloudTM).
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Components path definition
+#-------------------------------------------------------------------------------
+COMPONENTS_PATH = ../../BitCloud/Components
+
+#-------------------------------------------------------------------------------
+# Application path
+#-------------------------------------------------------------------------------
+APP_PATH = .
+
+#-------------------------------------------------------------------------------
+# Project name
+#-------------------------------------------------------------------------------
+PROJNAME = throughputTest
+
+#-------------------------------------------------------------------------------
+# Compiler type:
+#-------------------------------------------------------------------------------
+COMPILER_TYPE = GCC
+
+#-------------------------------------------------------------------------------
+# Boards selection:
+#-------------------------------------------------------------------------------
+BOARD = BOARD_MESHBEAN
+
+#-------------------------------------------------------------------------------
+# BOARD_MESHBEAN board specific options:
+#-------------------------------------------------------------------------------
+ifeq ($(BOARD), BOARD_MESHBEAN)
+  # Microcontroller's type declaration. The following variants are possible:
+  HAL = ATMEGA1281
+
+  # Controller reference frequency.
+  HAL_FREQUENCY = HAL_8MHz
+
+  # RF chip type declaration.  The following variants are possible:
+  RFCHIP = AT86RF230
+
+  APP_INTERFACE = APP_USE_USART
+  # UART channel to be used on the particular board.
+  APP_USART_CHANNEL=USART_CHANNEL_1
+endif # BOARD_MESHBEAN
+
+#-------------------------------------------------------------------------------
+# Stack type to use
+#-------------------------------------------------------------------------------
+STACK_TYPE = ALL_DEVICES_TYPES
+#STACK_TYPE = COORDINATOR
+#STACK_TYPE = ROUTER
+#STACK_TYPE = ENDDEVICE
+
+#-------------------------------------------------------------------------------
+# Security usage option
+#-------------------------------------------------------------------------------
+SECURITY_MODE = NO_SECURITY_MODE
+#SECURITY_MODE = STANDARD_SECURITY_MODE
+
+#-------------------------------------------------------------------------------
+# Application parameters
+#-------------------------------------------------------------------------------
+DEBUG = ON
+
+APP_DEVICE_TYPE = COORDINATOR
+#APP_DEVICE_TYPE = ROUTER
+
+APP_USE_APS_ACK = 0
+TIMER_DELAY_PERIOD = 10000
+TIMER_TRACK_PERIOD = 1000
+
+#-------------------------------------------------------------------------------
+# Stack parameters being set to Config Server
+#-------------------------------------------------------------------------------
+CS_CHANNEL_MASK = "(1l<<0x0f)"
+CS_CHANNEL_PAGE = 0
+CS_MAX_NETWORK_DEPTH = 2
+CS_NEIB_TABLE_SIZE = 3
+CS_MAX_CHILDREN_AMOUNT = 2
+CS_MAX_CHILDREN_ROUTER_AMOUNT = 2
+CS_EXT_PANID = 0xAAAAAAAAAAAAAAAALL
+
+#-------------------------------------------------------------------------------
+# Settings for security
+#-------------------------------------------------------------------------------
+# Preconfigured key which is used by NWK
+# If it is not Trust Center and CS_ZDO_SECURITY_STATUS=3 then key is cleared by ZDO
+CS_NETWORK_KEY = "{0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC,0xCC}"
+
+# 0 - preconfigured network key
+# 1 - preconfigured trust center link key
+# 2 - preconfigured trust center master key
+# 3 - not preconfigured
+CS_ZDO_SECURITY_STATUS = 0
+CS_APS_TRUST_CENTER_ADDRESS = 0xAAAAAAAAAAAAAAAALL
+CS_APS_SECURITY_TIMEOUT_PERIOD = 10000
+
+#-------------------------------------------------------------------------------
+# Settings for the platforms without UID
+#-------------------------------------------------------------------------------
+CS_UID = 0x00LL

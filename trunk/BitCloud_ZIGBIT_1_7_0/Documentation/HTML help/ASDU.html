@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>BitCloud Stack Documentation: Application Support sub-layer</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<style>
+	Acronym{CURSOR: help; BORDER-BOTTOM: red 1px dashed;}
+</style>
+</head><body>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="classes.html"><span>Data&nbsp;Structures</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Functions&nbsp;Summary</span></a></li>
+    <li><a href="Sample_app.html"><span>Sample&nbsp;Applications</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="APS.html"><span>APS</span></a></li>
+	<li><a href="ZDO.html"><span>ZDO</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="APS.html"><span>Frame&nbsp;format</span></a></li>
+	<li><a href="AIB.html"><span>Information&nbsp;Base</span></a></li>
+	<li><a href="StatusParams.html"><span>Status&nbsp;Parameters</span></a></li>
+	</ul></div>
+<h2>The format of the APS frame (APDU)</h2>
+<p>Each APS frame consists of the following basic components:</P>
+<UL>
+	<LI>An APS header, which comprises frame control and addressing information.</LI>
+	<LI>An APS payload, of variable length, which contains information specific to the frame type.</LI>
+</UL>
+<P>The general APS frame shall be formatted as illustrated	below:</P>
+
+<table border margin=0 cellspacing=1 cellpadding=0 width=100% bgcolor="#b0bec7"
+style="margin:0px;padding:10px;width:100%;">
+<tr><th colspan=8>APS header</th><th>APS payload</th></tr>
+<tr align=center><td rowspan=2>Frame control</td><td colspan=5>Addressing fields</td><td rowspan=2>APS counter</td><td rowspan=2>Extended header</td><td rowspan=2>Frame payload</td></tr>
+<tr><td>Destination endpoint</td><td>Group address</td><td>Cluster identifier</td><td>Profile identifier</td><td>Source endpoint</td></tr>
+</table>
+<P>See also: <BR><a href="aps_8h.html" class="el">APS Functions and Data Structures</a>
+<BR><a href="AIB.html" class="el">APS Information Base</a>
+<BR><a href="StatusParams.html" class="el">APS Status Parameters</a></P>
+<hr size="1"><address style="align: right;"><small>Generated on Fri Oct 3 12:45:19 2008 for BitCloud Stack Documentation by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1-p1 </small></address>
+</body>
+</html>

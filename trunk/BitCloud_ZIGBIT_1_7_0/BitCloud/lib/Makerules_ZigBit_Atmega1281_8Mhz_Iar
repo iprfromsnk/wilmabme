@@ -1,0 +1,33 @@
+#----------------------------------------------
+#HAL makerules - should be included into components Makerules
+#----------------------------------------------
+
+#-Compiler type definition---------------------
+IAR_PATH = "C:/Program Files/IAR Systems/Embedded Workbench 5.3/avr"
+COMPILER_TYPE = IAR
+COMPILER_AND_MICRO_TYPE = IAR_AVR
+#-Tools definitions----------------------------
+AS      = aavr
+LD      = xlink
+CC      = iccavr
+CPP     = iccavr
+AR      = xar
+NM      = @echo ----NM: There is no such utility among IAR AVR tools.
+STRIP   = @echo ----STRIP: There is no such utility among IAR AVR tools.
+OBJCOPY = @echo ----OBJCOPY: There is no such utility among IAR AVR tools.
+OBJDUMP = @echo ----OBJDUMP: There is no such utility among IAR AVR tools.
+SIZE    = @echo ----SIZE: There is no such utility among IAR AVR tools.
+
+#-Compiler flags-------------------------------
+CFLAGS = -I"C:/Program Files/IAR Systems/Embedded Workbench 5.3/avr"/inc/dlib -ms --eeprom_size 4096 --dlib_config "C:/Program Files/IAR Systems/Embedded Workbench 5.3/avr"/LIB/DLIB/dlAVR-3s-ec_mul-n.h --library_module --preprocess ./list -lC ./list -y --initializers_in_flash --no_tbaa -DENABLE_BIT_DEFINITIONS -I"C:/Program Files/IAR Systems/Embedded Workbench 5.3/avr"/inc --diag_suppress Pa050,Pe188,Pa082 -e --cpu=m1281 -Ohz --silent -DATMEGA1281 -DHAL_8MHz -DPLATFORM_ZIGBIT -DNONE_OS
+AR_KEYS =
+
+
+#-Platform definitions-------------------------
+HAL   = ATMEGA1281
+PLATFORM = PLATFORM_ZIGBIT
+
+#-Objects to be linked with app----------------
+PLATFORM_SPECIFIC_OBJECTS  = WdtInitatmega1281Iar.o
+
+SE_PATH      = $(COMPONENTS_PATH)/./SystemEnvironment

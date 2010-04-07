@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>BitCloud Stack Documentation: ZigBee Device Objects</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="classes.html"><span>Data&nbsp;Structures</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Functions&nbsp;Summary</span></a></li>
+    <li><a href="Sample_app.html"><span>Sample&nbsp;Applications</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="APS.html"><span>APS</span></a></li>
+	<li id="current"><a href="ZDO.html"><span>ZDO</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+	<li><a href="discovery.html"><span>Device&nbsp;and&nbsp;Service&nbsp;Discovery</span></a></li>
+    <li><a href="nwkmgmt.html"><span>Network&nbsp;Management</span></a></li>
+	<li><a href="pwrmgmt.html"><span>Power&nbsp;Management</span></a></li>
+  </ul></div>
+<h2>ZigBee Device Objects</h2>
+<p>The ZigBee device objects (ZDO), represent a base class of functionality that provides an interface between the application objects, the device profile, and the <a href="APS.html" class="el">APS</A>. The ZDO is located between the application framework and the <a href="APS.html" class="el">application support</A> sub-layer. The ZDO is responsible for the following:</P>
+<UL>
+	<LI>Initializing the <a href="APS.html" class="el">application support sub-layer (APS)</A>, the network layer (NWK), and the Security Service Provider.</LI>
+	<LI>Assembling configuration information from the end applications to determine and implement <a href="discovery.html" class="el">discovery</A>, security management, <a href="nwkmgmt.html" class="el">network management</A>, and binding management.</LI>
+</UL>
+<P>The ZDO presents public interfaces to the application objects in the application framework layer for control of device and network functions by the application objects. The public interface provides address management of the device, discovery, binding, and security functions within the application framework layer of the ZigBee protocol stack.</P>
+	
+<P>See also: <a href="zdo_8h.html" class="el">ZDO Functions and Data Structures</a></P>
+<hr size="1"><address style="align: right;"><small>Generated on Tue Jun 3 12:45:19 2008 for BitCloud Stack Documentation by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1-p1 </small></address>
+</body>
+</html>

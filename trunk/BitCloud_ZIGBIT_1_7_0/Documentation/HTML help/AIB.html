@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>BitCloud Stack Documentation: Application Support sub-layer</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<style>
+	Acronym{CURSOR: help; BORDER-BOTTOM: red 1px dashed;}
+</style>
+</head><body>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="classes.html"><span>Data&nbsp;Structures</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Functions&nbsp;Summary</span></a></li>
+    <li><a href="Sample_app.html"><span>Sample&nbsp;Applications</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="APS.html"><span>APS</span></a></li>
+	<li><a href="ZDO.html"><span>ZDO</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="ASDU.html"><span>Frame&nbsp;Format</span></a></li>
+	<li id="current"><a href="AIB.html"><span>Information&nbsp;Base</span></a></li>
+	<li><a href="StatusParams.html"><span>Status&nbsp;Parameters</span></a></li>
+  </ul></div>
+<h2>APS Information Base</h2>
+<p>This is a collection of variables that are passed between layers, in order to exchange information. These variables can be specified or obtained from a layer through its management service. The APS information base comprises the constants and attributes required to manage the APS layer of a device. This database may also include the access control list, which stores the security material.</P>
+<P>The constants that define the characteristics of the APS sub-layer are presented below:</P>
+<UL>
+	<LI>The maximum <a href="struct_a_p_s___aib_permissions_configuration__t.html#ab5732cc105395a6efcc04f9ae6234a5" class="el">number of octets</a> contained in a non-complex descriptor.</LI>
+	<LI>The maximum <a href="struct_a_p_s___aib_permissions_configuration__t.html#d6281a6bb2915b957107ee6dbbef4ceb" class="el">number of retries</a> allowed after a transmission failure.</LI>
+	<LI>The maximum <a href="struct_a_p_s___aib_permissions_configuration__t.html#933214c0174d5bf693dcb08577cd9b2d" class="el">number of seconds</a> to wait for an acknowledgement to a transmitted frame.</LI>
+	<LI>The minimum <a href="struct_a_p_s___aib_permissions_configuration__t.html#d4d4487fc92257800ca1081458d55250" class="el">required size</a> of the APS duplicate rejection table.</LI>
+	<LI>Fragmentation parameter - <a href="struct_a_p_s___aib_permissions_configuration__t.html#7b33a5bcf2e2137888c35dd0472fdb34" class="el">The maximum number of unacknowledged frames</a> that can be active at once.</LI>
+	<LI>Fragmentation parameter - <a href="struct_a_p_s___aib_permissions_configuration__t.html#3823d989acece316f8fca340d4c8fc10" class="el">The standard delay</a> between sending two blocks of a fragmented transmission.</LI>
+	<LI>The minimum <a href="struct_a_p_s___aib_permissions_configuration__t.html#d9cc901dfaab90603a5749aaf1a46e97" class="el">number of octets</a> added by the APS sub-layer to an ASDU.</LI>
+</UL>
+<P>The attributes of the AIB are listed below:</P>
+<UL>
+	<LI>The current <a href="union_a_p_s___aib_attribute__t.html#fc5e770f8bf467751581dc2e6051991c" class="el">set of binding table entries</A> in the device</LI>
+	<LI>TRUE if the <a href="union_a_p_s___aib_attribute__t.html#5e5c757446827d659be049621e8cdf9f" class="el">device should become the ZigBee Coordinator on startup,</A> FALSE if otherwise.</LI>
+	<LI><a href="union_a_p_s___aib_attribute__t.html#2b093f9f3afed3bd14bdc4fd5bb4d45e" class="el">The mask of allowable channels</A> for this device to use for network operations.</LI>
+	<LI><a href="union_a_p_s___aib_attribute__t.html#2e2eb7289b5468bab28c615bb28bbd1c" class="el">The 64-bit address of a network</A> to form or to join.</LI>
+	<LI><a href="union_a_p_s___aib_attribute__t.html#bc7d4ecc2002b74895cd91635e08347d" class="el">The current set of group table entries.</A></LI>
+	<LI><a href="union_a_p_s___aib_attribute__t.html#6720dac6c0019b3d730f0ba78d50d556" class="el">The value to be used for the NonmemberRadius parameter</A> when using NWK layer multicast.</LI>
+	<LI>The current <a href="union_a_p_s___aib_attribute__t.html#b45891cfe5ab31f41727b5be554852e2" class="el">set of permission configuration items.</A></LI>
+	<LI><a href="union_a_p_s___aib_attribute__t.html#f327d356bdcabe88e376db253f840b84" class="el">A flag controlling the use of insecure join at startup.</A></LI>
+	<LI>Fragmentation parameter - <a href="union_a_p_s___aib_attribute__t.html#5b8873e3380cb7eee0abea6c1e0e1ebc" class="el">the standard delay,</A> in milliseconds, between sending two blocks of a fragmented transmission</LI>
+</UL>
+<P>Security-Related AIB Attributes:</P>
+<UL>
+	<LI><a href="union_a_p_s___aib_attribute__t.html#aced513a8edcc5d18925a9b94e582423" class="el">A set of key-pair descriptors</A> containing master and link key pairs shared with other devices.</LI>
+	<LI>Identifies the <a href="union_a_p_s___aib_attribute__t.html#4e02163c7010912fd9c654e9321c4acb" class="el">address of the device's Trust Center.</A></LI>
+	<LI><a href="union_a_p_s___aib_attribute__t.html#79673250573d17de50dd40b4e33cbd7f" class="el">The period of time
+</A>a device will wait for an expected security protocol frame (in milliseconds).</LI>
+</UL>
+<P>See also: <BR><a href="aps_8h.html" class="el">APS Functions and Data Structures</a>
+<BR><a href="ASDU.html" class="el">APS Frame format</a>
+<BR><a href="StatusParams.html" class="el">APS Status Parameters</a></P>
+<hr size="1"><address style="align: right;"><small>Generated on Wen Oct 1 12:45:19 2008 for BitCloud Stack Documentation by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1-p1 </small></address>
+</body>
+</html>
