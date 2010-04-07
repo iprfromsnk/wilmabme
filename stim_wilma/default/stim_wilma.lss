@@ -1,0 +1,2298 @@
+
+stim_wilma.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000c08  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000131  00800100  00800100  00000c7c  2**0
+                  ALLOC
+  2 .debug_aranges 000000c0  00000000  00000000  00000c7c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_pubnames 0000038b  00000000  00000000  00000d3c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   00000e10  00000000  00000000  000010c7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 00000612  00000000  00000000  00001ed7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   00000e22  00000000  00000000  000024e9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000290  00000000  00000000  0000330c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    00000419  00000000  00000000  0000359c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    00000355  00000000  00000000  000039b5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__ctors_end>
+   4:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+   8:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+   c:	0c 94 f8 03 	jmp	0x7f0	; 0x7f0 <__vector_3>
+  10:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  14:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  18:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  1c:	0c 94 84 03 	jmp	0x708	; 0x708 <__vector_7>
+  20:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  24:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  28:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  2c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  30:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  34:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  38:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  3c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  40:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  44:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  48:	0c 94 d4 05 	jmp	0xba8	; 0xba8 <__vector_18>
+  4c:	0c 94 6d 05 	jmp	0xada	; 0xada <__vector_19>
+  50:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  54:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  58:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  5c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  60:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  64:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  68:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  6c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  70:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  74:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  78:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+
+0000007c <__ctors_end>:
+  7c:	11 24       	eor	r1, r1
+  7e:	1f be       	out	0x3f, r1	; 63
+  80:	cf ef       	ldi	r28, 0xFF	; 255
+  82:	d8 e0       	ldi	r29, 0x08	; 8
+  84:	de bf       	out	0x3e, r29	; 62
+  86:	cd bf       	out	0x3d, r28	; 61
+
+00000088 <__do_clear_bss>:
+  88:	12 e0       	ldi	r17, 0x02	; 2
+  8a:	a0 e0       	ldi	r26, 0x00	; 0
+  8c:	b1 e0       	ldi	r27, 0x01	; 1
+  8e:	01 c0       	rjmp	.+2      	; 0x92 <.do_clear_bss_start>
+
+00000090 <.do_clear_bss_loop>:
+  90:	1d 92       	st	X+, r1
+
+00000092 <.do_clear_bss_start>:
+  92:	a1 33       	cpi	r26, 0x31	; 49
+  94:	b1 07       	cpc	r27, r17
+  96:	e1 f7       	brne	.-8      	; 0x90 <.do_clear_bss_loop>
+  98:	0e 94 2f 03 	call	0x65e	; 0x65e <main>
+  9c:	0c 94 02 06 	jmp	0xc04	; 0xc04 <_exit>
+
+000000a0 <__bad_interrupt>:
+  a0:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a4 <default_spi_byte>:
+char (*spi_byte)(char out);	
+
+char default_spi_byte(char out)
+{
+	return 0;
+}
+  a4:	80 e0       	ldi	r24, 0x00	; 0
+  a6:	08 95       	ret
+
+000000a8 <accmtr_select>:
+
+inline void accmtr_select(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+  a8:	82 30       	cpi	r24, 0x02	; 2
+  aa:	71 f0       	breq	.+28     	; 0xc8 <accmtr_select+0x20>
+  ac:	83 30       	cpi	r24, 0x03	; 3
+  ae:	28 f4       	brcc	.+10     	; 0xba <accmtr_select+0x12>
+  b0:	88 23       	and	r24, r24
+  b2:	31 f0       	breq	.+12     	; 0xc0 <accmtr_select+0x18>
+  b4:	81 30       	cpi	r24, 0x01	; 1
+  b6:	61 f4       	brne	.+24     	; 0xd0 <accmtr_select+0x28>
+  b8:	05 c0       	rjmp	.+10     	; 0xc4 <accmtr_select+0x1c>
+  ba:	83 30       	cpi	r24, 0x03	; 3
+  bc:	49 f4       	brne	.+18     	; 0xd0 <accmtr_select+0x28>
+  be:	06 c0       	rjmp	.+12     	; 0xcc <accmtr_select+0x24>
+		case 0: ACCMTR_0_SELECT(); break;
+  c0:	5d 98       	cbi	0x0b, 5	; 11
+  c2:	08 95       	ret
+		case 1: ACCMTR_1_SELECT(); break;
+  c4:	40 98       	cbi	0x08, 0	; 8
+  c6:	08 95       	ret
+		case 2: ACCMTR_2_SELECT(); break;
+  c8:	41 98       	cbi	0x08, 1	; 8
+  ca:	08 95       	ret
+		case 3: ACCMTR_3_SELECT(); break;
+  cc:	42 98       	cbi	0x08, 2	; 8
+  ce:	08 95       	ret
+		case 4: ACCMTR_4_SELECT(); break;
+		default: ACCMTR_4_SELECT();
+  d0:	43 98       	cbi	0x08, 3	; 8
+  d2:	08 95       	ret
+
+000000d4 <accmtr_present>:
+	PCICR |= (1<<A_INT0_IE);
+}
+
+
+char accmtr_present(char idx)
+{
+  d4:	1f 93       	push	r17
+  d6:	18 2f       	mov	r17, r24
+	char response;
+
+	accmtr_select(idx);
+  d8:	0e 94 54 00 	call	0xa8	; 0xa8 <accmtr_select>
+	}
+}
+
+inline void use_accmtr(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+  dc:	12 30       	cpi	r17, 0x02	; 2
+  de:	39 f0       	breq	.+14     	; 0xee <accmtr_present+0x1a>
+  e0:	13 30       	cpi	r17, 0x03	; 3
+  e2:	28 f4       	brcc	.+10     	; 0xee <accmtr_present+0x1a>
+  e4:	11 23       	and	r17, r17
+  e6:	19 f4       	brne	.+6      	; 0xee <accmtr_present+0x1a>
+		case 0: USE_ACCMTR_0(); break;
+  e8:	8e e2       	ldi	r24, 0x2E	; 46
+  ea:	92 e0       	ldi	r25, 0x02	; 2
+  ec:	02 c0       	rjmp	.+4      	; 0xf2 <accmtr_present+0x1e>
+		case 1: USE_ACCMTR_1(); break;
+		case 2: USE_ACCMTR_2(); break;
+		case 3: USE_ACCMTR_3(); break;
+		case 4: USE_ACCMTR_4(); break;
+		default: USE_ACCMTR_4();
+  ee:	82 e5       	ldi	r24, 0x52	; 82
+  f0:	90 e0       	ldi	r25, 0x00	; 0
+  f2:	90 93 15 01 	sts	0x0115, r25
+  f6:	80 93 14 01 	sts	0x0114, r24
+	char response;
+
+	accmtr_select(idx);
+	use_accmtr(idx);
+
+	spi_byte(READ_NOAINC(WHO_AM_I));
+  fa:	e0 91 14 01 	lds	r30, 0x0114
+  fe:	f0 91 15 01 	lds	r31, 0x0115
+ 102:	8f e8       	ldi	r24, 0x8F	; 143
+ 104:	09 95       	icall
+	response = spi_byte(0xff);
+ 106:	e0 91 14 01 	lds	r30, 0x0114
+ 10a:	f0 91 15 01 	lds	r31, 0x0115
+ 10e:	8f ef       	ldi	r24, 0xFF	; 255
+ 110:	09 95       	icall
+ 112:	98 2f       	mov	r25, r24
+	}
+}
+
+inline void accmtr_deselect(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+ 114:	12 30       	cpi	r17, 0x02	; 2
+ 116:	71 f0       	breq	.+28     	; 0x134 <accmtr_present+0x60>
+ 118:	13 30       	cpi	r17, 0x03	; 3
+ 11a:	28 f4       	brcc	.+10     	; 0x126 <accmtr_present+0x52>
+ 11c:	11 23       	and	r17, r17
+ 11e:	31 f0       	breq	.+12     	; 0x12c <accmtr_present+0x58>
+ 120:	11 30       	cpi	r17, 0x01	; 1
+ 122:	61 f4       	brne	.+24     	; 0x13c <accmtr_present+0x68>
+ 124:	05 c0       	rjmp	.+10     	; 0x130 <accmtr_present+0x5c>
+ 126:	13 30       	cpi	r17, 0x03	; 3
+ 128:	49 f4       	brne	.+18     	; 0x13c <accmtr_present+0x68>
+ 12a:	06 c0       	rjmp	.+12     	; 0x138 <accmtr_present+0x64>
+		case 0: ACCMTR_0_DESELECT(); break;
+ 12c:	5d 9a       	sbi	0x0b, 5	; 11
+ 12e:	07 c0       	rjmp	.+14     	; 0x13e <accmtr_present+0x6a>
+		case 1: ACCMTR_1_DESELECT(); break;
+ 130:	40 9a       	sbi	0x08, 0	; 8
+ 132:	05 c0       	rjmp	.+10     	; 0x13e <accmtr_present+0x6a>
+		case 2: ACCMTR_2_DESELECT(); break;
+ 134:	41 9a       	sbi	0x08, 1	; 8
+ 136:	03 c0       	rjmp	.+6      	; 0x13e <accmtr_present+0x6a>
+		case 3: ACCMTR_3_DESELECT(); break;
+ 138:	42 9a       	sbi	0x08, 2	; 8
+ 13a:	01 c0       	rjmp	.+2      	; 0x13e <accmtr_present+0x6a>
+		case 4: ACCMTR_4_DESELECT(); break;
+		default: ACCMTR_4_DESELECT();
+ 13c:	43 9a       	sbi	0x08, 3	; 8
+ 13e:	80 e0       	ldi	r24, 0x00	; 0
+ 140:	9a 33       	cpi	r25, 0x3A	; 58
+ 142:	09 f4       	brne	.+2      	; 0x146 <accmtr_present+0x72>
+ 144:	81 e0       	ldi	r24, 0x01	; 1
+	accmtr_deselect(idx);
+
+	if (response == 0x3a) return 1;
+
+	return 0;
+}
+ 146:	1f 91       	pop	r17
+ 148:	08 95       	ret
+
+0000014a <accmtr_init>:
+
+char accmtr_init(char idx)
+{
+ 14a:	1f 93       	push	r17
+ 14c:	18 2f       	mov	r17, r24
+	//accmtr_int_init(idx);					// rendberakjuk a gym. megszakitasahoz tartozo labat
+
+	accmtr_select(idx);					// CS-et lehuzzuk
+ 14e:	0e 94 54 00 	call	0xa8	; 0xa8 <accmtr_select>
+	}
+}
+
+inline void use_accmtr(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+ 152:	12 30       	cpi	r17, 0x02	; 2
+ 154:	39 f0       	breq	.+14     	; 0x164 <accmtr_init+0x1a>
+ 156:	13 30       	cpi	r17, 0x03	; 3
+ 158:	28 f4       	brcc	.+10     	; 0x164 <accmtr_init+0x1a>
+ 15a:	11 23       	and	r17, r17
+ 15c:	19 f4       	brne	.+6      	; 0x164 <accmtr_init+0x1a>
+		case 0: USE_ACCMTR_0(); break;
+ 15e:	8e e2       	ldi	r24, 0x2E	; 46
+ 160:	92 e0       	ldi	r25, 0x02	; 2
+ 162:	02 c0       	rjmp	.+4      	; 0x168 <accmtr_init+0x1e>
+		case 1: USE_ACCMTR_1(); break;
+		case 2: USE_ACCMTR_2(); break;
+		case 3: USE_ACCMTR_3(); break;
+		case 4: USE_ACCMTR_4(); break;
+		default: USE_ACCMTR_4();
+ 164:	82 e5       	ldi	r24, 0x52	; 82
+ 166:	90 e0       	ldi	r25, 0x00	; 0
+ 168:	90 93 15 01 	sts	0x0115, r25
+ 16c:	80 93 14 01 	sts	0x0114, r24
+
+	accmtr_select(idx);					// CS-et lehuzzuk
+	use_accmtr(idx);					// beallitjuk a megfelelo spi kezelot
+
+	
+	spi_byte(WRITE_NOAINC(CTRL_REG1));			// kikapcs
+ 170:	e0 91 14 01 	lds	r30, 0x0114
+ 174:	f0 91 15 01 	lds	r31, 0x0115
+ 178:	80 e2       	ldi	r24, 0x20	; 32
+ 17a:	09 95       	icall
+	spi_byte(POWER_DOWN);
+ 17c:	e0 91 14 01 	lds	r30, 0x0114
+ 180:	f0 91 15 01 	lds	r31, 0x0115
+ 184:	80 e0       	ldi	r24, 0x00	; 0
+ 186:	09 95       	icall
+	}
+}
+
+inline void accmtr_deselect(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+ 188:	12 30       	cpi	r17, 0x02	; 2
+ 18a:	71 f0       	breq	.+28     	; 0x1a8 <accmtr_init+0x5e>
+ 18c:	13 30       	cpi	r17, 0x03	; 3
+ 18e:	28 f4       	brcc	.+10     	; 0x19a <accmtr_init+0x50>
+ 190:	11 23       	and	r17, r17
+ 192:	31 f0       	breq	.+12     	; 0x1a0 <accmtr_init+0x56>
+ 194:	11 30       	cpi	r17, 0x01	; 1
+ 196:	61 f4       	brne	.+24     	; 0x1b0 <accmtr_init+0x66>
+ 198:	05 c0       	rjmp	.+10     	; 0x1a4 <accmtr_init+0x5a>
+ 19a:	13 30       	cpi	r17, 0x03	; 3
+ 19c:	49 f4       	brne	.+18     	; 0x1b0 <accmtr_init+0x66>
+ 19e:	06 c0       	rjmp	.+12     	; 0x1ac <accmtr_init+0x62>
+		case 0: ACCMTR_0_DESELECT(); break;
+ 1a0:	5d 9a       	sbi	0x0b, 5	; 11
+ 1a2:	07 c0       	rjmp	.+14     	; 0x1b2 <accmtr_init+0x68>
+		case 1: ACCMTR_1_DESELECT(); break;
+ 1a4:	40 9a       	sbi	0x08, 0	; 8
+ 1a6:	05 c0       	rjmp	.+10     	; 0x1b2 <accmtr_init+0x68>
+		case 2: ACCMTR_2_DESELECT(); break;
+ 1a8:	41 9a       	sbi	0x08, 1	; 8
+ 1aa:	03 c0       	rjmp	.+6      	; 0x1b2 <accmtr_init+0x68>
+		case 3: ACCMTR_3_DESELECT(); break;
+ 1ac:	42 9a       	sbi	0x08, 2	; 8
+ 1ae:	01 c0       	rjmp	.+2      	; 0x1b2 <accmtr_init+0x68>
+		case 4: ACCMTR_4_DESELECT(); break;
+		default: ACCMTR_4_DESELECT();
+ 1b0:	43 9a       	sbi	0x08, 3	; 8
+	spi_byte(POWER_DOWN);
+
+	accmtr_deselect(idx);
+
+	return 0;
+}
+ 1b2:	80 e0       	ldi	r24, 0x00	; 0
+ 1b4:	1f 91       	pop	r17
+ 1b6:	08 95       	ret
+
+000001b8 <accmtr_meas_start>:
+			break;
+	}
+}
+
+char accmtr_meas_start(char idx)
+{
+ 1b8:	0f 93       	push	r16
+ 1ba:	1f 93       	push	r17
+ 1bc:	08 2f       	mov	r16, r24
+	char i;
+
+	accmtr_select(idx);					// CS-et lehuzzuk
+ 1be:	0e 94 54 00 	call	0xa8	; 0xa8 <accmtr_select>
+	}
+}
+
+inline void use_accmtr(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+ 1c2:	02 30       	cpi	r16, 0x02	; 2
+ 1c4:	39 f0       	breq	.+14     	; 0x1d4 <accmtr_meas_start+0x1c>
+ 1c6:	03 30       	cpi	r16, 0x03	; 3
+ 1c8:	28 f4       	brcc	.+10     	; 0x1d4 <accmtr_meas_start+0x1c>
+ 1ca:	00 23       	and	r16, r16
+ 1cc:	19 f4       	brne	.+6      	; 0x1d4 <accmtr_meas_start+0x1c>
+		case 0: USE_ACCMTR_0(); break;
+ 1ce:	8e e2       	ldi	r24, 0x2E	; 46
+ 1d0:	92 e0       	ldi	r25, 0x02	; 2
+ 1d2:	02 c0       	rjmp	.+4      	; 0x1d8 <accmtr_meas_start+0x20>
+		case 1: USE_ACCMTR_1(); break;
+		case 2: USE_ACCMTR_2(); break;
+		case 3: USE_ACCMTR_3(); break;
+		case 4: USE_ACCMTR_4(); break;
+		default: USE_ACCMTR_4();
+ 1d4:	82 e5       	ldi	r24, 0x52	; 82
+ 1d6:	90 e0       	ldi	r25, 0x00	; 0
+ 1d8:	90 93 15 01 	sts	0x0115, r25
+ 1dc:	80 93 14 01 	sts	0x0114, r24
+	char i;
+
+	accmtr_select(idx);					// CS-et lehuzzuk
+	use_accmtr(idx);					// beallitjuk a megfelelo spi kezelot
+	
+	spi_byte(WRITE_AINC(CTRL_REG1));			 
+ 1e0:	e0 91 14 01 	lds	r30, 0x0114
+ 1e4:	f0 91 15 01 	lds	r31, 0x0115
+ 1e8:	80 e6       	ldi	r24, 0x60	; 96
+ 1ea:	09 95       	icall
+	spi_byte(POWER_UP | SF_40 | X_EN | Y_EN | Z_EN);	// 3 tengely 40Hz-el
+ 1ec:	e0 91 14 01 	lds	r30, 0x0114
+ 1f0:	f0 91 15 01 	lds	r31, 0x0115
+ 1f4:	87 ec       	ldi	r24, 0xC7	; 199
+ 1f6:	09 95       	icall
+	spi_byte(BDU | BOOT | DRDY);				// olvasasig nincs frissites, IT engedelyezve, kalibralt ertekek betoltese
+ 1f8:	e0 91 14 01 	lds	r30, 0x0114
+ 1fc:	f0 91 15 01 	lds	r31, 0x0115
+ 200:	84 e5       	ldi	r24, 0x54	; 84
+ 202:	09 95       	icall
+	}
+}
+
+inline void accmtr_deselect(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+ 204:	02 30       	cpi	r16, 0x02	; 2
+ 206:	81 f0       	breq	.+32     	; 0x228 <accmtr_meas_start+0x70>
+ 208:	03 30       	cpi	r16, 0x03	; 3
+ 20a:	28 f4       	brcc	.+10     	; 0x216 <accmtr_meas_start+0x5e>
+ 20c:	00 23       	and	r16, r16
+ 20e:	41 f0       	breq	.+16     	; 0x220 <accmtr_meas_start+0x68>
+ 210:	01 30       	cpi	r16, 0x01	; 1
+ 212:	81 f4       	brne	.+32     	; 0x234 <accmtr_meas_start+0x7c>
+ 214:	07 c0       	rjmp	.+14     	; 0x224 <accmtr_meas_start+0x6c>
+ 216:	03 30       	cpi	r16, 0x03	; 3
+ 218:	49 f0       	breq	.+18     	; 0x22c <accmtr_meas_start+0x74>
+ 21a:	04 30       	cpi	r16, 0x04	; 4
+ 21c:	59 f4       	brne	.+22     	; 0x234 <accmtr_meas_start+0x7c>
+ 21e:	08 c0       	rjmp	.+16     	; 0x230 <accmtr_meas_start+0x78>
+		case 0: ACCMTR_0_DESELECT(); break;
+ 220:	5d 9a       	sbi	0x0b, 5	; 11
+ 222:	0b c0       	rjmp	.+22     	; 0x23a <accmtr_meas_start+0x82>
+		case 1: ACCMTR_1_DESELECT(); break;
+ 224:	40 9a       	sbi	0x08, 0	; 8
+ 226:	0e c0       	rjmp	.+28     	; 0x244 <accmtr_meas_start+0x8c>
+		case 2: ACCMTR_2_DESELECT(); break;
+ 228:	41 9a       	sbi	0x08, 1	; 8
+ 22a:	0c c0       	rjmp	.+24     	; 0x244 <accmtr_meas_start+0x8c>
+		case 3: ACCMTR_3_DESELECT(); break;
+ 22c:	42 9a       	sbi	0x08, 2	; 8
+ 22e:	0a c0       	rjmp	.+20     	; 0x244 <accmtr_meas_start+0x8c>
+		case 4: ACCMTR_4_DESELECT(); break;
+ 230:	43 9a       	sbi	0x08, 3	; 8
+ 232:	08 c0       	rjmp	.+16     	; 0x244 <accmtr_meas_start+0x8c>
+		default: ACCMTR_4_DESELECT();
+ 234:	43 9a       	sbi	0x08, 3	; 8
+	return 0;
+}
+
+inline void accmtr_int_enable(int idx)
+{
+	switch (idx) {
+ 236:	00 23       	and	r16, r16
+ 238:	29 f4       	brne	.+10     	; 0x244 <accmtr_meas_start+0x8c>
+		case 0:
+			PCMSK3 |= (1<<PCINT30);
+ 23a:	80 91 73 00 	lds	r24, 0x0073
+ 23e:	80 64       	ori	r24, 0x40	; 64
+ 240:	80 93 73 00 	sts	0x0073, r24
+	accmtr_deselect(idx);
+	
+	accmtr_int_enable(idx);
+
+	// Ki kell olvasnunk a gyorsulasadatokat, hogy a gym. lehuzza a DRDY labat, es a kovetkezo adag adatnal legyen egy felfuto el
+	accmtr_select(idx);
+ 244:	80 2f       	mov	r24, r16
+ 246:	0e 94 54 00 	call	0xa8	; 0xa8 <accmtr_select>
+	spi_byte(READ_AINC(OUTX_L));
+ 24a:	e0 91 14 01 	lds	r30, 0x0114
+ 24e:	f0 91 15 01 	lds	r31, 0x0115
+ 252:	88 ee       	ldi	r24, 0xE8	; 232
+ 254:	09 95       	icall
+ 256:	10 e0       	ldi	r17, 0x00	; 0
+	for (i=0; i<6; i++) spi_byte(0);
+ 258:	e0 91 14 01 	lds	r30, 0x0114
+ 25c:	f0 91 15 01 	lds	r31, 0x0115
+ 260:	80 e0       	ldi	r24, 0x00	; 0
+ 262:	09 95       	icall
+ 264:	1f 5f       	subi	r17, 0xFF	; 255
+ 266:	16 30       	cpi	r17, 0x06	; 6
+ 268:	b9 f7       	brne	.-18     	; 0x258 <accmtr_meas_start+0xa0>
+	}
+}
+
+inline void accmtr_deselect(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+ 26a:	02 30       	cpi	r16, 0x02	; 2
+ 26c:	71 f0       	breq	.+28     	; 0x28a <accmtr_meas_start+0xd2>
+ 26e:	03 30       	cpi	r16, 0x03	; 3
+ 270:	28 f4       	brcc	.+10     	; 0x27c <accmtr_meas_start+0xc4>
+ 272:	00 23       	and	r16, r16
+ 274:	31 f0       	breq	.+12     	; 0x282 <accmtr_meas_start+0xca>
+ 276:	01 30       	cpi	r16, 0x01	; 1
+ 278:	61 f4       	brne	.+24     	; 0x292 <accmtr_meas_start+0xda>
+ 27a:	05 c0       	rjmp	.+10     	; 0x286 <accmtr_meas_start+0xce>
+ 27c:	03 30       	cpi	r16, 0x03	; 3
+ 27e:	49 f4       	brne	.+18     	; 0x292 <accmtr_meas_start+0xda>
+ 280:	06 c0       	rjmp	.+12     	; 0x28e <accmtr_meas_start+0xd6>
+		case 0: ACCMTR_0_DESELECT(); break;
+ 282:	5d 9a       	sbi	0x0b, 5	; 11
+ 284:	07 c0       	rjmp	.+14     	; 0x294 <accmtr_meas_start+0xdc>
+		case 1: ACCMTR_1_DESELECT(); break;
+ 286:	40 9a       	sbi	0x08, 0	; 8
+ 288:	05 c0       	rjmp	.+10     	; 0x294 <accmtr_meas_start+0xdc>
+		case 2: ACCMTR_2_DESELECT(); break;
+ 28a:	41 9a       	sbi	0x08, 1	; 8
+ 28c:	03 c0       	rjmp	.+6      	; 0x294 <accmtr_meas_start+0xdc>
+		case 3: ACCMTR_3_DESELECT(); break;
+ 28e:	42 9a       	sbi	0x08, 2	; 8
+ 290:	01 c0       	rjmp	.+2      	; 0x294 <accmtr_meas_start+0xdc>
+		case 4: ACCMTR_4_DESELECT(); break;
+		default: ACCMTR_4_DESELECT();
+ 292:	43 9a       	sbi	0x08, 3	; 8
+	spi_byte(READ_AINC(OUTX_L));
+	for (i=0; i<6; i++) spi_byte(0);
+	accmtr_deselect(idx);
+
+	return 0;
+}
+ 294:	80 e0       	ldi	r24, 0x00	; 0
+ 296:	1f 91       	pop	r17
+ 298:	0f 91       	pop	r16
+ 29a:	08 95       	ret
+
+0000029c <accmtr_meas_stop>:
+
+char accmtr_meas_stop(char idx)
+{
+ 29c:	1f 93       	push	r17
+ 29e:	18 2f       	mov	r17, r24
+	}
+}
+
+inline void accmtr_int_disable(int idx)
+{
+	switch (idx) {
+ 2a0:	88 23       	and	r24, r24
+ 2a2:	29 f4       	brne	.+10     	; 0x2ae <accmtr_meas_stop+0x12>
+		case 0:
+			PCMSK3 &= ~(1<<PCINT30);
+ 2a4:	80 91 73 00 	lds	r24, 0x0073
+ 2a8:	8f 7b       	andi	r24, 0xBF	; 191
+ 2aa:	80 93 73 00 	sts	0x0073, r24
+
+char accmtr_meas_stop(char idx)
+{
+	accmtr_int_disable(idx);
+
+	accmtr_select(idx);					// CS-et lehuzzuk
+ 2ae:	81 2f       	mov	r24, r17
+ 2b0:	0e 94 54 00 	call	0xa8	; 0xa8 <accmtr_select>
+	}
+}
+
+inline void use_accmtr(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+ 2b4:	12 30       	cpi	r17, 0x02	; 2
+ 2b6:	39 f0       	breq	.+14     	; 0x2c6 <accmtr_meas_stop+0x2a>
+ 2b8:	13 30       	cpi	r17, 0x03	; 3
+ 2ba:	28 f4       	brcc	.+10     	; 0x2c6 <accmtr_meas_stop+0x2a>
+ 2bc:	11 23       	and	r17, r17
+ 2be:	19 f4       	brne	.+6      	; 0x2c6 <accmtr_meas_stop+0x2a>
+		case 0: USE_ACCMTR_0(); break;
+ 2c0:	8e e2       	ldi	r24, 0x2E	; 46
+ 2c2:	92 e0       	ldi	r25, 0x02	; 2
+ 2c4:	02 c0       	rjmp	.+4      	; 0x2ca <accmtr_meas_stop+0x2e>
+		case 1: USE_ACCMTR_1(); break;
+		case 2: USE_ACCMTR_2(); break;
+		case 3: USE_ACCMTR_3(); break;
+		case 4: USE_ACCMTR_4(); break;
+		default: USE_ACCMTR_4();
+ 2c6:	82 e5       	ldi	r24, 0x52	; 82
+ 2c8:	90 e0       	ldi	r25, 0x00	; 0
+ 2ca:	90 93 15 01 	sts	0x0115, r25
+ 2ce:	80 93 14 01 	sts	0x0114, r24
+	accmtr_int_disable(idx);
+
+	accmtr_select(idx);					// CS-et lehuzzuk
+	use_accmtr(idx);					// beallitjuk a megfelelo spi kezelot
+	
+	spi_byte(WRITE_AINC(CTRL_REG1));			 
+ 2d2:	e0 91 14 01 	lds	r30, 0x0114
+ 2d6:	f0 91 15 01 	lds	r31, 0x0115
+ 2da:	80 e6       	ldi	r24, 0x60	; 96
+ 2dc:	09 95       	icall
+	spi_byte(POWER_DOWN);
+ 2de:	e0 91 14 01 	lds	r30, 0x0114
+ 2e2:	f0 91 15 01 	lds	r31, 0x0115
+ 2e6:	80 e0       	ldi	r24, 0x00	; 0
+ 2e8:	09 95       	icall
+	}
+}
+
+inline void accmtr_deselect(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+ 2ea:	12 30       	cpi	r17, 0x02	; 2
+ 2ec:	71 f0       	breq	.+28     	; 0x30a <accmtr_meas_stop+0x6e>
+ 2ee:	13 30       	cpi	r17, 0x03	; 3
+ 2f0:	28 f4       	brcc	.+10     	; 0x2fc <accmtr_meas_stop+0x60>
+ 2f2:	11 23       	and	r17, r17
+ 2f4:	31 f0       	breq	.+12     	; 0x302 <accmtr_meas_stop+0x66>
+ 2f6:	11 30       	cpi	r17, 0x01	; 1
+ 2f8:	61 f4       	brne	.+24     	; 0x312 <accmtr_meas_stop+0x76>
+ 2fa:	05 c0       	rjmp	.+10     	; 0x306 <accmtr_meas_stop+0x6a>
+ 2fc:	13 30       	cpi	r17, 0x03	; 3
+ 2fe:	49 f4       	brne	.+18     	; 0x312 <accmtr_meas_stop+0x76>
+ 300:	06 c0       	rjmp	.+12     	; 0x30e <accmtr_meas_stop+0x72>
+		case 0: ACCMTR_0_DESELECT(); break;
+ 302:	5d 9a       	sbi	0x0b, 5	; 11
+ 304:	07 c0       	rjmp	.+14     	; 0x314 <accmtr_meas_stop+0x78>
+		case 1: ACCMTR_1_DESELECT(); break;
+ 306:	40 9a       	sbi	0x08, 0	; 8
+ 308:	05 c0       	rjmp	.+10     	; 0x314 <accmtr_meas_stop+0x78>
+		case 2: ACCMTR_2_DESELECT(); break;
+ 30a:	41 9a       	sbi	0x08, 1	; 8
+ 30c:	03 c0       	rjmp	.+6      	; 0x314 <accmtr_meas_stop+0x78>
+		case 3: ACCMTR_3_DESELECT(); break;
+ 30e:	42 9a       	sbi	0x08, 2	; 8
+ 310:	01 c0       	rjmp	.+2      	; 0x314 <accmtr_meas_stop+0x78>
+		case 4: ACCMTR_4_DESELECT(); break;
+		default: ACCMTR_4_DESELECT();
+ 312:	43 9a       	sbi	0x08, 3	; 8
+	spi_byte(POWER_DOWN);
+
+	accmtr_deselect(idx);
+
+	return 0;
+}
+ 314:	80 e0       	ldi	r24, 0x00	; 0
+ 316:	1f 91       	pop	r17
+ 318:	08 95       	ret
+
+0000031a <accmtr_read_acc_data>:
+
+void accmtr_read_acc_data(char idx, int16_t *XYZ)
+{
+ 31a:	ef 92       	push	r14
+ 31c:	ff 92       	push	r15
+ 31e:	1f 93       	push	r17
+ 320:	cf 93       	push	r28
+ 322:	df 93       	push	r29
+ 324:	18 2f       	mov	r17, r24
+ 326:	f6 2e       	mov	r15, r22
+ 328:	e7 2e       	mov	r14, r23
+	char *xyz;
+	unsigned int i;
+
+	xyz = (char *)XYZ;
+
+	accmtr_select(idx);
+ 32a:	0e 94 54 00 	call	0xa8	; 0xa8 <accmtr_select>
+	}
+}
+
+inline void use_accmtr(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+ 32e:	12 30       	cpi	r17, 0x02	; 2
+ 330:	39 f0       	breq	.+14     	; 0x340 <accmtr_read_acc_data+0x26>
+ 332:	13 30       	cpi	r17, 0x03	; 3
+ 334:	28 f4       	brcc	.+10     	; 0x340 <accmtr_read_acc_data+0x26>
+ 336:	11 23       	and	r17, r17
+ 338:	19 f4       	brne	.+6      	; 0x340 <accmtr_read_acc_data+0x26>
+		case 0: USE_ACCMTR_0(); break;
+ 33a:	8e e2       	ldi	r24, 0x2E	; 46
+ 33c:	92 e0       	ldi	r25, 0x02	; 2
+ 33e:	02 c0       	rjmp	.+4      	; 0x344 <accmtr_read_acc_data+0x2a>
+		case 1: USE_ACCMTR_1(); break;
+		case 2: USE_ACCMTR_2(); break;
+		case 3: USE_ACCMTR_3(); break;
+		case 4: USE_ACCMTR_4(); break;
+		default: USE_ACCMTR_4();
+ 340:	82 e5       	ldi	r24, 0x52	; 82
+ 342:	90 e0       	ldi	r25, 0x00	; 0
+ 344:	90 93 15 01 	sts	0x0115, r25
+ 348:	80 93 14 01 	sts	0x0114, r24
+	xyz = (char *)XYZ;
+
+	accmtr_select(idx);
+	use_accmtr(idx);
+	
+	spi_byte(READ_AINC(OUTX_L));
+ 34c:	e0 91 14 01 	lds	r30, 0x0114
+ 350:	f0 91 15 01 	lds	r31, 0x0115
+ 354:	88 ee       	ldi	r24, 0xE8	; 232
+ 356:	09 95       	icall
+ 358:	8f 2d       	mov	r24, r15
+ 35a:	9e 2d       	mov	r25, r14
+ 35c:	ec 01       	movw	r28, r24
+	for (i=0; i<6; i++) {
+ 35e:	86 e0       	ldi	r24, 0x06	; 6
+ 360:	e8 2e       	mov	r14, r24
+ 362:	f1 2c       	mov	r15, r1
+ 364:	ec 0e       	add	r14, r28
+ 366:	fd 1e       	adc	r15, r29
+		xyz[i] = spi_byte(0);
+ 368:	e0 91 14 01 	lds	r30, 0x0114
+ 36c:	f0 91 15 01 	lds	r31, 0x0115
+ 370:	80 e0       	ldi	r24, 0x00	; 0
+ 372:	09 95       	icall
+ 374:	89 93       	st	Y+, r24
+
+	accmtr_select(idx);
+	use_accmtr(idx);
+	
+	spi_byte(READ_AINC(OUTX_L));
+	for (i=0; i<6; i++) {
+ 376:	ce 15       	cp	r28, r14
+ 378:	df 05       	cpc	r29, r15
+ 37a:	b1 f7       	brne	.-20     	; 0x368 <accmtr_read_acc_data+0x4e>
+	}
+}
+
+inline void accmtr_deselect(char accmtr_idx)
+{
+	switch (accmtr_idx) {
+ 37c:	12 30       	cpi	r17, 0x02	; 2
+ 37e:	71 f0       	breq	.+28     	; 0x39c <accmtr_read_acc_data+0x82>
+ 380:	13 30       	cpi	r17, 0x03	; 3
+ 382:	28 f4       	brcc	.+10     	; 0x38e <accmtr_read_acc_data+0x74>
+ 384:	11 23       	and	r17, r17
+ 386:	31 f0       	breq	.+12     	; 0x394 <accmtr_read_acc_data+0x7a>
+ 388:	11 30       	cpi	r17, 0x01	; 1
+ 38a:	61 f4       	brne	.+24     	; 0x3a4 <accmtr_read_acc_data+0x8a>
+ 38c:	05 c0       	rjmp	.+10     	; 0x398 <accmtr_read_acc_data+0x7e>
+ 38e:	13 30       	cpi	r17, 0x03	; 3
+ 390:	49 f4       	brne	.+18     	; 0x3a4 <accmtr_read_acc_data+0x8a>
+ 392:	06 c0       	rjmp	.+12     	; 0x3a0 <accmtr_read_acc_data+0x86>
+		case 0: ACCMTR_0_DESELECT(); break;
+ 394:	5d 9a       	sbi	0x0b, 5	; 11
+ 396:	07 c0       	rjmp	.+14     	; 0x3a6 <accmtr_read_acc_data+0x8c>
+		case 1: ACCMTR_1_DESELECT(); break;
+ 398:	40 9a       	sbi	0x08, 0	; 8
+ 39a:	05 c0       	rjmp	.+10     	; 0x3a6 <accmtr_read_acc_data+0x8c>
+		case 2: ACCMTR_2_DESELECT(); break;
+ 39c:	41 9a       	sbi	0x08, 1	; 8
+ 39e:	03 c0       	rjmp	.+6      	; 0x3a6 <accmtr_read_acc_data+0x8c>
+		case 3: ACCMTR_3_DESELECT(); break;
+ 3a0:	42 9a       	sbi	0x08, 2	; 8
+ 3a2:	01 c0       	rjmp	.+2      	; 0x3a6 <accmtr_read_acc_data+0x8c>
+		case 4: ACCMTR_4_DESELECT(); break;
+		default: ACCMTR_4_DESELECT();
+ 3a4:	43 9a       	sbi	0x08, 3	; 8
+	for (i=0; i<6; i++) {
+		xyz[i] = spi_byte(0);
+		}
+
+	accmtr_deselect(idx);
+}
+ 3a6:	df 91       	pop	r29
+ 3a8:	cf 91       	pop	r28
+ 3aa:	1f 91       	pop	r17
+ 3ac:	ff 90       	pop	r15
+ 3ae:	ef 90       	pop	r14
+ 3b0:	08 95       	ret
+
+000003b2 <accmtr_bus_init>:
+	}
+}
+
+void accmtr_bus_init(void)
+{
+	ia_spi_init();	
+ 3b2:	0e 94 19 02 	call	0x432	; 0x432 <ia_spi_init>
+
+	A_SS0_DIR |= (1<<A_SS0_BIT);
+ 3b6:	55 9a       	sbi	0x0a, 5	; 10
+	A_SS0_PORT |= (1<<A_SS0_BIT);
+ 3b8:	5d 9a       	sbi	0x0b, 5	; 11
+
+	A_SS1_DIR |= (1<<A_SS1_BIT);
+ 3ba:	38 9a       	sbi	0x07, 0	; 7
+	A_SS1_PORT |= (1<<A_SS1_BIT);
+ 3bc:	40 9a       	sbi	0x08, 0	; 8
+
+	A_SS2_DIR |= (1<<A_SS2_BIT);
+ 3be:	39 9a       	sbi	0x07, 1	; 7
+	A_SS2_PORT |= (1<<A_SS2_BIT);
+ 3c0:	41 9a       	sbi	0x08, 1	; 8
+
+	A_SS3_DIR |= (1<<A_SS3_BIT);
+ 3c2:	3a 9a       	sbi	0x07, 2	; 7
+	A_SS3_PORT |= (1<<A_SS3_BIT);
+ 3c4:	42 9a       	sbi	0x08, 2	; 8
+
+	A_SS4_DIR |= (1<<A_SS4_BIT);
+ 3c6:	3b 9a       	sbi	0x07, 3	; 7
+	A_SS4_PORT |= (1<<A_SS4_BIT);
+ 3c8:	43 9a       	sbi	0x08, 3	; 8
+
+	A_INT0_DIR &= ~(1<<A_INT0_BIT);
+ 3ca:	56 98       	cbi	0x0a, 6	; 10
+	A_INT0_PORT |= (1<<A_INT0_BIT);
+ 3cc:	5e 9a       	sbi	0x0b, 6	; 11
+			
+	A_INT1_DIR &= ~(1<<A_INT1_BIT);
+ 3ce:	3c 98       	cbi	0x07, 4	; 7
+	A_INT1_PORT |= (1<<A_INT1_BIT);
+ 3d0:	44 9a       	sbi	0x08, 4	; 8
+	
+	A_INT2_DIR &= ~(1<<A_INT2_BIT);
+ 3d2:	3d 98       	cbi	0x07, 5	; 7
+	A_INT2_PORT |= (1<<A_INT2_BIT);
+ 3d4:	45 9a       	sbi	0x08, 5	; 8
+			
+	A_INT3_DIR &= ~(1<<A_INT3_BIT);
+ 3d6:	3e 98       	cbi	0x07, 6	; 7
+	A_INT3_PORT |= (1<<A_INT3_BIT);
+ 3d8:	46 9a       	sbi	0x08, 6	; 8
+		
+	A_INT4_DIR &= ~(1<<A_INT4_BIT);
+ 3da:	3f 98       	cbi	0x07, 7	; 7
+	A_INT4_PORT |= (1<<A_INT4_BIT);
+ 3dc:	47 9a       	sbi	0x08, 7	; 8
+
+	PCICR |= (1<<A_INT0_IE);
+ 3de:	e8 e6       	ldi	r30, 0x68	; 104
+ 3e0:	f0 e0       	ldi	r31, 0x00	; 0
+ 3e2:	80 81       	ld	r24, Z
+ 3e4:	88 60       	ori	r24, 0x08	; 8
+ 3e6:	80 83       	st	Z, r24
+}
+ 3e8:	08 95       	ret
+
+000003ea <ea_spi_init>:
+#include "avr/io.h"
+#include "ea_spi.h"
+
+void ea_spi_init(void)
+{
+}
+ 3ea:	08 95       	ret
+
+000003ec <ea_spi_byte>:
+
+char ea_spi_byte(char data)
+{
+	return 0;
+}
+ 3ec:	80 e0       	ldi	r24, 0x00	; 0
+ 3ee:	08 95       	ret
+
+000003f0 <dbg_uart_init>:
+
+void dbg_uart_init(void)
+{
+	DBG_RXD_DIR &= ~(1<<DBG_RXD_BIT);
+ 3f0:	50 98       	cbi	0x0a, 0	; 10
+	DBG_RXD_PORT |= (1<<DBG_RXD_BIT);
+ 3f2:	58 9a       	sbi	0x0b, 0	; 11
+	
+	DBG_TXD_DIR |= (1<<DBG_TXD_BIT);
+ 3f4:	51 9a       	sbi	0x0a, 1	; 10
+	DBG_TXD_PORT &= ~(1<<DBG_TXD_BIT);
+ 3f6:	59 98       	cbi	0x0b, 1	; 11
+	
+	/* Set baud rate */
+	UBRR0H = 0;
+ 3f8:	10 92 c5 00 	sts	0x00C5, r1
+	UBRR0L = 0x0c;
+ 3fc:	8c e0       	ldi	r24, 0x0C	; 12
+ 3fe:	80 93 c4 00 	sts	0x00C4, r24
+	/* Enable receiver and transmitter */
+	UCSR0B = (1<<RXEN0)|(1<<TXEN0);
+ 402:	88 e1       	ldi	r24, 0x18	; 24
+ 404:	80 93 c1 00 	sts	0x00C1, r24
+	/* Set frame format: 8data, 1stop bit */
+	UCSR0C = (0<<USBS0)|(3<<UCSZ00);
+ 408:	86 e0       	ldi	r24, 0x06	; 6
+ 40a:	80 93 c2 00 	sts	0x00C2, r24
+}
+ 40e:	08 95       	ret
+
+00000410 <dbg_uart_send>:
+
+void dbg_uart_send(char *data, char len)
+{
+ 410:	fc 01       	movw	r30, r24
+ 412:	08 c0       	rjmp	.+16     	; 0x424 <dbg_uart_send+0x14>
+	while (len) {
+		/* Wait for empty transmit buffer */
+		while ( !( UCSR0A & (1<<UDRE0)) );
+ 414:	80 91 c0 00 	lds	r24, 0x00C0
+ 418:	85 ff       	sbrs	r24, 5
+ 41a:	fc cf       	rjmp	.-8      	; 0x414 <dbg_uart_send+0x4>
+		/* Put data into buffer, sends the data */
+		UDR0 = *data++;
+ 41c:	81 91       	ld	r24, Z+
+ 41e:	80 93 c6 00 	sts	0x00C6, r24
+		len--;
+ 422:	61 50       	subi	r22, 0x01	; 1
+	UCSR0C = (0<<USBS0)|(3<<UCSZ00);
+}
+
+void dbg_uart_send(char *data, char len)
+{
+	while (len) {
+ 424:	66 23       	and	r22, r22
+ 426:	b1 f7       	brne	.-20     	; 0x414 <dbg_uart_send+0x4>
+		while ( !( UCSR0A & (1<<UDRE0)) );
+		/* Put data into buffer, sends the data */
+		UDR0 = *data++;
+		len--;
+	}
+	while ( !( UCSR0A & (1<<UDRE0)) );
+ 428:	80 91 c0 00 	lds	r24, 0x00C0
+ 42c:	85 ff       	sbrs	r24, 5
+ 42e:	fc cf       	rjmp	.-8      	; 0x428 <dbg_uart_send+0x18>
+}
+ 430:	08 95       	ret
+
+00000432 <ia_spi_init>:
+#include "ia_spi.h"
+
+void ia_spi_init(void)
+{
+	UBRR1 = 0;
+ 432:	ec ec       	ldi	r30, 0xCC	; 204
+ 434:	f0 e0       	ldi	r31, 0x00	; 0
+ 436:	11 82       	std	Z+1, r1	; 0x01
+ 438:	10 82       	st	Z, r1
+
+	// MISO: input, pull-up
+	IA_MISO_DIR &= ~(1<<IA_MISO_BIT);
+ 43a:	52 98       	cbi	0x0a, 2	; 10
+	IA_MISO_PORT |= (1<<IA_MISO_BIT);
+ 43c:	5a 9a       	sbi	0x0b, 2	; 11
+
+	// MOSI: output, low
+	IA_MOSI_DIR |= (1<<IA_MOSI_BIT);
+ 43e:	53 9a       	sbi	0x0a, 3	; 10
+	IA_MOSI_PORT &= ~(1<<IA_MOSI_BIT);
+ 440:	5b 98       	cbi	0x0b, 3	; 11
+
+	// SCK: output, low
+	IA_SCK_DIR |= (1<<IA_SCK_BIT);
+ 442:	54 9a       	sbi	0x0a, 4	; 10
+	IA_SCK_PORT |= (1<<IA_SCK_BIT);
+ 444:	5c 9a       	sbi	0x0b, 4	; 11
+
+	UCSR1C = (1<<UMSEL11)|(1<<UMSEL10)|(1<<UCPHA1)|(1<<UCPOL1);
+ 446:	83 ec       	ldi	r24, 0xC3	; 195
+ 448:	80 93 ca 00 	sts	0x00CA, r24
+	UCSR1B = (1<<RXEN1)|(1<<TXEN1);
+ 44c:	88 e1       	ldi	r24, 0x18	; 24
+ 44e:	80 93 c9 00 	sts	0x00C9, r24
+	UBRR1 = 7;
+ 452:	87 e0       	ldi	r24, 0x07	; 7
+ 454:	90 e0       	ldi	r25, 0x00	; 0
+ 456:	91 83       	std	Z+1, r25	; 0x01
+ 458:	80 83       	st	Z, r24
+}
+ 45a:	08 95       	ret
+
+0000045c <ia_spi_byte>:
+
+char ia_spi_byte(char data)
+{
+ 45c:	98 2f       	mov	r25, r24
+	/* Wait for empty transmit buffer */
+	while ( !( UCSR1A & (1<<UDRE1)) );
+ 45e:	80 91 c8 00 	lds	r24, 0x00C8
+ 462:	85 ff       	sbrs	r24, 5
+ 464:	fc cf       	rjmp	.-8      	; 0x45e <ia_spi_byte+0x2>
+	/* Put data into buffer, sends the data */
+	UDR1 = data;
+ 466:	90 93 ce 00 	sts	0x00CE, r25
+	/* Wait for data to be rec1ived */
+	while ( !(UCSR1A & (1<<RXC1)) );
+ 46a:	80 91 c8 00 	lds	r24, 0x00C8
+ 46e:	87 ff       	sbrs	r24, 7
+ 470:	fc cf       	rjmp	.-8      	; 0x46a <ia_spi_byte+0xe>
+	/* Get and return received data from buffer */
+	return UDR1;
+ 472:	80 91 ce 00 	lds	r24, 0x00CE
+}
+ 476:	08 95       	ret
+
+00000478 <startSingleMeas>:
+
+
+void startSingleMeas(unsigned char channel)
+{
+	//not implemented here
+}
+ 478:	08 95       	ret
+
+0000047a <specialCommand>:
+		TIIendint();
+	}
+
+}
+
+void specialCommand(struct TIIbuffer * oBuffer, struct TIIbuffer * commandBuf){
+ 47a:	fc 01       	movw	r30, r24
+
+	//reply
+	*(oBuffer->lth)=7;
+ 47c:	a2 81       	ldd	r26, Z+2	; 0x02
+ 47e:	b3 81       	ldd	r27, Z+3	; 0x03
+ 480:	87 e0       	ldi	r24, 0x07	; 7
+ 482:	8c 93       	st	X, r24
+	*(oBuffer->messageptr)='W';
+ 484:	a0 81       	ld	r26, Z
+ 486:	b1 81       	ldd	r27, Z+1	; 0x01
+ 488:	87 e5       	ldi	r24, 0x57	; 87
+ 48a:	8c 93       	st	X, r24
+	*(oBuffer->messageptr+1)='i';
+ 48c:	a0 81       	ld	r26, Z
+ 48e:	b1 81       	ldd	r27, Z+1	; 0x01
+ 490:	89 e6       	ldi	r24, 0x69	; 105
+ 492:	11 96       	adiw	r26, 0x01	; 1
+ 494:	8c 93       	st	X, r24
+	*(oBuffer->messageptr+2)='l';
+ 496:	a0 81       	ld	r26, Z
+ 498:	b1 81       	ldd	r27, Z+1	; 0x01
+ 49a:	8c e6       	ldi	r24, 0x6C	; 108
+ 49c:	12 96       	adiw	r26, 0x02	; 2
+ 49e:	8c 93       	st	X, r24
+	*(oBuffer->messageptr+3)='m';
+ 4a0:	a0 81       	ld	r26, Z
+ 4a2:	b1 81       	ldd	r27, Z+1	; 0x01
+ 4a4:	8d e6       	ldi	r24, 0x6D	; 109
+ 4a6:	13 96       	adiw	r26, 0x03	; 3
+ 4a8:	8c 93       	st	X, r24
+	*(oBuffer->messageptr+4)='a';
+ 4aa:	a0 81       	ld	r26, Z
+ 4ac:	b1 81       	ldd	r27, Z+1	; 0x01
+ 4ae:	81 e6       	ldi	r24, 0x61	; 97
+ 4b0:	14 96       	adiw	r26, 0x04	; 4
+ 4b2:	8c 93       	st	X, r24
+	*(oBuffer->messageptr+5)='\r';
+ 4b4:	a0 81       	ld	r26, Z
+ 4b6:	b1 81       	ldd	r27, Z+1	; 0x01
+ 4b8:	8d e0       	ldi	r24, 0x0D	; 13
+ 4ba:	15 96       	adiw	r26, 0x05	; 5
+ 4bc:	8c 93       	st	X, r24
+	*(oBuffer->messageptr+6)='\n';
+ 4be:	a0 81       	ld	r26, Z
+ 4c0:	b1 81       	ldd	r27, Z+1	; 0x01
+ 4c2:	8a e0       	ldi	r24, 0x0A	; 10
+ 4c4:	16 96       	adiw	r26, 0x06	; 6
+ 4c6:	8c 93       	st	X, r24
+
+	oBuffer->status=RDY_NOERR;
+ 4c8:	80 e8       	ldi	r24, 0x80	; 128
+ 4ca:	84 83       	std	Z+4, r24	; 0x04
+}
+ 4cc:	08 95       	ret
+
+000004ce <readData>:
+
+	TIIendint();
+}
+
+void readData(struct TIIbuffer * oBuffer, unsigned char channel)
+{
+ 4ce:	cf 93       	push	r28
+ 4d0:	df 93       	push	r29
+ 4d2:	ec 01       	movw	r28, r24
+	//if (led1_cnt > 71) led1_cnt = 0;
+	//if (led1_cnt < 6) LED1_ON(); else LED1_OFF();
+
+	chbuff = (char *)buff;
+
+	if (rcnt == wcnt) {
+ 4d4:	20 91 cb 01 	lds	r18, 0x01CB
+ 4d8:	30 91 cc 01 	lds	r19, 0x01CC
+ 4dc:	40 91 cd 01 	lds	r20, 0x01CD
+ 4e0:	50 91 ce 01 	lds	r21, 0x01CE
+ 4e4:	80 91 cf 01 	lds	r24, 0x01CF
+ 4e8:	90 91 d0 01 	lds	r25, 0x01D0
+ 4ec:	a0 91 d1 01 	lds	r26, 0x01D1
+ 4f0:	b0 91 d2 01 	lds	r27, 0x01D2
+ 4f4:	28 17       	cp	r18, r24
+ 4f6:	39 07       	cpc	r19, r25
+ 4f8:	4a 07       	cpc	r20, r26
+ 4fa:	5b 07       	cpc	r21, r27
+ 4fc:	19 f0       	breq	.+6      	; 0x504 <readData+0x36>
+ 4fe:	60 e0       	ldi	r22, 0x00	; 0
+ 500:	70 e0       	ldi	r23, 0x00	; 0
+ 502:	4a c0       	rjmp	.+148    	; 0x598 <readData+0xca>
+		*(oBuffer->lth)=0;
+ 504:	ea 81       	ldd	r30, Y+2	; 0x02
+ 506:	fb 81       	ldd	r31, Y+3	; 0x03
+ 508:	10 82       	st	Z, r1
+		oBuffer->status=BSY_NOERR;
+ 50a:	1c 82       	std	Y+4, r1	; 0x04
+ 50c:	7a c0       	rjmp	.+244    	; 0x602 <readData+0x134>
+		TIIendint();
+		return;
+ 50e:	ab 01       	movw	r20, r22
+ 510:	20 e0       	ldi	r18, 0x00	; 0
+ 512:	30 e0       	ldi	r19, 0x00	; 0
+	}
+
+	while ((rcnt < wcnt) && ((idx + 6) < MAX_BUFF_LTH-1)) {		//ide javitottam, -1 kell, mert a MAX_BUFF_LTH-ben a stat&len byte is benne van
+		for (i=0; i<6; i++, idx++) {
+			oBuffer->messageptr[idx] = chbuff[ridx*6 + i];
+ 514:	a8 81       	ld	r26, Y
+ 516:	b9 81       	ldd	r27, Y+1	; 0x01
+ 518:	a4 0f       	add	r26, r20
+ 51a:	b5 1f       	adc	r27, r21
+ 51c:	80 91 d5 01 	lds	r24, 0x01D5
+ 520:	90 91 d6 01 	lds	r25, 0x01D6
+ 524:	fc 01       	movw	r30, r24
+ 526:	ee 0f       	add	r30, r30
+ 528:	ff 1f       	adc	r31, r31
+ 52a:	e8 0f       	add	r30, r24
+ 52c:	f9 1f       	adc	r31, r25
+ 52e:	ee 0f       	add	r30, r30
+ 530:	ff 1f       	adc	r31, r31
+ 532:	e2 0f       	add	r30, r18
+ 534:	f3 1f       	adc	r31, r19
+ 536:	e9 5e       	subi	r30, 0xE9	; 233
+ 538:	fe 4f       	sbci	r31, 0xFE	; 254
+ 53a:	80 81       	ld	r24, Z
+ 53c:	8c 93       	st	X, r24
+		TIIendint();
+		return;
+	}
+
+	while ((rcnt < wcnt) && ((idx + 6) < MAX_BUFF_LTH-1)) {		//ide javitottam, -1 kell, mert a MAX_BUFF_LTH-ben a stat&len byte is benne van
+		for (i=0; i<6; i++, idx++) {
+ 53e:	2f 5f       	subi	r18, 0xFF	; 255
+ 540:	3f 4f       	sbci	r19, 0xFF	; 255
+ 542:	4f 5f       	subi	r20, 0xFF	; 255
+ 544:	5f 4f       	sbci	r21, 0xFF	; 255
+ 546:	26 30       	cpi	r18, 0x06	; 6
+ 548:	31 05       	cpc	r19, r1
+ 54a:	21 f7       	brne	.-56     	; 0x514 <readData+0x46>
+ 54c:	6a 5f       	subi	r22, 0xFA	; 250
+ 54e:	7f 4f       	sbci	r23, 0xFF	; 255
+			oBuffer->messageptr[idx] = chbuff[ridx*6 + i];
+		}
+		ridx++;									// increment buffer index
+ 550:	20 91 d5 01 	lds	r18, 0x01D5
+ 554:	30 91 d6 01 	lds	r19, 0x01D6
+ 558:	2f 5f       	subi	r18, 0xFF	; 255
+ 55a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 55c:	30 93 d6 01 	sts	0x01D6, r19
+ 560:	20 93 d5 01 	sts	0x01D5, r18
+		rcnt++;									// increment write counter
+ 564:	80 91 cb 01 	lds	r24, 0x01CB
+ 568:	90 91 cc 01 	lds	r25, 0x01CC
+ 56c:	a0 91 cd 01 	lds	r26, 0x01CD
+ 570:	b0 91 ce 01 	lds	r27, 0x01CE
+ 574:	01 96       	adiw	r24, 0x01	; 1
+ 576:	a1 1d       	adc	r26, r1
+ 578:	b1 1d       	adc	r27, r1
+ 57a:	80 93 cb 01 	sts	0x01CB, r24
+ 57e:	90 93 cc 01 	sts	0x01CC, r25
+ 582:	a0 93 cd 01 	sts	0x01CD, r26
+ 586:	b0 93 ce 01 	sts	0x01CE, r27
+		if (ridx >= BUFF_SIZE) ridx = 0;		// circular buffer
+ 58a:	2e 31       	cpi	r18, 0x1E	; 30
+ 58c:	31 05       	cpc	r19, r1
+ 58e:	20 f0       	brcs	.+8      	; 0x598 <readData+0xca>
+ 590:	10 92 d6 01 	sts	0x01D6, r1
+ 594:	10 92 d5 01 	sts	0x01D5, r1
+		oBuffer->status=BSY_NOERR;
+		TIIendint();
+		return;
+	}
+
+	while ((rcnt < wcnt) && ((idx + 6) < MAX_BUFF_LTH-1)) {		//ide javitottam, -1 kell, mert a MAX_BUFF_LTH-ben a stat&len byte is benne van
+ 598:	20 91 cb 01 	lds	r18, 0x01CB
+ 59c:	30 91 cc 01 	lds	r19, 0x01CC
+ 5a0:	40 91 cd 01 	lds	r20, 0x01CD
+ 5a4:	50 91 ce 01 	lds	r21, 0x01CE
+ 5a8:	80 91 cf 01 	lds	r24, 0x01CF
+ 5ac:	90 91 d0 01 	lds	r25, 0x01D0
+ 5b0:	a0 91 d1 01 	lds	r26, 0x01D1
+ 5b4:	b0 91 d2 01 	lds	r27, 0x01D2
+ 5b8:	28 17       	cp	r18, r24
+ 5ba:	39 07       	cpc	r19, r25
+ 5bc:	4a 07       	cpc	r20, r26
+ 5be:	5b 07       	cpc	r21, r27
+ 5c0:	20 f4       	brcc	.+8      	; 0x5ca <readData+0xfc>
+ 5c2:	64 32       	cpi	r22, 0x24	; 36
+ 5c4:	71 05       	cpc	r23, r1
+ 5c6:	09 f0       	breq	.+2      	; 0x5ca <readData+0xfc>
+ 5c8:	a2 cf       	rjmp	.-188    	; 0x50e <readData+0x40>
+		ridx++;									// increment buffer index
+		rcnt++;									// increment write counter
+		if (ridx >= BUFF_SIZE) ridx = 0;		// circular buffer
+
+	}
+	*(oBuffer->lth)=(char)((idx+1) & 0xff);
+ 5ca:	ea 81       	ldd	r30, Y+2	; 0x02
+ 5cc:	fb 81       	ldd	r31, Y+3	; 0x03
+ 5ce:	86 2f       	mov	r24, r22
+ 5d0:	8f 5f       	subi	r24, 0xFF	; 255
+ 5d2:	80 83       	st	Z, r24
+	oBuffer->status=RDY_NOERR;
+ 5d4:	80 e8       	ldi	r24, 0x80	; 128
+ 5d6:	8c 83       	std	Y+4, r24	; 0x04
+
+	if ((wcnt - rcnt) < 1) {
+ 5d8:	20 91 cf 01 	lds	r18, 0x01CF
+ 5dc:	30 91 d0 01 	lds	r19, 0x01D0
+ 5e0:	40 91 d1 01 	lds	r20, 0x01D1
+ 5e4:	50 91 d2 01 	lds	r21, 0x01D2
+ 5e8:	80 91 cb 01 	lds	r24, 0x01CB
+ 5ec:	90 91 cc 01 	lds	r25, 0x01CC
+ 5f0:	a0 91 cd 01 	lds	r26, 0x01CD
+ 5f4:	b0 91 ce 01 	lds	r27, 0x01CE
+ 5f8:	28 17       	cp	r18, r24
+ 5fa:	39 07       	cpc	r19, r25
+ 5fc:	4a 07       	cpc	r20, r26
+ 5fe:	5b 07       	cpc	r21, r27
+ 600:	11 f4       	brne	.+4      	; 0x606 <readData+0x138>
+		TIIendint();
+ 602:	0e 94 ba 05 	call	0xb74	; 0xb74 <TIIendint>
+	}
+
+}
+ 606:	df 91       	pop	r29
+ 608:	cf 91       	pop	r28
+ 60a:	08 95       	ret
+
+0000060c <stopMeas>:
+	accmtr_meas_start(0);
+}
+
+void stopMeas(void)
+{
+	LED2_OFF();
+ 60c:	12 9a       	sbi	0x02, 2	; 2
+	LED1_OFF();
+ 60e:	11 9a       	sbi	0x02, 1	; 2
+	accmtr_meas_stop(0);
+ 610:	80 e0       	ldi	r24, 0x00	; 0
+ 612:	0e 94 4e 01 	call	0x29c	; 0x29c <accmtr_meas_stop>
+
+	//reset buffer - by G.B. (nem vagyunk kivancsiak az elozo meres vegere)
+	ridx=0;
+ 616:	10 92 d6 01 	sts	0x01D6, r1
+ 61a:	10 92 d5 01 	sts	0x01D5, r1
+	widx=0;
+ 61e:	10 92 d4 01 	sts	0x01D4, r1
+ 622:	10 92 d3 01 	sts	0x01D3, r1
+	rcnt=0;
+ 626:	10 92 cb 01 	sts	0x01CB, r1
+ 62a:	10 92 cc 01 	sts	0x01CC, r1
+ 62e:	10 92 cd 01 	sts	0x01CD, r1
+ 632:	10 92 ce 01 	sts	0x01CE, r1
+	wcnt=0;
+ 636:	10 92 cf 01 	sts	0x01CF, r1
+ 63a:	10 92 d0 01 	sts	0x01D0, r1
+ 63e:	10 92 d1 01 	sts	0x01D1, r1
+ 642:	10 92 d2 01 	sts	0x01D2, r1
+
+	startSignal();
+ 646:	0e 94 f3 05 	call	0xbe6	; 0xbe6 <startSignal>
+
+	TIIendint();
+ 64a:	0e 94 ba 05 	call	0xb74	; 0xb74 <TIIendint>
+}
+ 64e:	08 95       	ret
+
+00000650 <startContMeas>:
+{
+	//not implemented here
+}
+void startContMeas(unsigned char channel)
+{
+	LED1_OFF();
+ 650:	11 9a       	sbi	0x02, 1	; 2
+	stopSignal();
+ 652:	0e 94 ff 05 	call	0xbfe	; 0xbfe <stopSignal>
+	accmtr_meas_start(0);
+ 656:	80 e0       	ldi	r24, 0x00	; 0
+ 658:	0e 94 dc 00 	call	0x1b8	; 0x1b8 <accmtr_meas_start>
+}
+ 65c:	08 95       	ret
+
+0000065e <main>:
+
+
+
+int main(void)
+{	
+	LED1_DIR();
+ 65e:	09 9a       	sbi	0x01, 1	; 1
+	LED1_ON();
+ 660:	11 98       	cbi	0x02, 1	; 2
+	LED2_DIR();
+ 662:	0a 9a       	sbi	0x01, 2	; 1
+	LED2_OFF();
+ 664:	12 9a       	sbi	0x02, 2	; 2
+
+	ridx = widx = rcnt = wcnt = 0;
+ 666:	10 92 cf 01 	sts	0x01CF, r1
+ 66a:	10 92 d0 01 	sts	0x01D0, r1
+ 66e:	10 92 d1 01 	sts	0x01D1, r1
+ 672:	10 92 d2 01 	sts	0x01D2, r1
+ 676:	10 92 cb 01 	sts	0x01CB, r1
+ 67a:	10 92 cc 01 	sts	0x01CC, r1
+ 67e:	10 92 cd 01 	sts	0x01CD, r1
+ 682:	10 92 ce 01 	sts	0x01CE, r1
+ 686:	10 92 d4 01 	sts	0x01D4, r1
+ 68a:	10 92 d3 01 	sts	0x01D3, r1
+ 68e:	10 92 d6 01 	sts	0x01D6, r1
+ 692:	10 92 d5 01 	sts	0x01D5, r1
+
+	accmtr_bus_init();
+ 696:	0e 94 d9 01 	call	0x3b2	; 0x3b2 <accmtr_bus_init>
+	accmtr_init(0);
+ 69a:	80 e0       	ldi	r24, 0x00	; 0
+ 69c:	0e 94 a5 00 	call	0x14a	; 0x14a <accmtr_init>
+	
+	//initialize event container
+	pointers.start_single=startSingleMeas;
+ 6a0:	8c e3       	ldi	r24, 0x3C	; 60
+ 6a2:	92 e0       	ldi	r25, 0x02	; 2
+ 6a4:	90 93 02 01 	sts	0x0102, r25
+ 6a8:	80 93 01 01 	sts	0x0101, r24
+	pointers.start_cont=startContMeas;
+ 6ac:	88 e2       	ldi	r24, 0x28	; 40
+ 6ae:	93 e0       	ldi	r25, 0x03	; 3
+ 6b0:	90 93 04 01 	sts	0x0104, r25
+ 6b4:	80 93 03 01 	sts	0x0103, r24
+	pointers.stop_meas=stopMeas;
+ 6b8:	86 e0       	ldi	r24, 0x06	; 6
+ 6ba:	93 e0       	ldi	r25, 0x03	; 3
+ 6bc:	90 93 06 01 	sts	0x0106, r25
+ 6c0:	80 93 05 01 	sts	0x0105, r24
+	pointers.read_data=readData;
+ 6c4:	87 e6       	ldi	r24, 0x67	; 103
+ 6c6:	92 e0       	ldi	r25, 0x02	; 2
+ 6c8:	90 93 08 01 	sts	0x0108, r25
+ 6cc:	80 93 07 01 	sts	0x0107, r24
+	pointers.special_command=specialCommand;
+ 6d0:	8d e3       	ldi	r24, 0x3D	; 61
+ 6d2:	92 e0       	ldi	r25, 0x02	; 2
+ 6d4:	90 93 0a 01 	sts	0x010A, r25
+ 6d8:	80 93 09 01 	sts	0x0109, r24
+	
+	TIIinit(&pointers);
+ 6dc:	81 e0       	ldi	r24, 0x01	; 1
+ 6de:	91 e0       	ldi	r25, 0x01	; 1
+ 6e0:	0e 94 0a 04 	call	0x814	; 0x814 <TIIinit>
+
+	accmtr_present(0);
+ 6e4:	80 e0       	ldi	r24, 0x00	; 0
+ 6e6:	0e 94 6a 00 	call	0xd4	; 0xd4 <accmtr_present>
+	accmtr_present(0);
+ 6ea:	80 e0       	ldi	r24, 0x00	; 0
+ 6ec:	0e 94 6a 00 	call	0xd4	; 0xd4 <accmtr_present>
+
+
+	sei();
+ 6f0:	78 94       	sei
+	while(1){
+		//ha nem mernek
+			//es keszen vannak - IT-t kerek
+			//es nincsenek keszen - alszok
+
+		set_sleep_mode(SLEEP_MODE_IDLE);
+ 6f2:	83 b7       	in	r24, 0x33	; 51
+ 6f4:	81 7f       	andi	r24, 0xF1	; 241
+ 6f6:	83 bf       	out	0x33, r24	; 51
+      	sleep_mode();
+ 6f8:	83 b7       	in	r24, 0x33	; 51
+ 6fa:	81 60       	ori	r24, 0x01	; 1
+ 6fc:	83 bf       	out	0x33, r24	; 51
+ 6fe:	88 95       	sleep
+ 700:	83 b7       	in	r24, 0x33	; 51
+ 702:	8e 7f       	andi	r24, 0xFE	; 254
+ 704:	83 bf       	out	0x33, r24	; 51
+ 706:	f5 cf       	rjmp	.-22     	; 0x6f2 <main+0x94>
+
+00000708 <__vector_7>:
+char led1_cnt = 0;
+
+
+// On-board accelerometer data ready interrupt service
+ISR(PCINT3_vect)
+{
+ 708:	1f 92       	push	r1
+ 70a:	0f 92       	push	r0
+ 70c:	0f b6       	in	r0, 0x3f	; 63
+ 70e:	0f 92       	push	r0
+ 710:	11 24       	eor	r1, r1
+ 712:	2f 93       	push	r18
+ 714:	3f 93       	push	r19
+ 716:	4f 93       	push	r20
+ 718:	5f 93       	push	r21
+ 71a:	6f 93       	push	r22
+ 71c:	7f 93       	push	r23
+ 71e:	8f 93       	push	r24
+ 720:	9f 93       	push	r25
+ 722:	af 93       	push	r26
+ 724:	bf 93       	push	r27
+ 726:	ef 93       	push	r30
+ 728:	ff 93       	push	r31
+	accmtr_read_acc_data(0, buff+widx*3);	// read data in buffer
+ 72a:	80 91 d3 01 	lds	r24, 0x01D3
+ 72e:	90 91 d4 01 	lds	r25, 0x01D4
+ 732:	bc 01       	movw	r22, r24
+ 734:	66 0f       	add	r22, r22
+ 736:	77 1f       	adc	r23, r23
+ 738:	68 0f       	add	r22, r24
+ 73a:	79 1f       	adc	r23, r25
+ 73c:	66 0f       	add	r22, r22
+ 73e:	77 1f       	adc	r23, r23
+ 740:	69 5e       	subi	r22, 0xE9	; 233
+ 742:	7e 4f       	sbci	r23, 0xFE	; 254
+ 744:	80 e0       	ldi	r24, 0x00	; 0
+ 746:	0e 94 8d 01 	call	0x31a	; 0x31a <accmtr_read_acc_data>
+
+	widx++;									// increment buffer index
+ 74a:	80 91 d3 01 	lds	r24, 0x01D3
+ 74e:	90 91 d4 01 	lds	r25, 0x01D4
+ 752:	01 96       	adiw	r24, 0x01	; 1
+ 754:	90 93 d4 01 	sts	0x01D4, r25
+ 758:	80 93 d3 01 	sts	0x01D3, r24
+	wcnt++;									// increment write counter
+ 75c:	20 91 cf 01 	lds	r18, 0x01CF
+ 760:	30 91 d0 01 	lds	r19, 0x01D0
+ 764:	40 91 d1 01 	lds	r20, 0x01D1
+ 768:	50 91 d2 01 	lds	r21, 0x01D2
+ 76c:	2f 5f       	subi	r18, 0xFF	; 255
+ 76e:	3f 4f       	sbci	r19, 0xFF	; 255
+ 770:	4f 4f       	sbci	r20, 0xFF	; 255
+ 772:	5f 4f       	sbci	r21, 0xFF	; 255
+ 774:	20 93 cf 01 	sts	0x01CF, r18
+ 778:	30 93 d0 01 	sts	0x01D0, r19
+ 77c:	40 93 d1 01 	sts	0x01D1, r20
+ 780:	50 93 d2 01 	sts	0x01D2, r21
+	if (widx >= BUFF_SIZE) widx = 0;		
+ 784:	4e 97       	sbiw	r24, 0x1e	; 30
+ 786:	20 f0       	brcs	.+8      	; 0x790 <__vector_7+0x88>
+ 788:	10 92 d4 01 	sts	0x01D4, r1
+ 78c:	10 92 d3 01 	sts	0x01D3, r1
+
+	cnt++;
+ 790:	80 91 16 01 	lds	r24, 0x0116
+ 794:	8f 5f       	subi	r24, 0xFF	; 255
+ 796:	80 93 16 01 	sts	0x0116, r24
+	if (cnt > 40) cnt = 0;
+ 79a:	89 32       	cpi	r24, 0x29	; 41
+ 79c:	10 f0       	brcs	.+4      	; 0x7a2 <__vector_7+0x9a>
+ 79e:	10 92 16 01 	sts	0x0116, r1
+	if (cnt < 6) LED2_ON(); else LED2_OFF();
+ 7a2:	80 91 16 01 	lds	r24, 0x0116
+ 7a6:	86 30       	cpi	r24, 0x06	; 6
+ 7a8:	10 f4       	brcc	.+4      	; 0x7ae <__vector_7+0xa6>
+ 7aa:	12 98       	cbi	0x02, 2	; 2
+ 7ac:	01 c0       	rjmp	.+2      	; 0x7b0 <__vector_7+0xa8>
+ 7ae:	12 9a       	sbi	0x02, 2	; 2
+
+
+	if ((wcnt - rcnt) > 0) {		
+ 7b0:	80 91 cb 01 	lds	r24, 0x01CB
+ 7b4:	90 91 cc 01 	lds	r25, 0x01CC
+ 7b8:	a0 91 cd 01 	lds	r26, 0x01CD
+ 7bc:	b0 91 ce 01 	lds	r27, 0x01CE
+ 7c0:	28 17       	cp	r18, r24
+ 7c2:	39 07       	cpc	r19, r25
+ 7c4:	4a 07       	cpc	r20, r26
+ 7c6:	5b 07       	cpc	r21, r27
+ 7c8:	11 f0       	breq	.+4      	; 0x7ce <__vector_7+0xc6>
+		TIIsigint();						
+ 7ca:	0e 94 b8 05 	call	0xb70	; 0xb70 <TIIsigint>
+	}
+}
+ 7ce:	ff 91       	pop	r31
+ 7d0:	ef 91       	pop	r30
+ 7d2:	bf 91       	pop	r27
+ 7d4:	af 91       	pop	r26
+ 7d6:	9f 91       	pop	r25
+ 7d8:	8f 91       	pop	r24
+ 7da:	7f 91       	pop	r23
+ 7dc:	6f 91       	pop	r22
+ 7de:	5f 91       	pop	r21
+ 7e0:	4f 91       	pop	r20
+ 7e2:	3f 91       	pop	r19
+ 7e4:	2f 91       	pop	r18
+ 7e6:	0f 90       	pop	r0
+ 7e8:	0f be       	out	0x3f, r0	; 63
+ 7ea:	0f 90       	pop	r0
+ 7ec:	1f 90       	pop	r1
+ 7ee:	18 95       	reti
+
+000007f0 <__vector_3>:
+\return N/A
+
+The low level on the WAKEUP line generates an interrupt, this routine handles it. It resets the communication state-machine and
+the buffers.
+*/
+ISR(WAKEUP_VECT){
+ 7f0:	1f 92       	push	r1
+ 7f2:	0f 92       	push	r0
+ 7f4:	0f b6       	in	r0, 0x3f	; 63
+ 7f6:	0f 92       	push	r0
+ 7f8:	11 24       	eor	r1, r1
+ 7fa:	8f 93       	push	r24
+//	LED2_ON();
+	GO_ACTIVE();
+ 7fc:	10 92 0c 01 	sts	0x010C, r1
+ 800:	ea 98       	cbi	0x1d, 2	; 29
+ 802:	81 e0       	ldi	r24, 0x01	; 1
+ 804:	80 93 0b 01 	sts	0x010B, r24
+}
+ 808:	8f 91       	pop	r24
+ 80a:	0f 90       	pop	r0
+ 80c:	0f be       	out	0x3f, r0	; 63
+ 80e:	0f 90       	pop	r0
+ 810:	1f 90       	pop	r1
+ 812:	18 95       	reti
+
+00000814 <TIIinit>:
+
+
+*/
+void TIIinit(struct TII_event_set_t * events){
+	//direction settings
+	SS_IN();
+ 814:	24 98       	cbi	0x04, 4	; 4
+	MISO_OUT();
+ 816:	26 9a       	sbi	0x04, 6	; 4
+	SCK_IN();
+ 818:	27 98       	cbi	0x04, 7	; 4
+	MOSI_IN();
+ 81a:	25 98       	cbi	0x04, 5	; 4
+
+	NINT_OUT();
+ 81c:	0e 9a       	sbi	0x01, 6	; 1
+	NINT_HIGH();
+ 81e:	16 9a       	sbi	0x02, 6	; 2
+
+	//SPI config: interrupt enable, SPI enable, LSB first
+	//slave, SCK high when idle, sample on leading edge
+	//125 kbaud on 4 MHz - Fclk/32
+	SPCR=(1<<SPIE)|(1<<SPE)|(1<<DORD)|(1<<CPOL)|(1<<SPR1);
+ 820:	2a ee       	ldi	r18, 0xEA	; 234
+ 822:	2c bd       	out	0x2c, r18	; 44
+	//SPSR=(1<<SPI2X);
+
+	tiievents=events;
+ 824:	90 93 12 01 	sts	0x0112, r25
+ 828:	80 93 11 01 	sts	0x0111, r24
+
+	WAKEUP_EDGE_FALLING();
+ 82c:	e9 e6       	ldi	r30, 0x69	; 105
+ 82e:	f0 e0       	ldi	r31, 0x00	; 0
+ 830:	80 81       	ld	r24, Z
+ 832:	80 62       	ori	r24, 0x20	; 32
+ 834:	80 83       	st	Z, r24
+	
+	GO_INACTIVE();	
+ 836:	87 e0       	ldi	r24, 0x07	; 7
+ 838:	80 93 0c 01 	sts	0x010C, r24
+ 83c:	ea 9a       	sbi	0x1d, 2	; 29
+ 83e:	10 92 0b 01 	sts	0x010B, r1
+
+	return;
+}
+ 842:	08 95       	ret
+
+00000844 <TIIexecuteC>:
+\return N/A
+
+The function selects the appropriate callback function defined by the command byte (if it is the SPEC_COMM byte, it just changes the
+state of the state-machine), or just composes a message to the output buffer (GET_DEV_ID).
+*/
+void TIIexecuteC(unsigned char channel, unsigned char command){
+ 844:	28 2f       	mov	r18, r24
+
+	switch(command){
+ 846:	6e 36       	cpi	r22, 0x6E	; 110
+ 848:	91 f1       	breq	.+100    	; 0x8ae <TIIexecuteC+0x6a>
+ 84a:	6f 36       	cpi	r22, 0x6F	; 111
+ 84c:	40 f4       	brcc	.+16     	; 0x85e <TIIexecuteC+0x1a>
+ 84e:	69 36       	cpi	r22, 0x69	; 105
+ 850:	91 f1       	breq	.+100    	; 0x8b6 <TIIexecuteC+0x72>
+ 852:	6d 36       	cpi	r22, 0x6D	; 109
+ 854:	69 f0       	breq	.+26     	; 0x870 <TIIexecuteC+0x2c>
+ 856:	63 36       	cpi	r22, 0x63	; 99
+ 858:	09 f0       	breq	.+2      	; 0x85c <TIIexecuteC+0x18>
+ 85a:	87 c0       	rjmp	.+270    	; 0x96a <__stack+0x6b>
+ 85c:	11 c0       	rjmp	.+34     	; 0x880 <TIIexecuteC+0x3c>
+ 85e:	63 37       	cpi	r22, 0x73	; 115
+ 860:	c9 f0       	breq	.+50     	; 0x894 <TIIexecuteC+0x50>
+ 862:	68 37       	cpi	r22, 0x78	; 120
+ 864:	09 f4       	brne	.+2      	; 0x868 <TIIexecuteC+0x24>
+ 866:	7d c0       	rjmp	.+250    	; 0x962 <__stack+0x63>
+ 868:	62 37       	cpi	r22, 0x72	; 114
+ 86a:	09 f0       	breq	.+2      	; 0x86e <TIIexecuteC+0x2a>
+ 86c:	7e c0       	rjmp	.+252    	; 0x96a <__stack+0x6b>
+ 86e:	49 c0       	rjmp	.+146    	; 0x902 <__stack+0x3>
+			case START_SMEAS:
+				//indicate single measurement command to upper layer
+				tiievents->start_single(channel);
+ 870:	e0 91 11 01 	lds	r30, 0x0111
+ 874:	f0 91 12 01 	lds	r31, 0x0112
+ 878:	01 90       	ld	r0, Z+
+ 87a:	f0 81       	ld	r31, Z
+ 87c:	e0 2d       	mov	r30, r0
+ 87e:	07 c0       	rjmp	.+14     	; 0x88e <TIIexecuteC+0x4a>
+				//go inactive after indication - no reply has to be transmitted
+				GO_INACTIVE();
+				break;
+			case START_CMEAS:
+				//start continuous measurement command indication
+				tiievents->start_cont(channel);
+ 880:	e0 91 11 01 	lds	r30, 0x0111
+ 884:	f0 91 12 01 	lds	r31, 0x0112
+ 888:	02 80       	ldd	r0, Z+2	; 0x02
+ 88a:	f3 81       	ldd	r31, Z+3	; 0x03
+ 88c:	e0 2d       	mov	r30, r0
+ 88e:	82 2f       	mov	r24, r18
+ 890:	09 95       	icall
+ 892:	6b c0       	rjmp	.+214    	; 0x96a <__stack+0x6b>
+Requests interrupt from the NCAP by pulling the NINT line low. If it is the reply for a STOP_MEAS command, it means, 
+that the controller needs time to prepare for the shut-down.
+*/
+void TIIsigint(void){
+	//pull low the NINT line
+	NINT_LOW();
+ 894:	16 98       	cbi	0x02, 6	; 2
+				break;
+			case STOP_MEAS:
+				//pull down NINT line, to ask for time
+				TIIsigint();
+				//next state is preparing - that state ends with the releasing of the NINT line
+				tiistate=PREPARING;
+ 896:	86 e0       	ldi	r24, 0x06	; 6
+ 898:	80 93 0c 01 	sts	0x010C, r24
+				//indicate stop measurement command
+				tiievents->stop_meas();
+ 89c:	e0 91 11 01 	lds	r30, 0x0111
+ 8a0:	f0 91 12 01 	lds	r31, 0x0112
+ 8a4:	04 80       	ldd	r0, Z+4	; 0x04
+ 8a6:	f5 81       	ldd	r31, Z+5	; 0x05
+ 8a8:	e0 2d       	mov	r30, r0
+ 8aa:	09 95       	icall
+ 8ac:	08 95       	ret
+*/
+
+void TIItxchar(char c){
+	
+	//move the character to the SPI data register
+	PUSH_BYTE(c);
+ 8ae:	81 e0       	ldi	r24, 0x01	; 1
+ 8b0:	8e bd       	out	0x2e, r24	; 46
+			case GET_NR_CHAN:
+				
+				//transmit channel number
+				TIItxchar(NR_OF_CHANNELS);
+				//next state is TR_CHN, ends with an SPI transaction
+				tiistate=TR_CHN;
+ 8b2:	82 e0       	ldi	r24, 0x02	; 2
+ 8b4:	57 c0       	rjmp	.+174    	; 0x964 <__stack+0x65>
+				break;
+			case GET_DEV_ID:
+				//fill up the output buffer with the identification data
+				//length
+				output_buffer[0]=9;
+ 8b6:	89 e0       	ldi	r24, 0x09	; 9
+ 8b8:	80 93 d7 01 	sts	0x01D7, r24
+				//parameters
+				output_buffer[1]=(SUPPLIER_ID&0xFF00)>>8;
+ 8bc:	80 e4       	ldi	r24, 0x40	; 64
+ 8be:	80 93 d8 01 	sts	0x01D8, r24
+				output_buffer[2]=SUPPLIER_ID&0x00FF;
+ 8c2:	80 93 d9 01 	sts	0x01D9, r24
+				output_buffer[3]=(FUNCTIONAL_ID&0xFF00)>>8;
+ 8c6:	80 e3       	ldi	r24, 0x30	; 48
+ 8c8:	80 93 da 01 	sts	0x01DA, r24
+				output_buffer[4]=FUNCTIONAL_ID&0x00FF;
+ 8cc:	80 93 db 01 	sts	0x01DB, r24
+				output_buffer[5]=VARIANT_ID;
+ 8d0:	82 e3       	ldi	r24, 0x32	; 50
+ 8d2:	80 93 dc 01 	sts	0x01DC, r24
+				output_buffer[6]=(SERIAL_NR&0XFF000000)>>24;
+ 8d6:	87 e3       	ldi	r24, 0x37	; 55
+ 8d8:	80 93 dd 01 	sts	0x01DD, r24
+				output_buffer[7]=(SERIAL_NR&0X00FF0000)>>16;
+ 8dc:	80 93 de 01 	sts	0x01DE, r24
+				output_buffer[8]=(SERIAL_NR&0X0000FF00)>>8;
+ 8e0:	80 93 df 01 	sts	0x01DF, r24
+				output_buffer[9]= SERIAL_NR&0X000000FF;
+ 8e4:	80 93 e0 01 	sts	0x01E0, r24
+Transmits next character. If there are any untransmitted characters left, the communication status will be TR_DATA,
+else the status changes to INACTIVE.
+*/
+void TIItxnext(void){
+	//transmit next character of the output buffer
+	TIItxchar(output_buffer[txpointer]);
+ 8e8:	e0 91 0f 01 	lds	r30, 0x010F
+ 8ec:	f0 e0       	ldi	r31, 0x00	; 0
+ 8ee:	e9 52       	subi	r30, 0x29	; 41
+ 8f0:	fe 4f       	sbci	r31, 0xFE	; 254
+ 8f2:	80 81       	ld	r24, Z
+*/
+
+void TIItxchar(char c){
+	
+	//move the character to the SPI data register
+	PUSH_BYTE(c);
+ 8f4:	8e bd       	out	0x2e, r24	; 46
+void TIItxnext(void){
+	//transmit next character of the output buffer
+	TIItxchar(output_buffer[txpointer]);
+
+	//if all the characters transmitted - go inacitve
+	if((output_buffer[0]&0x7F)<txpointer){
+ 8f6:	80 91 0f 01 	lds	r24, 0x010F
+ 8fa:	90 e0       	ldi	r25, 0x00	; 0
+ 8fc:	0a 97       	sbiw	r24, 0x0a	; 10
+ 8fe:	54 f1       	brlt	.+84     	; 0x954 <__stack+0x55>
+ 900:	26 c0       	rjmp	.+76     	; 0x94e <__stack+0x4f>
+				output_buffer[9]= SERIAL_NR&0X000000FF;
+				TIItxnext();
+				break;
+			case READ_DATA:
+				//indicate read data command
+				tiievents->read_data(&txbuffer,channel);
+ 902:	e0 91 11 01 	lds	r30, 0x0111
+ 906:	f0 91 12 01 	lds	r31, 0x0112
+ 90a:	06 80       	ldd	r0, Z+6	; 0x06
+ 90c:	f7 81       	ldd	r31, Z+7	; 0x07
+ 90e:	e0 2d       	mov	r30, r0
+ 910:	87 e2       	ldi	r24, 0x27	; 39
+ 912:	92 e0       	ldi	r25, 0x02	; 2
+ 914:	62 2f       	mov	r22, r18
+ 916:	09 95       	icall
+				//prepare the output buffer
+				PREPARE_OUTPUT();
+ 918:	80 91 2b 02 	lds	r24, 0x022B
+ 91c:	80 7c       	andi	r24, 0xC0	; 192
+ 91e:	20 91 d7 01 	lds	r18, 0x01D7
+ 922:	2f 73       	andi	r18, 0x3F	; 63
+ 924:	82 2b       	or	r24, r18
+ 926:	80 93 d7 01 	sts	0x01D7, r24
+ 92a:	10 92 0f 01 	sts	0x010F, r1
+Transmits next character. If there are any untransmitted characters left, the communication status will be TR_DATA,
+else the status changes to INACTIVE.
+*/
+void TIItxnext(void){
+	//transmit next character of the output buffer
+	TIItxchar(output_buffer[txpointer]);
+ 92e:	e0 91 0f 01 	lds	r30, 0x010F
+ 932:	f0 e0       	ldi	r31, 0x00	; 0
+ 934:	e9 52       	subi	r30, 0x29	; 41
+ 936:	fe 4f       	sbci	r31, 0xFE	; 254
+ 938:	20 81       	ld	r18, Z
+*/
+
+void TIItxchar(char c){
+	
+	//move the character to the SPI data register
+	PUSH_BYTE(c);
+ 93a:	2e bd       	out	0x2e, r18	; 46
+void TIItxnext(void){
+	//transmit next character of the output buffer
+	TIItxchar(output_buffer[txpointer]);
+
+	//if all the characters transmitted - go inacitve
+	if((output_buffer[0]&0x7F)<txpointer){
+ 93c:	20 91 0f 01 	lds	r18, 0x010F
+ 940:	90 e0       	ldi	r25, 0x00	; 0
+ 942:	8f 77       	andi	r24, 0x7F	; 127
+ 944:	90 70       	andi	r25, 0x00	; 0
+ 946:	30 e0       	ldi	r19, 0x00	; 0
+ 948:	82 17       	cp	r24, r18
+ 94a:	93 07       	cpc	r25, r19
+ 94c:	1c f4       	brge	.+6      	; 0x954 <__stack+0x55>
+		//end transmission
+		txpointer=0;
+ 94e:	10 92 0f 01 	sts	0x010F, r1
+ 952:	0b c0       	rjmp	.+22     	; 0x96a <__stack+0x6b>
+		//go inactive
+		GO_INACTIVE();
+	//if there are other characters left - next state will be TR_DATA state - where the output is sent
+	}else{
+		//stay in transmitting state
+		txpointer++;
+ 954:	80 91 0f 01 	lds	r24, 0x010F
+ 958:	8f 5f       	subi	r24, 0xFF	; 255
+ 95a:	80 93 0f 01 	sts	0x010F, r24
+		tiistate=TR_DATA;
+ 95e:	83 e0       	ldi	r24, 0x03	; 3
+ 960:	01 c0       	rjmp	.+2      	; 0x964 <__stack+0x65>
+				//transmit next character of prepared output
+				TIItxnext();	//ez adja a köv allapotot
+				break;
+			case SPEC_COMM:
+				//next state is RX_LTH - a series of characters is going to be read in this state
+				tiistate=RX_LTH;
+ 962:	84 e0       	ldi	r24, 0x04	; 4
+ 964:	80 93 0c 01 	sts	0x010C, r24
+ 968:	08 95       	ret
+				break;
+			default:
+				//if invalid command - go inactive
+				GO_INACTIVE();
+ 96a:	87 e0       	ldi	r24, 0x07	; 7
+ 96c:	80 93 0c 01 	sts	0x010C, r24
+ 970:	ea 9a       	sbi	0x1d, 2	; 29
+ 972:	10 92 0b 01 	sts	0x010B, r1
+ 976:	08 95       	ret
+
+00000978 <TIIstateM>:
+Handles the state-machine of the communication. Prepares the reply message if needed and sends it.
+
+kene egy allapotgep abra es az ala a magyarazat
+
+*/
+void TIIstateM(char data){
+ 978:	98 2f       	mov	r25, r24
+	switch(tiistate){
+ 97a:	40 91 0c 01 	lds	r20, 0x010C
+ 97e:	43 30       	cpi	r20, 0x03	; 3
+ 980:	e1 f1       	breq	.+120    	; 0x9fa <TIIstateM+0x82>
+ 982:	44 30       	cpi	r20, 0x04	; 4
+ 984:	30 f4       	brcc	.+12     	; 0x992 <TIIstateM+0x1a>
+ 986:	41 30       	cpi	r20, 0x01	; 1
+ 988:	a9 f0       	breq	.+42     	; 0x9b4 <TIIstateM+0x3c>
+ 98a:	42 30       	cpi	r20, 0x02	; 2
+ 98c:	08 f0       	brcs	.+2      	; 0x990 <TIIstateM+0x18>
+ 98e:	9e c0       	rjmp	.+316    	; 0xacc <TIIstateM+0x154>
+ 990:	0a c0       	rjmp	.+20     	; 0x9a6 <TIIstateM+0x2e>
+ 992:	45 30       	cpi	r20, 0x05	; 5
+ 994:	09 f4       	brne	.+2      	; 0x998 <TIIstateM+0x20>
+ 996:	55 c0       	rjmp	.+170    	; 0xa42 <TIIstateM+0xca>
+ 998:	45 30       	cpi	r20, 0x05	; 5
+ 99a:	08 f4       	brcc	.+2      	; 0x99e <TIIstateM+0x26>
+ 99c:	49 c0       	rjmp	.+146    	; 0xa30 <TIIstateM+0xb8>
+ 99e:	47 30       	cpi	r20, 0x07	; 7
+ 9a0:	09 f0       	breq	.+2      	; 0x9a4 <TIIstateM+0x2c>
+ 9a2:	94 c0       	rjmp	.+296    	; 0xacc <TIIstateM+0x154>
+ 9a4:	08 95       	ret
+	case INACTIVE:	//character read in this state is thrown away, WAKEUP should precede it
+		//do nothing, if there was no wakeup
+		break;
+	case IDLE:
+		if(data<=NR_OF_CHANNELS){
+ 9a6:	82 30       	cpi	r24, 0x02	; 2
+ 9a8:	08 f0       	brcs	.+2      	; 0x9ac <TIIstateM+0x34>
+ 9aa:	90 c0       	rjmp	.+288    	; 0xacc <TIIstateM+0x154>
+			//if channel byte valid, next state
+			channel=data;
+ 9ac:	80 93 0d 01 	sts	0x010D, r24
+			tiistate=CHANNELREC;
+ 9b0:	81 e0       	ldi	r24, 0x01	; 1
+ 9b2:	89 c0       	rjmp	.+274    	; 0xac6 <TIIstateM+0x14e>
+			//if channel byte not valid, go inactive
+			GO_INACTIVE();
+		}
+		break;
+	case CHANNELREC:
+		command=data;
+ 9b4:	80 93 0e 01 	sts	0x010E, r24
+
+		//initialize buffers
+		txbuffer.lth=&output_buffer[0];
+ 9b8:	87 ed       	ldi	r24, 0xD7	; 215
+ 9ba:	91 e0       	ldi	r25, 0x01	; 1
+ 9bc:	90 93 2a 02 	sts	0x022A, r25
+ 9c0:	80 93 29 02 	sts	0x0229, r24
+		txbuffer.messageptr=&output_buffer[1];
+ 9c4:	01 96       	adiw	r24, 0x01	; 1
+ 9c6:	90 93 28 02 	sts	0x0228, r25
+ 9ca:	80 93 27 02 	sts	0x0227, r24
+		txbuffer.status=BSY_NOERR;
+ 9ce:	10 92 2b 02 	sts	0x022B, r1
+
+		rxbuffer.lth=&input_buffer[0];
+ 9d2:	8f ef       	ldi	r24, 0xFF	; 255
+ 9d4:	91 e0       	ldi	r25, 0x01	; 1
+ 9d6:	90 93 2f 02 	sts	0x022F, r25
+ 9da:	80 93 2e 02 	sts	0x022E, r24
+		rxbuffer.messageptr=&input_buffer[1];
+ 9de:	01 96       	adiw	r24, 0x01	; 1
+ 9e0:	90 93 2d 02 	sts	0x022D, r25
+ 9e4:	80 93 2c 02 	sts	0x022C, r24
+		rxbuffer.status=BSY_NOERR;
+ 9e8:	10 92 30 02 	sts	0x0230, r1
+
+		//if command received, execute command		
+		TIIexecuteC(channel, command);
+ 9ec:	80 91 0d 01 	lds	r24, 0x010D
+ 9f0:	60 91 0e 01 	lds	r22, 0x010E
+ 9f4:	0e 94 22 04 	call	0x844	; 0x844 <TIIexecuteC>
+ 9f8:	08 95       	ret
+Transmits next character. If there are any untransmitted characters left, the communication status will be TR_DATA,
+else the status changes to INACTIVE.
+*/
+void TIItxnext(void){
+	//transmit next character of the output buffer
+	TIItxchar(output_buffer[txpointer]);
+ 9fa:	e0 91 0f 01 	lds	r30, 0x010F
+ 9fe:	f0 e0       	ldi	r31, 0x00	; 0
+ a00:	e9 52       	subi	r30, 0x29	; 41
+ a02:	fe 4f       	sbci	r31, 0xFE	; 254
+ a04:	80 81       	ld	r24, Z
+*/
+
+void TIItxchar(char c){
+	
+	//move the character to the SPI data register
+	PUSH_BYTE(c);
+ a06:	8e bd       	out	0x2e, r24	; 46
+void TIItxnext(void){
+	//transmit next character of the output buffer
+	TIItxchar(output_buffer[txpointer]);
+
+	//if all the characters transmitted - go inacitve
+	if((output_buffer[0]&0x7F)<txpointer){
+ a08:	20 91 0f 01 	lds	r18, 0x010F
+ a0c:	80 91 d7 01 	lds	r24, 0x01D7
+ a10:	90 e0       	ldi	r25, 0x00	; 0
+ a12:	8f 77       	andi	r24, 0x7F	; 127
+ a14:	90 70       	andi	r25, 0x00	; 0
+ a16:	30 e0       	ldi	r19, 0x00	; 0
+ a18:	82 17       	cp	r24, r18
+ a1a:	93 07       	cpc	r25, r19
+ a1c:	0c f4       	brge	.+2      	; 0xa20 <TIIstateM+0xa8>
+ a1e:	4a c0       	rjmp	.+148    	; 0xab4 <TIIstateM+0x13c>
+		//go inactive
+		GO_INACTIVE();
+	//if there are other characters left - next state will be TR_DATA state - where the output is sent
+	}else{
+		//stay in transmitting state
+		txpointer++;
+ a20:	80 91 0f 01 	lds	r24, 0x010F
+ a24:	8f 5f       	subi	r24, 0xFF	; 255
+ a26:	80 93 0f 01 	sts	0x010F, r24
+		tiistate=TR_DATA;
+ a2a:	40 93 0c 01 	sts	0x010C, r20
+ a2e:	08 95       	ret
+		TIItxnext();
+		break;
+
+	//receive data
+	case RX_LTH:			//receive length of special command
+		input_buffer[0]=data;	//store
+ a30:	80 93 ff 01 	sts	0x01FF, r24
+		rxpointer=1;			//set pointer to next character
+ a34:	81 e0       	ldi	r24, 0x01	; 1
+ a36:	80 93 10 01 	sts	0x0110, r24
+		if(data!=0){
+ a3a:	99 23       	and	r25, r25
+ a3c:	a1 f0       	breq	.+40     	; 0xa66 <TIIstateM+0xee>
+			tiistate=RX_DATA;	//if length is not zero, receive other characters
+ a3e:	85 e0       	ldi	r24, 0x05	; 5
+ a40:	42 c0       	rjmp	.+132    	; 0xac6 <TIIstateM+0x14e>
+			TIItxnext();	//transmit next character of prepared output
+		}
+		break;
+	case RX_DATA:
+		//receiving special command
+		input_buffer[rxpointer]=data;			//store byte of special command
+ a42:	e0 91 10 01 	lds	r30, 0x0110
+ a46:	f0 e0       	ldi	r31, 0x00	; 0
+ a48:	e1 50       	subi	r30, 0x01	; 1
+ a4a:	fe 4f       	sbci	r31, 0xFE	; 254
+ a4c:	80 83       	st	Z, r24
+
+		if(rxpointer<input_buffer[0]){				//if there is any byte left, receive others
+ a4e:	90 91 10 01 	lds	r25, 0x0110
+ a52:	80 91 ff 01 	lds	r24, 0x01FF
+ a56:	98 17       	cp	r25, r24
+ a58:	30 f4       	brcc	.+12     	; 0xa66 <TIIstateM+0xee>
+			rxpointer++;	//increment pointer
+ a5a:	80 91 10 01 	lds	r24, 0x0110
+ a5e:	8f 5f       	subi	r24, 0xFF	; 255
+ a60:	80 93 10 01 	sts	0x0110, r24
+ a64:	08 95       	ret
+		}else{
+			tiievents->special_command(&txbuffer,&rxbuffer);		//all bytes received, indicate special command
+ a66:	e0 91 11 01 	lds	r30, 0x0111
+ a6a:	f0 91 12 01 	lds	r31, 0x0112
+ a6e:	00 84       	ldd	r0, Z+8	; 0x08
+ a70:	f1 85       	ldd	r31, Z+9	; 0x09
+ a72:	e0 2d       	mov	r30, r0
+ a74:	87 e2       	ldi	r24, 0x27	; 39
+ a76:	92 e0       	ldi	r25, 0x02	; 2
+ a78:	6c e2       	ldi	r22, 0x2C	; 44
+ a7a:	72 e0       	ldi	r23, 0x02	; 2
+ a7c:	09 95       	icall
+			PREPARE_OUTPUT();										//prepare flag, reset pointer transmit
+ a7e:	80 91 2b 02 	lds	r24, 0x022B
+ a82:	80 7c       	andi	r24, 0xC0	; 192
+ a84:	20 91 d7 01 	lds	r18, 0x01D7
+ a88:	2f 73       	andi	r18, 0x3F	; 63
+ a8a:	82 2b       	or	r24, r18
+ a8c:	80 93 d7 01 	sts	0x01D7, r24
+ a90:	10 92 0f 01 	sts	0x010F, r1
+Transmits next character. If there are any untransmitted characters left, the communication status will be TR_DATA,
+else the status changes to INACTIVE.
+*/
+void TIItxnext(void){
+	//transmit next character of the output buffer
+	TIItxchar(output_buffer[txpointer]);
+ a94:	e0 91 0f 01 	lds	r30, 0x010F
+ a98:	f0 e0       	ldi	r31, 0x00	; 0
+ a9a:	e9 52       	subi	r30, 0x29	; 41
+ a9c:	fe 4f       	sbci	r31, 0xFE	; 254
+ a9e:	20 81       	ld	r18, Z
+*/
+
+void TIItxchar(char c){
+	
+	//move the character to the SPI data register
+	PUSH_BYTE(c);
+ aa0:	2e bd       	out	0x2e, r18	; 46
+void TIItxnext(void){
+	//transmit next character of the output buffer
+	TIItxchar(output_buffer[txpointer]);
+
+	//if all the characters transmitted - go inacitve
+	if((output_buffer[0]&0x7F)<txpointer){
+ aa2:	20 91 0f 01 	lds	r18, 0x010F
+ aa6:	90 e0       	ldi	r25, 0x00	; 0
+ aa8:	8f 77       	andi	r24, 0x7F	; 127
+ aaa:	90 70       	andi	r25, 0x00	; 0
+ aac:	30 e0       	ldi	r19, 0x00	; 0
+ aae:	82 17       	cp	r24, r18
+ ab0:	93 07       	cpc	r25, r19
+ ab2:	1c f4       	brge	.+6      	; 0xaba <TIIstateM+0x142>
+		//end transmission
+		txpointer=0;
+ ab4:	10 92 0f 01 	sts	0x010F, r1
+ ab8:	09 c0       	rjmp	.+18     	; 0xacc <TIIstateM+0x154>
+		//go inactive
+		GO_INACTIVE();
+	//if there are other characters left - next state will be TR_DATA state - where the output is sent
+	}else{
+		//stay in transmitting state
+		txpointer++;
+ aba:	80 91 0f 01 	lds	r24, 0x010F
+ abe:	8f 5f       	subi	r24, 0xFF	; 255
+ ac0:	80 93 0f 01 	sts	0x010F, r24
+		tiistate=TR_DATA;
+ ac4:	83 e0       	ldi	r24, 0x03	; 3
+ ac6:	80 93 0c 01 	sts	0x010C, r24
+ aca:	08 95       	ret
+
+			TIItxnext();		//transmit prepared output
+		}
+		break;
+	default:
+		GO_INACTIVE();	//if invalid byte received, go inactive
+ acc:	87 e0       	ldi	r24, 0x07	; 7
+ ace:	80 93 0c 01 	sts	0x010C, r24
+ ad2:	ea 9a       	sbi	0x1d, 2	; 29
+ ad4:	10 92 0b 01 	sts	0x010B, r1
+ ad8:	08 95       	ret
+
+00000ada <__vector_19>:
+/*!
+\brief SPI interrupt vector
+
+
+*/
+ISR(SPI_STC_vect){
+ ada:	1f 92       	push	r1
+ adc:	0f 92       	push	r0
+ ade:	0f b6       	in	r0, 0x3f	; 63
+ ae0:	0f 92       	push	r0
+ ae2:	11 24       	eor	r1, r1
+ ae4:	2f 93       	push	r18
+ ae6:	3f 93       	push	r19
+ ae8:	4f 93       	push	r20
+ aea:	5f 93       	push	r21
+ aec:	6f 93       	push	r22
+ aee:	7f 93       	push	r23
+ af0:	8f 93       	push	r24
+ af2:	9f 93       	push	r25
+ af4:	af 93       	push	r26
+ af6:	bf 93       	push	r27
+ af8:	ef 93       	push	r30
+ afa:	ff 93       	push	r31
+	TIIstateM(SPDR);
+ afc:	8e b5       	in	r24, 0x2e	; 46
+ afe:	0e 94 bc 04 	call	0x978	; 0x978 <TIIstateM>
+}
+ b02:	ff 91       	pop	r31
+ b04:	ef 91       	pop	r30
+ b06:	bf 91       	pop	r27
+ b08:	af 91       	pop	r26
+ b0a:	9f 91       	pop	r25
+ b0c:	8f 91       	pop	r24
+ b0e:	7f 91       	pop	r23
+ b10:	6f 91       	pop	r22
+ b12:	5f 91       	pop	r21
+ b14:	4f 91       	pop	r20
+ b16:	3f 91       	pop	r19
+ b18:	2f 91       	pop	r18
+ b1a:	0f 90       	pop	r0
+ b1c:	0f be       	out	0x3f, r0	; 63
+ b1e:	0f 90       	pop	r0
+ b20:	1f 90       	pop	r1
+ b22:	18 95       	reti
+
+00000b24 <TIItxnext>:
+Transmits next character. If there are any untransmitted characters left, the communication status will be TR_DATA,
+else the status changes to INACTIVE.
+*/
+void TIItxnext(void){
+	//transmit next character of the output buffer
+	TIItxchar(output_buffer[txpointer]);
+ b24:	e0 91 0f 01 	lds	r30, 0x010F
+ b28:	f0 e0       	ldi	r31, 0x00	; 0
+ b2a:	e9 52       	subi	r30, 0x29	; 41
+ b2c:	fe 4f       	sbci	r31, 0xFE	; 254
+ b2e:	80 81       	ld	r24, Z
+*/
+
+void TIItxchar(char c){
+	
+	//move the character to the SPI data register
+	PUSH_BYTE(c);
+ b30:	8e bd       	out	0x2e, r24	; 46
+void TIItxnext(void){
+	//transmit next character of the output buffer
+	TIItxchar(output_buffer[txpointer]);
+
+	//if all the characters transmitted - go inacitve
+	if((output_buffer[0]&0x7F)<txpointer){
+ b32:	20 91 0f 01 	lds	r18, 0x010F
+ b36:	80 91 d7 01 	lds	r24, 0x01D7
+ b3a:	90 e0       	ldi	r25, 0x00	; 0
+ b3c:	8f 77       	andi	r24, 0x7F	; 127
+ b3e:	90 70       	andi	r25, 0x00	; 0
+ b40:	30 e0       	ldi	r19, 0x00	; 0
+ b42:	82 17       	cp	r24, r18
+ b44:	93 07       	cpc	r25, r19
+ b46:	4c f4       	brge	.+18     	; 0xb5a <TIItxnext+0x36>
+		//end transmission
+		txpointer=0;
+ b48:	10 92 0f 01 	sts	0x010F, r1
+		//go inactive
+		GO_INACTIVE();
+ b4c:	87 e0       	ldi	r24, 0x07	; 7
+ b4e:	80 93 0c 01 	sts	0x010C, r24
+ b52:	ea 9a       	sbi	0x1d, 2	; 29
+ b54:	10 92 0b 01 	sts	0x010B, r1
+ b58:	08 95       	ret
+	//if there are other characters left - next state will be TR_DATA state - where the output is sent
+	}else{
+		//stay in transmitting state
+		txpointer++;
+ b5a:	80 91 0f 01 	lds	r24, 0x010F
+ b5e:	8f 5f       	subi	r24, 0xFF	; 255
+ b60:	80 93 0f 01 	sts	0x010F, r24
+		tiistate=TR_DATA;
+ b64:	83 e0       	ldi	r24, 0x03	; 3
+ b66:	80 93 0c 01 	sts	0x010C, r24
+ b6a:	08 95       	ret
+
+00000b6c <TIItxchar>:
+*/
+
+void TIItxchar(char c){
+	
+	//move the character to the SPI data register
+	PUSH_BYTE(c);
+ b6c:	8e bd       	out	0x2e, r24	; 46
+}
+ b6e:	08 95       	ret
+
+00000b70 <TIIsigint>:
+Requests interrupt from the NCAP by pulling the NINT line low. If it is the reply for a STOP_MEAS command, it means, 
+that the controller needs time to prepare for the shut-down.
+*/
+void TIIsigint(void){
+	//pull low the NINT line
+	NINT_LOW();
+ b70:	16 98       	cbi	0x02, 6	; 2
+}
+ b72:	08 95       	ret
+
+00000b74 <TIIendint>:
+state, it means, that the controller is ready to be shut down.
+*/
+void TIIendint(void){
+
+	//pull high the nint line
+	NINT_HIGH();
+ b74:	16 9a       	sbi	0x02, 6	; 2
+
+	
+	if(tiistate==PREPARING){	//ha ebben az allapotban van, akkor az inaktivba kell mennie utana
+ b76:	80 91 0c 01 	lds	r24, 0x010C
+ b7a:	86 30       	cpi	r24, 0x06	; 6
+ b7c:	31 f4       	brne	.+12     	; 0xb8a <TIIendint+0x16>
+		GO_INACTIVE();
+ b7e:	87 e0       	ldi	r24, 0x07	; 7
+ b80:	80 93 0c 01 	sts	0x010C, r24
+ b84:	ea 9a       	sbi	0x1d, 2	; 29
+ b86:	10 92 0b 01 	sts	0x010B, r1
+ b8a:	08 95       	ret
+
+00000b8c <TIIisInactive>:
+\return 1, if the communication is in INACTIVE state and 0, if the communication is active.
+
+The application needs to know, if any communication is in progress. If there is no communication in progress, the application
+can go to sleep, otherwise it shouldn't.
+*/
+unsigned char TIIisInactive(void){
+ b8c:	90 e0       	ldi	r25, 0x00	; 0
+ b8e:	80 91 0c 01 	lds	r24, 0x010C
+ b92:	87 30       	cpi	r24, 0x07	; 7
+ b94:	09 f4       	brne	.+2      	; 0xb98 <TIIisInactive+0xc>
+ b96:	91 e0       	ldi	r25, 0x01	; 1
+		//tii is inactive - the uC can be powered down
+		return 1;
+	}else{
+		return 0;
+	}
+}
+ b98:	89 2f       	mov	r24, r25
+ b9a:	08 95       	ret
+
+00000b9c <SPI>:
+
+
+unsigned char SPI(unsigned char data) {
+	unsigned char received = 0;
+	SPDR = data;
+ b9c:	8e bd       	out	0x2e, r24	; 46
+	while(!(SPSR & (1<<SPIF)));//poll flag
+ b9e:	0d b4       	in	r0, 0x2d	; 45
+ ba0:	07 fe       	sbrs	r0, 7
+ ba2:	fd cf       	rjmp	.-6      	; 0xb9e <SPI+0x2>
+	received = SPDR;
+ ba4:	8e b5       	in	r24, 0x2e	; 46
+	return received;
+}
+ ba6:	08 95       	ret
+
+00000ba8 <__vector_18>:
+
+
+volatile unsigned char ledcntr=0;
+
+ISR(TIMER0_OVF_vect)
+{
+ ba8:	1f 92       	push	r1
+ baa:	0f 92       	push	r0
+ bac:	0f b6       	in	r0, 0x3f	; 63
+ bae:	0f 92       	push	r0
+ bb0:	11 24       	eor	r1, r1
+ bb2:	8f 93       	push	r24
+	if(ledcntr==154){
+ bb4:	80 91 13 01 	lds	r24, 0x0113
+ bb8:	8a 39       	cpi	r24, 0x9A	; 154
+ bba:	19 f4       	brne	.+6      	; 0xbc2 <__vector_18+0x1a>
+		ledcntr=0;
+ bbc:	10 92 13 01 	sts	0x0113, r1
+ bc0:	05 c0       	rjmp	.+10     	; 0xbcc <__vector_18+0x24>
+	}else{
+		ledcntr++;
+ bc2:	80 91 13 01 	lds	r24, 0x0113
+ bc6:	8f 5f       	subi	r24, 0xFF	; 255
+ bc8:	80 93 13 01 	sts	0x0113, r24
+	}
+
+	if(ledcntr<ON_INTERVAL){
+ bcc:	80 91 13 01 	lds	r24, 0x0113
+ bd0:	82 33       	cpi	r24, 0x32	; 50
+ bd2:	10 f4       	brcc	.+4      	; 0xbd8 <__vector_18+0x30>
+		LED1_ON();
+ bd4:	11 98       	cbi	0x02, 1	; 2
+ bd6:	01 c0       	rjmp	.+2      	; 0xbda <__vector_18+0x32>
+	}else{
+		LED1_OFF();
+ bd8:	11 9a       	sbi	0x02, 1	; 2
+	}
+}
+ bda:	8f 91       	pop	r24
+ bdc:	0f 90       	pop	r0
+ bde:	0f be       	out	0x3f, r0	; 63
+ be0:	0f 90       	pop	r0
+ be2:	1f 90       	pop	r1
+ be4:	18 95       	reti
+
+00000be6 <startSignal>:
+
+
+void startSignal(void){
+	TCCR0B|=(1<<CS02)|(1<<CS00);//clock source clkio/1024
+ be6:	85 b5       	in	r24, 0x25	; 37
+ be8:	85 60       	ori	r24, 0x05	; 5
+ bea:	85 bd       	out	0x25, r24	; 37
+	TCNT0=0;		  //start counting from 0
+ bec:	16 bc       	out	0x26, r1	; 38
+	TIMSK0|=(1<<TOIE0);//enable interrupt on overflow
+ bee:	ee e6       	ldi	r30, 0x6E	; 110
+ bf0:	f0 e0       	ldi	r31, 0x00	; 0
+ bf2:	80 81       	ld	r24, Z
+ bf4:	81 60       	ori	r24, 0x01	; 1
+ bf6:	80 83       	st	Z, r24
+
+	ledcntr=0;
+ bf8:	10 92 13 01 	sts	0x0113, r1
+}
+ bfc:	08 95       	ret
+
+00000bfe <stopSignal>:
+
+void stopSignal(void){
+	LED2_OFF();
+ bfe:	12 9a       	sbi	0x02, 2	; 2
+	TCCR0B=0;	//disable timer
+ c00:	15 bc       	out	0x25, r1	; 37
+}
+ c02:	08 95       	ret
+
+00000c04 <_exit>:
+ c04:	f8 94       	cli
+
+00000c06 <__stop_program>:
+ c06:	ff cf       	rjmp	.-2      	; 0xc06 <__stop_program>

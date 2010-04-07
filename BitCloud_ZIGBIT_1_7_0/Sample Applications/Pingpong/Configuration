@@ -1,0 +1,98 @@
+#-------------------------------------------------------------------------------
+#  The file declares application build options
+#  \author
+#    Atmel Corporation: http://www.atmel.com \n
+#    Support email: avr@atmel.com
+#
+#  Copyright (c) 2008 , Atmel Corporation. All rights reserved.
+#  Licensed under Atmel's Limited License Agreement (BitCloudTM).
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Components path definition
+#-------------------------------------------------------------------------------
+COMPONENTS_PATH = ../../BitCloud/Components
+
+#-------------------------------------------------------------------------------
+# Application path
+#-------------------------------------------------------------------------------
+APP_PATH = .
+
+#-------------------------------------------------------------------------------
+# Project name
+#-------------------------------------------------------------------------------
+PROJNAME = pingpong
+
+#-------------------------------------------------------------------------------
+# Compiler type:
+#-------------------------------------------------------------------------------
+COMPILER_TYPE = GCC
+
+#-------------------------------------------------------------------------------
+# Boards selection:
+#-------------------------------------------------------------------------------
+BOARD = BOARD_MESHBEAN
+
+#-------------------------------------------------------------------------------
+# BOARD_MESHBEAN board specific options:
+#-------------------------------------------------------------------------------
+ifeq ($(BOARD), BOARD_MESHBEAN)
+  # Microcontroller's type declaration. The following variants are possible:  
+  HAL = ATMEGA1281
+
+  # Controller reference frequency.
+  HAL_FREQUENCY = HAL_8MHz
+
+  # RF chip type declaration.  The following variants are possible:
+  RFCHIP = AT86RF230
+
+  APP_INTERFACE = APP_USE_USART
+  # USART channel to be used on the particular board.
+  APP_USART_CHANNEL=USART_CHANNEL_1
+endif # BOARD_MESHBEAN
+
+#-------------------------------------------------------------------------------
+# Stack type to use
+#-------------------------------------------------------------------------------
+STACK_TYPE = ALL_DEVICES_TYPES
+#STACK_TYPE = COORDINATOR
+#STACK_TYPE = ROUTER
+
+#-------------------------------------------------------------------------------
+# Application parameters
+#-------------------------------------------------------------------------------
+DEBUG = ON
+
+#APP_USE_BINDING = 1
+APP_USE_BINDING = 0
+
+# NWK static address (for the platforms without DIP switches):
+# 0 - coordinator
+# 1-3 - routers
+APP_DEVICE_NWK_ADDRESS = 0
+# Device which is the last in the cycle - sends data to the coordinator (for the 
+# platforms without DIP switches):
+APP_FINAL_DEVICE = 0
+
+# LED blinking interval during network start, ms
+TIMER_STARTING_NETWORK = 500
+
+# Packet forwarding delay, ms
+TIMER_FW_DELAY = 0
+
+#-------------------------------------------------------------------------------
+# Stack parameters being set to Config Server
+#-------------------------------------------------------------------------------
+CS_NEIB_TABLE_SIZE = 8
+CS_MAX_CHILDREN_AMOUNT = 4
+CS_MAX_CHILDREN_ROUTER_AMOUNT = 1
+CS_CHANNEL_MASK = "(1l<<0x0f)"
+CS_CHANNEL_PAGE = 0
+CS_EXT_PANID = 0xAAAAAAAAAAAAAAAALL
+CS_APS_BINDING_TABLE_ENTRIES_AMOUNT = 5
+
+#-------------------------------------------------------------------------------
+# Settings for the platforms without UID
+#-------------------------------------------------------------------------------
+CS_UID = 0x2222333344448888LL
+

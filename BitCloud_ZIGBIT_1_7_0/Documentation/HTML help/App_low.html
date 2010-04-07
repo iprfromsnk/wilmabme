@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Low Power Application</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="classes.html"><span>Data&nbsp;Structures</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Functions&nbsp;Summary</span></a></li>
+    <li id="current"><a href="Sample_app.html"><span>Sample&nbsp;Applications</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="App_blink.html"><span>Blink</span></a></li>
+    <li id="current"><a href="App_low.html"><span>Lowpower</span></a></li>
+    <li><a href="App_p2p.html"><span>Peer2peer</span></a></li>
+    <li><a href="App_ping.html"><span>Ping-pong</span></a></li>
+    <li><a href="App_thr.html"><span>Throughput&nbsp;Test</span></a></li>
+    <li><a href="App_zbn.html"><span>WSNDemo</span></a></li>
+  </ul>
+</div>
+
+<h1>Low Power Networking Application</h1>
+
+<p>This sample application demonstrates following BitCloud and ZigBee PRO functionalities:
+<ul>
+	<li>Power management schemes: scheduled and interrupt-based device awakening;</li>
+    <li>Data collection from low-power devices on the central coordinator node;</li>
+	<li>Data delivery from parent device (coordinator in this example) to children end devices via polling mechanism.</li>
+</ul>       
+        
+<p>One coordinator and at least one end device (maximum seven) can be engaged. For simple node identification
+device type and short (network) address are defined by DIP switches as follows:
+<ul>
+	<li>DIP switch in position ON corresponds to logical 1;</li>
+    <li>3rd DIP switch defines the most significant bit for the node's short (network) address;</li>
+    <li>Coordinator node shall have all DIP-switches in position OFF (corresponds to short address <tt>0x0000</tt>);</li>
+    <li>All nodes in the network shall have unique short addresses.</li>
+</ul>
+
+<p>Table below shows configuration of DIP-switches and corresponding short addresses:
+<p>
+<table>
+<tr><th>Node address</th><th colspan=3>DIP switches</th>
+<tr><td></td><td class="indexkey">SW4:1</td><td class="indexkey">SW4:2</td><td class="indexkey">SW4:3
+<tr><td class="indexkey">0</td><td class="indexvalue">OFF</td><td class="indexvalue">OFF</td><td class="indexvalue">OFF</td></td>
+<tr><td class="indexkey">1</td><td class="indexvalue">ON</td><td class="indexvalue">OFF</td><td class="indexvalue">OFF</td></td>
+<tr><td class="indexkey">2</td><td class="indexvalue">OFF</td><td class="indexvalue">ON</td><td class="indexvalue">OFF</td></td>
+<tr><td class="indexkey">3</td><td class="indexvalue">ON</td><td class="indexvalue">ON</td><td class="indexvalue">OFF</td></td>
+<tr><td class="indexkey">4</td><td class="indexvalue">OFF</td><td class="indexvalue">OFF</td><td class="indexvalue">ON</td></td>
+<tr><td class="indexkey">5</td><td class="indexvalue">ON</td><td class="indexvalue">OFF</td><td class="indexvalue">ON</td></td>
+<tr><td class="indexkey">6</td><td class="indexvalue">OFF</td><td class="indexvalue">ON</td><td class="indexvalue">ON</td></td>
+<tr><td class="indexkey">7</td><td class="indexvalue">ON</td><td class="indexvalue">ON</td><td class="indexvalue">ON</td></td>
+</table>
+
+<p>After application is loaded to MeshBean boards and DIP switches are configured, network start procedure can be initiated by
+pressing <tt>SW1</tt> button on each device starting with coordinator. Green LED is periodically blinking with 500ms interval 
+when device is joining the network and is ON if it is in the network and awake.
+
+<p>After joining the network an end device transmits sensor data to coordinator and enters the sleep mode. Then it periodically wakes up
+with <tt>CS_END_DEVICE_SLEEP_PERIIOD</tt> interval and sends sensor data to coordinator. Flashing red LED indicates data transmission, 
+while on coordinator data reception is indicated with yellow LED. 
+
+<p>Additionally wake up and sensor data transmission can be triggered by <tt>SW2</tt> button press on an 
+end device. However consecutive clicks shall be performed with a pause to avoid device lock up. Independent on the wake up reason (scheduled or
+interrupt-triggered) after transmission is completed the end device enters the sleep mode.
+
+<p>Upon data frame reception coordinator node forwards its data to the USART1 interface.
+Thus if coordinator is connected to a PC via USB cable this information can be observed in terminal window (e.g. Windows HyperTerminal).
+See <a href="Sample_app.html#Connection"> COM port connection settings</a>.
+
+<p>Coordinator is able to configure the type of the sensor that end devices use for data reports. By default value measured on
+temperature sensor is sent from each end device. Upon <tt>SW2</tt> button press on coordinator the command to switch to the next sensor is
+sent consecutively to all joined children end devices in unicast manner. Target sensor is switched in the following order upon each <tt>SW2</tt>
+button press: &rarr;temperature sensor&rarr;battery status&rarr;light sensor&rarr;temperature sensor&rarr;.
+
+<p> Note that if an end device was sleeping during <tt>SW2</tt> button press on the coordinator, sensor switch command is buffered on 
+the parent node (in this example coordinator) and will be delivered to the end device when it wakes up and retrieves it via polling mechanism.
+
+<h2>Important configuration parameters</h2>
+<table>
+	<tr><td class="indexkey"><tt>APP_NWK_NODE_ADDRESS</tt></td><td class="indexvalue">Specifies node address for platforms without DIP-switches. Can be used only with <tt>CS_NWK_UNIQUE_ADDR</tt> set to true.</td></tr>
+	<tr><td class="indexkey"><tt>CS_NWK_UNIQUE_ADDR</tt></td><td class="indexvalue">Specifies nodes' short address assignment mechanism. 1 corresponds to static (predefined) addressing and 0 to stochastic (random) address assignment.</td></tr>
+	<tr><td class="indexkey"><tt>CS_END_DEVICE_SLEEP_PERIOD</tt></td><td class="indexvalue">Periodic end device sleep interval (ms). Should be the same on parent and children nodes.</td></tr>
+	<tr><td class="indexkey"><tt>CS_CHANNEL_MASK</tt></td><td class="indexvalue">Specifies channel mask to be used for network operation.</td></tr>
+    <tr><td class="indexkey"><tt>CS_CHANNEL_PAGE</tt></td><td class="indexvalue">Specifies channel page to be used on SubGHz frequency band.</td></tr>
+    <tr><td class="indexkey"><tt>CS_EXT_PANID</tt></td><td class="indexvalue">Specifies network's extended PANID. Should be unique in given location.</td></tr>
+    <tr><td class="indexkey"><tt>CS_UID</tt></td><td class="indexvalue">Extended address for platforms where it is not available via special UID chip or external EEPROM. If used <tt>CS_UID</tt> shall be added to <tt>CS_PARAMS</tt> list in application <tt>Makefile</tt>.</td></tr>
+</table>
+
+<p>Description of parameters common for all applications can be found in <a href="Sample_app.html#ConfigParam">Sample Applications overview</a>.
+ConfigServer parameters are described in documentation of <a href="config_server_8h.html"> ConfigServer.h file</a>.
+
+<p>The source codes for coordinator and end device of LowPower sample application are located at
+<tt><nobr>[SDK]\Sample&nbsp;Applications\LowPower</nobr></tt> directory.
+
+<hr size="1"><address style="align: right;"><small>Generated on Tue Mon Oct 6 15:37:54 2008 for BitCloud Stack Documentation by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1-p1 </small></address>
+</body>
+</html>

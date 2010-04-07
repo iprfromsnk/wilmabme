@@ -1,0 +1,510 @@
+Archive member included because of file (symbol)
+
+c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+                              c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm324p.o (exit)
+c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+                              accmtr.o (__do_clear_bss)
+
+Allocating common symbols
+Common symbol       size              file
+
+cnt                 0x1               main.o
+buff                0xb4              main.o
+output_buffer       0x28              tii.o
+input_buffer        0x28              tii.o
+rcnt                0x4               main.o
+txbuffer            0x5               tii.o
+wcnt                0x4               main.o
+widx                0x2               main.o
+ridx                0x2               main.o
+spi_byte            0x2               accmtr.o
+rxbuffer            0x5               tii.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm324p.o
+LOAD accmtr.o
+LOAD ea_spi.o
+LOAD ia_spi.o
+LOAD main.o
+LOAD stim2_0.o
+LOAD tii.o
+LOAD signal.o
+LOAD c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
+LOAD c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a
+LOAD c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0xc08
+ *(.vectors)
+ .vectors       0x00000000       0x7c c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm324p.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x0000007c                . = ALIGN (0x2)
+                0x0000007c                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x0000007c        0x0 linker stubs
+ *(.trampolines*)
+                0x0000007c                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x0000007c                __ctors_start = .
+ *(.ctors)
+                0x0000007c                __ctors_end = .
+                0x0000007c                __dtors_start = .
+ *(.dtors)
+                0x0000007c                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x0000007c        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm324p.o
+                0x0000007c                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x0000007c        0xc c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm324p.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000088       0x10 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+                0x00000088                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000098        0x8 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm324p.o
+ *(.init9)
+ *(.text)
+ .text          0x000000a0        0x4 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm324p.o
+                0x000000a0                __vector_22
+                0x000000a0                __vector_28
+                0x000000a0                __vector_1
+                0x000000a0                __vector_24
+                0x000000a0                __vector_12
+                0x000000a0                __bad_interrupt
+                0x000000a0                __vector_6
+                0x000000a0                __vector_23
+                0x000000a0                __vector_30
+                0x000000a0                __vector_25
+                0x000000a0                __vector_11
+                0x000000a0                __vector_13
+                0x000000a0                __vector_17
+                0x000000a0                __vector_27
+                0x000000a0                __vector_5
+                0x000000a0                __vector_4
+                0x000000a0                __vector_9
+                0x000000a0                __vector_2
+                0x000000a0                __vector_21
+                0x000000a0                __vector_15
+                0x000000a0                __vector_29
+                0x000000a0                __vector_8
+                0x000000a0                __vector_26
+                0x000000a0                __vector_14
+                0x000000a0                __vector_10
+                0x000000a0                __vector_16
+                0x000000a0                __vector_20
+ .text          0x000000a4      0x346 accmtr.o
+                0x000000a4                default_spi_byte
+                0x0000029c                accmtr_meas_stop
+                0x000000d4                accmtr_present
+                0x0000014a                accmtr_init
+                0x000000a8                accmtr_select
+                0x000001b8                accmtr_meas_start
+                0x000003b2                accmtr_bus_init
+                0x0000031a                accmtr_read_acc_data
+ .text          0x000003ea       0x48 ea_spi.o
+                0x000003ea                ea_spi_init
+                0x000003f0                dbg_uart_init
+                0x00000410                dbg_uart_send
+                0x000003ec                ea_spi_byte
+ .text          0x00000432       0x46 ia_spi.o
+                0x0000045c                ia_spi_byte
+                0x00000432                ia_spi_init
+ .text          0x00000478      0x378 main.o
+                0x0000047a                specialCommand
+                0x00000650                startContMeas
+                0x0000060c                stopMeas
+                0x00000478                startSingleMeas
+                0x00000708                __vector_7
+                0x0000065e                main
+                0x000004ce                readData
+ .text          0x000007f0        0x0 stim2_0.o
+ .text          0x000007f0      0x3b8 tii.o
+                0x00000b8c                TIIisInactive
+                0x00000814                TIIinit
+                0x000007f0                __vector_3
+                0x00000b74                TIIendint
+                0x00000b70                TIIsigint
+                0x00000ada                __vector_19
+                0x00000978                TIIstateM
+                0x00000844                TIIexecuteC
+                0x00000b6c                TIItxchar
+                0x00000b9c                SPI
+                0x00000b24                TIItxnext
+ .text          0x00000ba8       0x5c signal.o
+                0x00000bfe                stopSignal
+                0x00000be6                startSignal
+                0x00000ba8                __vector_18
+ .text          0x00000c04        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .text          0x00000c04        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+                0x00000c04                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x00000c04        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00000c04        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+                0x00000c04                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00000c04        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+                0x00000c04                exit
+                0x00000c04                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000c04        0x4 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00000c08                _etext = .
+
+.data           0x00800100        0x0 load address 0x00000c08
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm324p.o
+ .data          0x00800100        0x0 accmtr.o
+ .data          0x00800100        0x0 ea_spi.o
+ .data          0x00800100        0x0 ia_spi.o
+ .data          0x00800100        0x0 main.o
+ .data          0x00800100        0x0 stim2_0.o
+ .data          0x00800100        0x0 tii.o
+ .data          0x00800100        0x0 signal.o
+ .data          0x00800100        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .data          0x00800100        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800100                . = ALIGN (0x2)
+                0x00800100                _edata = .
+                0x00800100                PROVIDE (__data_end, .)
+
+.bss            0x00800100      0x131
+                0x00800100                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800100        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm324p.o
+ .bss           0x00800100        0x0 accmtr.o
+ .bss           0x00800100        0x0 ea_spi.o
+ .bss           0x00800100        0x0 ia_spi.o
+ .bss           0x00800100        0xb main.o
+                0x00800100                led1_cnt
+ .bss           0x0080010b        0x0 stim2_0.o
+ .bss           0x0080010b        0x8 tii.o
+                0x0080010f                txpointer
+                0x00800110                rxpointer
+                0x0080010e                command
+                0x0080010b                active
+                0x0080010c                tiistate
+                0x0080010d                channel
+ .bss           0x00800113        0x1 signal.o
+                0x00800113                ledcntr
+ .bss           0x00800114        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .bss           0x00800114        0x0 c:/winavr-20090313/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800114        0x2 accmtr.o
+                0x00800114                spi_byte
+ COMMON         0x00800116       0xc1 main.o
+                0x00800116                cnt
+                0x00800117                buff
+                0x008001cb                rcnt
+                0x008001cf                wcnt
+                0x008001d3                widx
+                0x008001d5                ridx
+ COMMON         0x008001d7       0x5a tii.o
+                0x008001d7                output_buffer
+                0x008001ff                input_buffer
+                0x00800227                txbuffer
+                0x0080022c                rxbuffer
+                0x00800231                PROVIDE (__bss_end, .)
+                0x00000c08                __data_load_start = LOADADDR (.data)
+                0x00000c08                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800231        0x0
+                0x00800231                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800231                PROVIDE (__noinit_end, .)
+                0x00800231                _end = .
+                0x00800231                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0xc0
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 accmtr.o
+ .debug_aranges
+                0x00000020       0x20 ea_spi.o
+ .debug_aranges
+                0x00000040       0x20 ia_spi.o
+ .debug_aranges
+                0x00000060       0x20 main.o
+ .debug_aranges
+                0x00000080       0x20 tii.o
+ .debug_aranges
+                0x000000a0       0x20 signal.o
+
+.debug_pubnames
+                0x00000000      0x38b
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0xc1 accmtr.o
+ .debug_pubnames
+                0x000000c1       0x56 ea_spi.o
+ .debug_pubnames
+                0x00000117       0x32 ia_spi.o
+ .debug_pubnames
+                0x00000149       0xbf main.o
+ .debug_pubnames
+                0x00000208      0x136 tii.o
+ .debug_pubnames
+                0x0000033e       0x4d signal.o
+
+.debug_info     0x00000000      0xe10
+ *(.debug_info)
+ .debug_info    0x00000000      0x3b8 accmtr.o
+ .debug_info    0x000003b8       0xf4 ea_spi.o
+ .debug_info    0x000004ac       0xa5 ia_spi.o
+ .debug_info    0x00000551      0x32c main.o
+ .debug_info    0x0000087d        0x0 stim2_0.o
+ .debug_info    0x0000087d      0x4e2 tii.o
+ .debug_info    0x00000d5f       0xb1 signal.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x612
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x145 accmtr.o
+ .debug_abbrev  0x00000145       0x96 ea_spi.o
+ .debug_abbrev  0x000001db       0x67 ia_spi.o
+ .debug_abbrev  0x00000242      0x14d main.o
+ .debug_abbrev  0x0000038f        0x1 stim2_0.o
+ .debug_abbrev  0x00000390      0x22b tii.o
+ .debug_abbrev  0x000005bb       0x57 signal.o
+
+.debug_line     0x00000000      0xe22
+ *(.debug_line)
+ .debug_line    0x00000000      0x46e accmtr.o
+ .debug_line    0x0000046e       0xf8 ea_spi.o
+ .debug_line    0x00000566       0xe0 ia_spi.o
+ .debug_line    0x00000646      0x2f2 main.o
+ .debug_line    0x00000938       0x24 stim2_0.o
+ .debug_line    0x0000095c      0x3e6 tii.o
+ .debug_line    0x00000d42       0xe0 signal.o
+
+.debug_frame    0x00000000      0x290
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x90 accmtr.o
+ .debug_frame   0x00000090       0x50 ea_spi.o
+ .debug_frame   0x000000e0       0x30 ia_spi.o
+ .debug_frame   0x00000110       0x80 main.o
+ .debug_frame   0x00000190       0xc0 tii.o
+ .debug_frame   0x00000250       0x40 signal.o
+
+.debug_str      0x00000000      0x419
+ *(.debug_str)
+ .debug_str     0x00000000      0x145 accmtr.o
+                                0x18f (size before relaxing)
+ .debug_str     0x00000145       0x40 ea_spi.o
+                                 0xe1 (size before relaxing)
+ .debug_str     0x00000185       0x24 ia_spi.o
+                                 0xc5 (size before relaxing)
+ .debug_str     0x000001a9      0x11b main.o
+                                0x1c4 (size before relaxing)
+ .debug_str     0x000002c4      0x11e tii.o
+                                0x245 (size before relaxing)
+ .debug_str     0x000003e2       0x37 signal.o
+                                 0xce (size before relaxing)
+
+.debug_loc      0x00000000      0x355
+ *(.debug_loc)
+ .debug_loc     0x00000000       0xf4 accmtr.o
+ .debug_loc     0x000000f4       0x3b ea_spi.o
+ .debug_loc     0x0000012f       0x1e ia_spi.o
+ .debug_loc     0x0000014d       0xec main.o
+ .debug_loc     0x00000239      0x11c tii.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(stim_wilma.elf elf32-avr)
+LOAD linker stubs

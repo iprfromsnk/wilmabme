@@ -1,0 +1,134 @@
+#------------------------------------------------------------------------------- 
+#  \file Configuration
+#
+#  \brief Declares build options for the HAL.
+#
+#  \author
+#    Atmel Corporation: http://www.atmel.com \n
+#    Support email: avr@atmel.com
+#
+#  Copyright (c) 2008 , Atmel Corporation. All rights reserved.
+#  Licensed under Atmel's Limited License Agreement (BitCloudTM).
+#
+#------------------------------------------------------------------------------- 
+
+#-------------------------------------------------------------------------------
+# Build configuration:
+# For "DEBUG" configuration system asserts, logging and debug info are switched on.
+# For "RELEASE" configuration system asserts, logging and debug info are switched off.
+#-------------------------------------------------------------------------------
+#BUILD_CONFIGURATION = DEBUG
+BUILD_CONFIGURATION = RELEASE
+
+#-------------------------------------------------------------------------------
+# Build configuration:
+# If QUIET is TRUE then short build message format is used, otherwise - normal.
+#-------------------------------------------------------------------------------
+QUIET = TRUE
+#QUIET = FALSE
+
+#-------------------------------------------------------------------------------
+# Compiler type:
+#-------------------------------------------------------------------------------
+#COMPILER_TYPE = IAR
+COMPILER_TYPE = GCC
+
+#-------------------------------------------------------------------------------
+# OS selection. Parameters is only for ARM:
+#-------------------------------------------------------------------------------
+OS = NONE_OS
+#OS = FREE_RTOS
+
+HAL_USE_AMPLIFIER = FALSE
+#HAL_USE_AMPLIFIER = TRUE
+
+#-------------------------------------------------------------------------------
+# Platforms selection:
+#-------------------------------------------------------------------------------
+PLATFORM = PLATFORM_ZIGBIT
+#PLATFORM = PLATFORM_RAVEN
+#PLATFORM = PLATFORM_ATML_USB_DONGLE
+#PLATFORM = PLATFORM_STK600_RF2XX
+#PLATFORM = PLATFORM_STK500_RF2XX
+#PLATFORM = PLATFORM_SAM7X_EK_RF2XX
+#PLATFORM = PLATFORM_ATMEGA128RFA1
+
+#-------------------------------------------------------------------------------
+# ZIGBIT platform specific options:
+#-------------------------------------------------------------------------------
+ifeq ($(PLATFORM), PLATFORM_ZIGBIT)
+  # Microcontroller's type declaration. The following variants are possible:
+  HAL = ATMEGA1281
+  #HAL = ATMEGA2561
+
+  # Controller reference frequency.
+  #HAL_FREQUENCY = HAL_4MHz
+  HAL_FREQUENCY = HAL_8MHz
+
+endif # PLATFORM_ZIGBIT
+
+#-------------------------------------------------------------------------------
+# RAVEN platform specific options:
+#-------------------------------------------------------------------------------
+ifeq ($(PLATFORM), PLATFORM_RAVEN)
+  # Controller reference frequency.
+  HAL_FREQUENCY = HAL_4MHz
+  #HAL_FREQUENCY = HAL_8MHz
+endif # PLATFORM_RAVEN
+
+#-------------------------------------------------------------------------------
+# Atmel usb dongle platform specific options:
+#-------------------------------------------------------------------------------
+ifeq ($(PLATFORM), PLATFORM_ATML_USB_DONGLE)
+  # Nothing to be declaired for the platform by user.
+endif # PLATFORM_ATML_USB_DONGLE
+
+#-------------------------------------------------------------------------------
+# STK600 platform specific options:
+#-------------------------------------------------------------------------------
+ifeq ($(PLATFORM), PLATFORM_STK600_RF2XX)
+  # Microcontroller's type declaration. The following variants are possible:
+  #HAL = ATXMEGA128A1
+  HAL = ATXMEGA256A3
+
+  # Clock source.
+  #HAL_CLOCK_SOURCE = CRYSTAL_16MHz
+  #HAL_CLOCK_SOURCE = RC_INTERNAL_2MHz
+  HAL_CLOCK_SOURCE = RC_INTERNAL_32MHz
+
+  # Controller reference frequency.
+  #HAL_FREQUENCY = HAL_4MHz
+  #HAL_FREQUENCY = HAL_8MHz
+  #HAL_FREQUENCY = HAL_12MHz
+  HAL_FREQUENCY = HAL_16MHz
+  #HAL_FREQUENCY = HAL_32MHz
+endif # PLATFORM_STK600_RF2XX
+
+#-------------------------------------------------------------------------------
+# STK500 platform specific options:
+#-------------------------------------------------------------------------------
+ifeq ($(PLATFORM), PLATFORM_STK500_RF2XX)
+  # Microcontroller's type declaration. The following variants are possible:
+  HAL = ATMEGA1281
+  #HAL = ATMEGA2561
+
+  # Controller reference frequency.
+  HAL_FREQUENCY = HAL_4MHz
+  #HAL_FREQUENCY = HAL_8MHz
+endif # PLATFORM_STK500_RF2XX
+
+#-------------------------------------------------------------------------------
+# SAM7X_EK_RF2XX platform specific options:
+#-------------------------------------------------------------------------------
+ifeq ($(PLATFORM), PLATFORM_SAM7X_EK_RF2XX)
+  # Nothing to be declaired for the platform by user.
+endif # PLATFORM_SAM7X_EK_RF2XX
+
+#-------------------------------------------------------------------------------
+# PLATFORM_ATMEGA128RFA1 platform specific options:
+#-------------------------------------------------------------------------------
+ifeq ($(PLATFORM), PLATFORM_ATMEGA128RFA1)
+  # Controller reference frequency.
+  #HAL_FREQUENCY = HAL_4MHz
+  HAL_FREQUENCY = HAL_8MHz
+endif # PLATFORM_ATMEGA128RFA1

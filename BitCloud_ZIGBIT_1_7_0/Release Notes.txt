@@ -1,0 +1,343 @@
+Release Notes
+=============
+BitCloud 1_7_0
+Date	 12/11/2009
+
+I. Scope
+========
+
+Release Notes specify composition of BitCloud SDK, enumerate system requirements, and provide a revision history.
+Known issues and limitations are also listed here.
+
+II. Products/configurations
+===========================
+
+This package includes the following software deliverables:
+- BitCloud ZigBee PRO stack v1.7.0 (headers and libraries); 
+- BitCloud sample application source files, Makefiles and project files;
+- SerialNet v2.1.2 (for supported platforms only)
+- WSN Monitor 2.2.0
+- GUI Bootloader 1.1.1
+- Embedded serial bootloader (for supported platforms only)
+- Range test utility (for supported platforms only) 
+
+III. Compatibility and minimum system requirements
+==================================================
+
+PC
+CPU: Intel Pentium III or higher, 800 MHz
+RAM: 128 MB
+Hard disk free space: 50 MB
+
+Software 
+Operating system: Windows 2000/XP
+Java machine: Java Runtime Environment, either JRE 5 Update 8 or more recent
+
+Please see AVR2052 for additional system requirements
+
+IV. Revision History
+====================
+
+New features:
+*[ZIGBEE-139] Enable fragmentation support in BitCloud maintenance releases
+*[ZIGBEE-288] Increase system time range to 49 years
+*[ZIGBEE-247] Review sample applications for common issues
+*[ZIGBEE-291] Refactoring of nwkRouting
+*[ZIGBEE-303] Set frame retries parameter to 0 in WSNDemo app and NWK layer.
+*[ZIGBEE-304] Simplify IAR projects maintanance
+*[ZIGBEE-306] Fix issue with saved image restoring (OTAU)
+*[ZIGBEE-310] Migrate to new version of GCC.
+*[ZIGBEE-289] Implement Reset reason functionality for the XMEGA platforms.
+*[ZIGBEE-103] Enable COMMISSIONING and POWER_FAILURE on all supported platforms (w/ EEPROM)
+*[ZIGBEE-136] Implement OTAU prototype
+*[ZIGBEE-239] Port BitCloud to atmegarf128a1
+*[ZIGBEE-31]  Refactoring of nwkDataReq.c
+*[ZIGBEE-233] Binding table shall be stored to EEPROM if POWER_FAILURE is used
+*[ZIGBEE-248] csBTR(CS_BTT_ID) initialized by CS_PdsDefaultValue.
+*[ZIGBEE-250] Update RangeTest application to work with the latest tag
+*[ZIGBEE-163] Implement APS fragmantation feature 
+*[ZIGBEE-241] Optimize RAM consuption depending on configuration options
+*[ZIGBEE-230] Review ThroughputTest application 
+*[ZIGBEE-208] Add support of Rx/Tx indication for RF231 and RF212
+*[ZIGBEE-215] Implement RF2xx radio filter and PLL calibration
+*[ZIGBEE-218] Measure end device power consumption
+*[ZIGBEE-28]  Refactoring of nwkDataInd.c
+*[ZIGBEE-222] Add 4/8/12 MHz support for Xmega
+*[ZIGBEE-231] Migrate RZRaven libraries and applications to RF230B radio
+
+Resolved issues:
+*[ZIGBEE-327] Fix UART on megaRF RCB board
+*[ZIGBEE-301] Indication of data reception is missing in applications with standard security
+*[ZIGBEE-287] NWK_NONSTANDARD_BEACON_FILTER doesn't work when using ZDO_StartNetworkReq()
+*[ZIGBEE-246] QA: Pingpong - Incomplete binding procedure
+*[ZIGBEE-309] Resolve HW security issue
+*[ZIGBEE-336] Problems with HAL configuration files
+*[ZIGBEE-339] Can't configure FRAGMENTATION in IAR project
+*[ZIGBEE-342] peer2peer for RAVEN SDK is absent
+*[ZIGBEE-346] Can't configure device types in IAR project
+*[ZIGBEE-351] Commpilation failed  - Undefined USART_CHANNEL identifier
+*[ZIGBEE-381] Comments for CS_ZDO_SECURITY_STATUS parameter are absent for some applications
+*[ZIGBEE-343] USART doesn't work on ATMEGA128RFA1_RCB_BB platform
+*[ZIGBEE-348] ZDK900: Throughput fail after few hours working
+*[ZIGBEE-352] QA: unclear IAR project folders.
+*[ZIGBEE-354] Bootloader for MegaRF does not work with RCB MegaRF
+*[ZIGBEE-361] QA: P2P fails while toward transmission on RAVEN boards
+*[ZIGBEE-363] QA: Can't create firmware for LCD MCU on Raven boards
+*[ZIGBEE-370] QA: Can't configure CS_UID for ZDK IAR Pingpong project
+*[ZIGBEE-376] Lowpower. End devices don't work with IAR firmware
+*[ZIGBEE-384] Fix repeat count for nwk broadcast frames
+*[ZIGBEE-337] Invalid default channel mask in ZDK900 projects
+*[ZIGBEE-359] WSNMonitor displays incorrect data for battery
+*[ZIGBEE-377] Lowpower. Cannot build firmware with security
+*[ZIGBEE-282] High security is not running in WSNDemo
+*[ZIGBEE-285] IRQ-triggered wake up from power save mode is too long
+*[ZIGBEE-286] Network join is problematic when several networks are present on the channel
+*[ZIGBEE-245] Fix separate stack build
+*[ZIGBEE-284] Power down mode doesn't work in lowpower
+*[ZIGBEE-268] Setting CS_AUTO_POLL to 1 doesn't make polling work
+*[ZIGBEE-276] Aps duplicate rejection table record live time less than maximum repeat interval. duplicate aps packets can be indicated to application.
+*[ZIGBEE-280] QA: Commissioning - ILLEGAL_REQUEST status returns when start
+*[ZIGBEE-259] In LowPower app. end device doesn't wake up upon SW2 button release
+*[ZIGBEE-266] Investigate APS data send failure which appears with huge ammount of retransmissions in the air.
+*[ZIGBEE-263] NWK_AddToAddressMap can contain duplicate extaddr entries
+*[ZIGBEE-265] CS_STACK_PROFILE_ID stored in ProfileId_t var type. and require ProfileId_t to retrieve this value. According to requirements STACK_PROFILE_ID can be at most 15, so used type is too wide to store this value.
+*[ZIGBEE-201] Modifications in HAL don't allow porting to different MCU-RF
+*[ZIGBEE-224] Problems with hardware encryption on XMega
+*[ZIGBEE-196] QA: Power Failure doesn't activates
+*[ZIGBEE-214] Feature 'commissioning' does not work without feature 'power failure'.
+*[ZIGBEE-219] CS_STACK_PROFILE_ID readed as uint8_t. ProfileId_t is alias for uint16_t. Also check other ConfigServer values.
+*[ZIGBEE-225] QA: Security - Device cannot join after reset in network with non-preconfigured key
+*[ZIGBEE-226] QA: Non-preconf Security - USB doungle and Raven resets after few hours working
+*[ZIGBEE-228] The children node cannot will join after reset ( Security No preconf. key).
+*[ZIGBEE-229] Sometimes ZDO functions do not return confirm	
+	
+V. Known issues and limitations
+================================
+
+*[ZIGBEE-338] Some sample applications images are too large to be uploaded to MCU
+*[ZIGBEE-391] *[ZIGBEE-394] *[ZIGBIT-396] Peer2peer full duplex data transmission fails occasionally on ZigBit 900 and ZigBit
+*[ZIGBEE-386] ZigBit 900 end device fail occasionally in WSNDemo
+*[ZIGBEE-392] *[ZIGBEE-393] Peer2peer unreliable on Atmel USB dongle
+
+VI. Technical Support
+======================
+Technical support is provided by Atmel Corporation: http://www.atmel.com
+email: avr@atmel.com
+
+VII. Release Log (older versions)
+================
+
+BitCloud 1.6.0:
+
+New features:
+*[ZIGBEE-155] Update ZDPDemo application
+*[ZIGBEE-166] Port LowPower Sample Application to Raven platform 
+*[ZIGBEE-173] Modify LowPower functionality 
+*[ZIGBEE-135] Change USART API: add an event which indicates different error statuses.
+*[ZIGBEE-106] Address frequency drift in SerialNet as reason for failures in USART communication 
+*[ZIGBEE-34]  Reduce code size of neibTable.c 
+*[ZIGBEE-79]  Turn binding on by default in BitCloud SDK libraries 
+*[ZIGBEE-109] Review sample applications for common issues 
+*[ZIGBEE-128] Refactor network information base 
+*[ZIGBEE-132] Port Peer2Peer application to Atmel USB stick platform 
+*[ZIGBEE-133] Port Throughput test application to Atmel USB stick and Raven platforms 
+*[ZIGBEE-134] Port Blink application to Raven and USB Stick platforms 
+*[ZIGBEE-154] Refactor NWK address map 
+*[ZIGBEE-89]  Refactor NWK discovery process 
+*[ZIGBEE-88]  Implement system time calculation based on 32.768kHz quartz 
+*[ZIGBEE-50]  Detect RF chip readiness intelligently 
+*[ZIGBEE-83]  Update BitCloud Quick Start Guide to include IAR toolchain instructions 
+*[ZIGBEE-98]  Update BitCloud User Guide with API changes in HAL 
+*[ZIGBEE-17]  Enable multicast support in public BitCloud SDK releases 
+*[ZIGBEE-99]  Allow users to change MCU-RF pin assignment in HAL
+
+Resolved issues:
+*[ZIGBEE-129] Check payload size in module nwkStatusCommand 
+*[ZIGBEE-209] Eliminate IAR warnings on AVR platforms
+*[ZIGBEE-3]   SW: Device don't associate with a FFD in big network
+*[ZIGBEE-10]  Raven boards and SAM7X EK boards do not work together in the same network 
+*[ZIGBEE-27]  Security module (AES) of RF231 doesn't properly encrypt with SPI frequency more than 2 MHz 
+*[ZIGBEE-36]  All modules of NWK layer don't check the size of incoming command packets 
+*[ZIGBEE-169] Sometimes system time is calculated incorrectly 
+*[ZIGBEE-205] All security packets sent to air have Security Level(member of AUX header) set to 0. Frame is encrypted so security level must be etween 4 and 7.
+*[ZIGBEE-126] Investigate 0x1025 MAC Assert accuring reasons.
+*[ZIGBEE-151] Assert 0x3100: Free entry in the neighbor table is released repeatedly.
+*[ZIGBEE-156] Sometimes ZigBit 900 with external clock source freezes after +WJOIN command 
+*[ZIGBEE-162] Broadcast packet with radius equal 1 is not checked in BTT 
+*[ZIGBEE-125] Fix ED scan functionality in ZDPDemo 
+*[ZIGBEE-147] QA: Security: unexpected CHILD_REMOVED notification while ED joins R 
+*[ZIGBEE-184] NULL pointer access in nwkReportCommand.c 
+*[ZIGBEE-138] Correct MAC rx procedure - wrong IRQ processing 
+*[ZIGBEE-38]  TRX_END interrupt is missed after transmission.
+*[ZIGBEE-118] LQI values unstable in WSN Demo application 
+*[ZIGBEE-124] ZDPDemo often holds on when connection via VCP driver happens 
+*[ZIGBEE-127] End device freezes with red led.
+*[ZIGBEE-113] Fix Raven base mode beacons reception issue 
+*[ZIGBEE-115] Fix MAC Assert 0x1054 
+*[ZIGBEE-97]  End device doesn't switch to sleep mode after 5-6 min. of operation 
+*[ZIGBEE-69]  Mixed secured network based on ARMs and Meshbeans does not work correctly 
+*[ZIGBEE-29]  'nwkLinkStatus.c' doesn't check the size of link status command 
+*[ZIGBEE-114] Fix MAC Assert 0x7808 
+*[ZIGBEE-92]  Get rid of pointers to local variables as arguments in stack functions 
+
+BitCloud 1.5.0:
+
+New features:
+#54 - HAL sources are opened.
+#93 - Develop nwkSyncLoss
+
+Resolved issues:
+#26 - NWK_EDScan return invalid result
+#47 - MAC buffers managment should be redesigned
+#48 - BitCloud start-up code uninitialized registers using issue fixing
+#55 - Feature test Router does not rejoin after Leave with rejoin flag
+#65 - IEEEAddrReq with simple device resp does not work after IEEEAddrReq with ext responce
+#80 - configserver.o is not rebuild on every time an application is built
+#68 - MAC assert 0x1026 occurs  
+#60 - Match descriptor request causes reset  
+
+BitCloud 1.4.1:
+
+All code was transferred to avr-gcc 4.3.2 compiler. Please, pay attention that the 
+following GNU compiler (GCC) flags are used now: -mcall-prologues -fshort-enums. 
+Take a look into GCC specification for details.
+
+New features:
+#2640 ACTIVE_PERIOD parameter was removed from CS
+#2631 Time interval after which node's entry is removed from neighbor table 
+      is configurable now
+#2588 Address conflict indication was added
+
+Resolved issues:
+#2673 Pingpong - Coordinator doesn't update Neighbor table after 3 Link Status 
+      commands
+#2664 EndDevice sends Rejoin request and Data request from a new address, but
+      Coordinator sends the old address in Rejoin response.
+#2657 Incorrect short address is returned in ZDO_MgmtNwkUpdateNotf()  when 
+      indicating child leave
+#2625 A neighbor table entry that corresponds to coordinator has 
+      DEVICE_TYPE_ROUTER role
+#2616 ZdoNwkUpdateNtfy does not come after SetUserDescriptor
+#2610 Problem with MGMT_NWK_UPDATE_CLID zdp request on remote side
+#2605 New active channel shall be set to CS after it has been changed
+#2583 short PANID in received beacons is not checked during network formation
+#2575 APS doesn't clear tables' memory after reset
+#2573 CS parameters are not applied if SerialBootloader is used
+#2571 End device join shall consider link quality
+#2569 In network coordinator-end device, ZDO_CHILD_REMOVED_STATUS notification 
+      is never returned if end device is turned off.
+#2507 ED Scan does not work
+#2499 ZigBit doesn't have the 4MHz clock signal on the CPU_CLK (pin10) output      
+#2426 I2c code does not correctly handle "Master Receiver Mode" of the TWI.
+#2407 Broadcast to FFFD addr is not done in correct way
+#2401 Zero extPANID instead of the Coordinator UID may be assumed by Coordinator
+#2360 Incorrect result of UID reading
+#2349 The first frame after RF reset has bad CRC
+#2202 Neighbours from other PANID are in LinkStatus command payload
+#2164 Coordinator sometimes performs a broadcast transmission to reserved addresses
+
+BitCloud 1.3.1:
+
+Resolved issues:
+#2648 AVR Studio project for Raven 3290P LCD controller was corrected.
+#2636 WSNDemo protocol description document was converted to Atmel application 
+      note format.
+
+BitCloud 1.3.0:
+
+New features:
+Support of RZRAVEN Kit was added.
+All code was transferred to avr-gcc 4.3.2 compiler.
+
+BitCloud 1.2.1:
+
+New features:
+#2548 Timer\Counter1 is free now.
+#2546 Support of VCP on ARM platform was added.
+#2498 RxOnWhenIdle, Relationship, PermitJoining, PotentialParent, Depth 
+      are additionally provided by ZDO_GetNeibTable(Neib_t * table ).
+#2519 Possibility to obtain real value of RF TX power was added.
+#2542, #2543 	New persistent parameters were added
+      CS_MANUFACTURER_CODE_ID - 16-bit manufacturer code allocated by 
+        the ZigBee Alliance
+      CS_COMPLEX_DESCRIPTOR_AVAILABLE_ID - Specifies whether a complex 
+        descriptor is available on this device
+      CS_USER_DESCRIPTOR_AVAILABLE_ID - Specifies whether a user descriptor 
+        is available on this device.
+#2547 Support of Alerton board was added.
+#2561 If feature commissioning is enabled then CS_NWK_PANID_ID parameter 
+      is stored to EEPROM.
+
+Resolved issues:
+#2555 Incorrect behaviour when broadcasting frames with radius larger than 0
+      was fixed.
+
+BitCloud 1.2.0:
+
+New features:
+Auto network feature was removed from stack and reimplemented on the 
+application level.
+ZDP user descriptor support added.
+ZDO MGMT LQI request support added.
+Stack now provides a way for an application on coordinator to configure
+short PAN ID instead of generating it randomly.
+Stack enables correct work of the network consisting of 50 nodes.
+Autonetwork feature implemented
+
+Resolved issues:
+Sometimes a router could freeze when working with indirect transactions.
+Unpredictable MAC confirmations could emerge during the MAC reset procedure.
+Broadcast data transmission reliability was about ~50%.
+A router joining to a secured network was incorrectly assigned a child status 
+(instead of neighbor).
+Router did not send a new short address in rejoin response to a joining 
+device whose short address was already contained in its neighbour table.
+A newly joining device with short address similar to one of those already 
+contained in the neighbor table received secured rejoin response and thus was 
+unable to join.
+Sometimes beacon was not sent after a beacon request.
+End device did not update its parent address.
+Application did not receive ZDO_SleepConf if an end device has lost the 
+network.
+ZDP requests performed by a device locally (i.e. on itself) always failed on 
+timeout.
+ZDO_GetNeibTable() could return non-empty table for a device with no neighbors.
+Performing an ED scan on a remote device always failed on timeout.
+
+BitCloud 1.1.1:
+
+New features:
+When a coordinator with null CS_UID takes its extended PANID for CS_UID,
+it is not kept in persistent memory.
+Getting address of the first hop to certain destination.
+End device may go asleep when not joined to a network.
+ZDO_GetNeibAmount() and ZDO_GetNeibTable() functions added.
+
+Resolved issues:
+Fixed bug that hindered separate compilation for different node roles.
+Routers and end devices with AUTONETWORK option off could
+perform automatic rejoin.
+If an end device was reset while waiting for APS ack, it 
+stopped further attempts to join the network.
+Coordinator took its COORDINATOR_EXT_PANID instead of CS_UID
+for MAC address on startup.
+Coordinator took null MAC address instead of CS_UID
+when starting network with null extended PANID.
+End device could not be put asleep by ZDO_SleepReq() function
+when not joined to a network.
+Sometimes APS ack was missing.
+APS_DataConf did not appear sometimes if a device has left the network.
+Incorrect battery status calculation.
+Asynchronous SPI mode was not available without rebuilding stack.
+Somatimes router did not process indirect transactions correctly. 
+A node with invalid extended PANID sometimes appeared in beacon frame.
+PAN ID conflict resolution could lead to loss of nodes.
+End device incorrectly processed leave command received during rejoin 
+procedure.
+Routers sometimes did not update capacity information for end devices.
+After sending leave request to an unexistent end device, router stopped 
+answering all beacon requests.
+Coordinator occasionally sent Update device command to itself.
+Confirmation callback for ZDO_SetTxPowerReq() was never returned.
+
+

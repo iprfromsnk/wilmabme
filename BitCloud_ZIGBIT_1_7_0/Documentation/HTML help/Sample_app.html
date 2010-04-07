@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>BitCloud Sample Applications</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="classes.html"><span>Data&nbsp;Structures</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Functions&nbsp;Summary</span></a></li>
+    <li id="current"><a href="Sample_app.html"><span>Sample&nbsp;Applications</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="App_blink.html"><span>Blink</span></a></li>
+    <li><a href="App_low.html"><span>Lowpower</span></a></li>
+    <li><a href="App_p2p.html"><span>Peer2peer</span></a></li>
+    <li><a href="App_ping.html"><span>Ping-pong</span></a></li>
+    <li><a href="App_thr.html"><span>Throughput&nbsp;Test</span></a></li>
+    <li><a href="App_zbn.html"><span>WSNDemo</span></a></li>
+  </ul>
+</div>
+
+<h1>BitCloud Sample Applications</h1>
+
+<p>Several sample applications are provided with the BitCloud Software API in 
+order to demonstrate how to develop user's applications.
+</p>
+
+<h2>System requirements</h2>
+<p>The BitCloud sample applications are intended to run on MeshBeans and other 
+compatible platform devices.
+
+<p>System requirements for the PC used to compile applications and program the nodes are:
+<table>
+<tr><th colspan=2 align="left">PC</th></tr>
+<tr><td class="indexkey">CPU</td><td class="indexvalue">Intel Pentium III or higher, 800 MHz</td></tr>
+<tr><td class="indexkey">RAM</td><td class="indexvalue">128 MB</td></tr>
+<tr><td class="indexkey">Hard disk free space</td><td class="indexvalue">50 MB</td></tr>
+<tr><th colspan=2 align="left">Software</th></tr>
+<tr><td class="indexkey">Operating system</td><td class="indexvalue">Windows2000/XP</td></tr>
+<tr><td class="indexkey">USB driver </td><td class="indexvalue">CP210x USB to UART Bridge VCP Driver</td></tr>
+<tr><td class="indexkey">Java machine</td><td class="indexvalue">Java Runtime Environment JRE 5.0 Update 8 (version 1.5.0)</td></tr>
+<tr><td class="indexkey">Compiler</td><td class="indexvalue">AVR GCC 4.1.2 compiler available within the WinAVR 20070525 package.</td></tr>
+</table>
+
+<p>To upload the firmware to the boards, you may use
+either JTAGICE mkII emulator or the Serial Bootloader utility.
+
+<h2>How to build</h2>
+
+<p>Source codes of all sample applications along with the corresponding
+configuration files are given at <tt><nobr>[SDK]\Sample&nbsp;Applications\</nobr></tt>.
+Hereafter, <tt>[SDK]</tt> denotes the root folder for SDK installation.
+
+<p>The BitCloud library and Makerules files are contained at <tt><nobr>[SDK]\BitCloud\lib\</nobr></tt>.
+The choice of the particular library to include is made at the time of 
+compilation based on the application's configuration parameters.
+
+<p>To compile an application with AVR GCC, first make sure that corresponding application Configuration file has 
+COMPILER_TYPE variable set to GCC. Then you can compile application by running <tt>make</tt> utility in the
+command line from the directory where application Makefile is located:
+<div class="fragment">
+<pre class="fragment">
+make clean all
+</pre>
+</div>
+
+<p>Alternatively you can open <tt>*.aps</tt> file from the same directory with AVR Studio 
+and then execute <tt>Build\Rebuild&nbsp;All</tt> in the <tt>Project</tt>menu. 
+The <tt>*.hex</tt>, <tt>*.srec</tt>, <tt>*.bin</tt> and <tt>*.elf</tt>image files will be then
+generated. 
+
+<p>IAR compiler can also be used to build a BitCloud application. If Configuration file has COMPILER_TYPE
+variable set to IAR, then running make utility from command line in the same way as described above for GCC compiler
+will result in application being compiled with IAR. The <tt>*.hex</tt>, <tt>*.srec</tt>, <tt>*.bin</tt> and <tt>*.elf</tt>image files will be then
+generated. 
+
+<p>Alternatively you can open the <tt>.eww</tt> file in the "iar/AVR" subdirectory of the appropriate application directory 
+(for example for WSNDemo open WSNDemo.eww file from the "./Sample Applications/WSNDemo/iar/AVR" subdirectory)
+with IAR Embedded Workbench and execute "Rebuild All" item from the Project menu. By default the <tt>.a90</tt> 
+(for WSNDemo: <tt>WSNDemo.a90</tt>) file will be generated in the "iar/AVR/Debug/exe" subdirectory (for WSNDemo: in 
+"./Sample Applications/WSNDemo/iar/AVR/Debug/exe" directory) with format as specified in Linker Output
+Options of the IAR project. Note that when compiling from IDE Configuration file from /iar/AVR/ is used 
+and not the one from the root directory of the application. 
+
+<h2>Programming the Boards</h2>
+
+<p>The boards can be programmed in one of the two ways: either by Serial 
+Bootloader utility, or under AVR Studio using JTAG 
+emulator, for example, JTAGICE mkII from Atmel.
+
+<p>Fuse bits should be set to the following values (in hex representation): 
+<tt>0xFF, 0x9C, 0x62</tt> (factory default) when using Serial Bootloader, or
+<tt>0xFF, 0x9D, 0x62</tt> when using JTAG.
+
+<p>To learn more, see the Serial Bootloader User's Guide
+or the ZDK User's Guide contained in this kit.
+
+
+<a name="Connection"></a><h2>Connecting to PC</h2>
+
+<p>Most of the sample applications imply some interaction with a PC
+(although they may be run as well without connecting to PC, when the only 
+observation of the state and activities of the boards is performed by their LEDs).
+While WSNDemo uses a special custom program named
+<a href="App_zbn.html#WSN_Monitor">WSN Monitor</a>, other programs need just 
+a general-purpose terminal application. The connection parameters must be set as 
+follows (unless stated otherwise for a particular application):
+<table>
+	<tr><td class="indexkey">Parameter</td><td class="indexkey">Value</td></tr>
+	<tr><td class="indexkey">Data Rate</td><td class="indexvalue">38400 bps</td></tr>
+	<tr><td class="indexkey">Data Bits</td><td class="indexvalue">8</td></tr>
+	<tr><td class="indexkey">Parity</td><td class="indexvalue">None</td></tr>
+	<tr><td class="indexkey">Stop Bits</td><td class="indexvalue">1</td></tr>
+	<tr><td class="indexkey">Flow Control</td><td class="indexvalue">None</td></tr>
+</table>
+
+
+<a name="ConfigParam"></a><h2>Configuration parameters</h2>
+
+<p>For GCC compiler as well as for IAR command line compilation most of the user-adjustable
+application's configuration parameters are isolated in a file named <tt>Configuration</tt> 
+which is then included in the <tt>Makefile</tt>. When compiling from IAR IDE corresponding .h configuration file
+is used from iar/ directory in the application folder.
+
+<p> Below is the list of parameters common for most applications:
+
+<table>
+	<tr><td class="indexkey"><tt>COMPONENTS_PATH</tt></td><td class="indexvalue">The path to Components/ directory containing BitCloud stack header and source files. Can be relative or absolute.</td></tr>
+	<tr><td class="indexkey"><tt>APP_PATH</tt></td><td class="indexvalue">Specifies the path to current application directory. Can be relative or absolute.</tt>.</td></tr>
+	<tr><td class="indexkey"><tt>PROJNAME</tt></td><td class="indexvalue">Project name. It is applied as name for firmware image files. If AVR Studio is used, it shall correspond to AVRStudio project name.</td></tr>
+	<tr><td class="indexkey"><tt>COMPILER_TYPE</tt></td><td class="indexvalue">Specifies compiler type to be used during compilation.</td></tr>
+	<tr><td class="indexkey"><tt>BOARD</tt></td><td class="indexvalue">Specifies target PCB.</td></tr>
+	<tr><td class="indexkey"><tt>HAL</tt></td><td class="indexvalue">Specifies target MCU. For boards with support of only one MCU type (e.g. BOARD_USB_DONGLE) it is predefined in lib/MakerulesSelector.</td></tr>
+	<tr><td class="indexkey"><tt>HAL_FREQUENCY</tt></td><td class="indexvalue">Target MCU frequency.</td></tr>
+	<tr><td class="indexkey"><tt>RFCHIP</tt></td><td class="indexvalue">Specifies target RF chip. For boards with support of only one RF chip type (e.g. BOARD_USB_DONGLE) it is predefined in lib/MakerulesSelector file.</td></tr>
+	<tr><td class="indexkey"><tt>STACK_TYPE</tt></td><td class="indexvalue">Specifies device types (coordinator/router/end device) to be supported by the application.</td></tr>
+	<tr><td class="indexkey"><tt>SECURITY_MODE</tt></td><td class="indexvalue">Security mode to be supported by the application.</td></tr>
+	<tr><td class="indexkey"><tt>DEBUG</tt></td><td class="indexvalue">Specifies whether application files shall be compiled with debug information (ON) or not (OFF).</td></tr>
+	<tr><td class="indexkey"><tt>APP_INTERFACE</tt></td><td class="indexvalue">Specifies serial output interface to be used by the device: VCP or USART.</td></tr>
+	<tr><td class="indexkey"><tt>APP_USART_CHANNEL</tt></td><td class="indexvalue">Specifies USART channel for applications with output to USART interface.</td></tr>
+</table>
+
+<h2>Channel selection</h2>
+
+<p>To select a channel to work on, the user may change the channel mask definition
+(<tt>CS_CHANNEL_MASK</tt>) in the application's configuration file,
+recompile the application and burn it into the nodes. 
+
+<p>Note that the application's <tt>Makefile</tt> may simultaneously contain several
+<tt>CS_CHANNEL_MASK</tt> definitions related to different RF parts,
+each embraced in the corresponding <nobr><tt>if...endif</tt></nobr> block,
+so be sure to select the correct one.
+
+<a name="Security"></a><h2>Security</h2>
+
+<p>By default, the NWK layer encryption (standard security mechanism in ZigBee specification) 
+implemented in BitCloud stack is switched off. The compiled stack libraries are supplied in versions for 
+coordinator, router, end device, and all devices. Each of them is presented 
+in two variants: "Security ON" and "Security OFF". 
+The choice of a particular library to include when compiling an application 
+is defined by the values of <tt>STACK_TYPE</tt> and <tt>SECURITY_MODE</tt> 
+parameters in its configuration file.
+
+<p>To switch on the security in an application, one should perform the following
+changes in its configuration file: change the <tt>SECURITY_MODE</tt> value to <tt>STANDARD_SECURITY_MODE</tt>
+uncomment the line containing <tt>CS_APS_SECURITY_TIMEOUT_PERIOD</tt> definition, and select one of the two following modes of operation:
+
+<ul>
+	<li><tt>CS_ZDO_SECURITY_STATUS=0</tt>. All devices in a  network must have the same preconfigured network key 
+       (<tt>CS_NETWORK_KEY</tt>) defined in the configuration file.</li>
+
+    <li><tt>CS_ZDO_SECURITY_STATUS=3</tt>. One of the devices in a network (usually a coordinator) must be configured as Trust Center, i.e.
+            to have <tt>CS_UID</tt> equal to <tt>CS_APS_TRUST_CENTER_ADDRESS</tt> and the network key (<tt>CS_NETWORK_KEY</tt>) 
+            defined in the configuration file. All other devices in the network must be provided with <tt>CS_APS_TRUST_CENTER_ADDRESS</tt>
+            to be able to establish connection with the Trust Center, but must have no <tt>CS_NETWORK_KEY</tt> defined.</li>
+</ul>
+
+<p>Note that switching on security option enlarges firmware image, so that for some programs it may become too large to fit
+into the board's memory. In such case, the user may try to reduce it by decreasing <tt>CS_NEIB_TABLE_SIZE</tt>, <tt>CS_ROUTE_TABLE_SIZE</tt>, 
+and other parameters that control memory allocation.
+
+<hr size="1"><address style="align: right;"><small>Generated on Tue Jun 3 12:45:19 2008 for BitCloud Stack Documentation by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1-p1 </small></address>
+</body>
+</html>

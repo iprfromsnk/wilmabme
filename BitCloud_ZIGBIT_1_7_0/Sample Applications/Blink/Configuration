@@ -1,0 +1,71 @@
+#-------------------------------------------------------------------------------
+#  The file declares application build options
+#  \author
+#    Atmel Corporation: http://www.atmel.com \n
+#    Support email: avr@atmel.com
+#
+#  Copyright (c) 2008 , Atmel Corporation. All rights reserved.
+#  Licensed under Atmel's Limited License Agreement (BitCloudTM).
+#-------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------
+# Components path definition
+#-------------------------------------------------------------------------------
+COMPONENTS_PATH = ../../BitCloud/Components
+
+#-------------------------------------------------------------------------------
+# Application path
+#-------------------------------------------------------------------------------
+APP_PATH = .
+
+#-------------------------------------------------------------------------------
+# Project name
+#-------------------------------------------------------------------------------
+PROJNAME = blink
+
+#-------------------------------------------------------------------------------
+# Compiler type:
+#-------------------------------------------------------------------------------
+COMPILER_TYPE = GCC
+
+#-------------------------------------------------------------------------------
+# Boards selection:
+#-------------------------------------------------------------------------------
+BOARD = BOARD_MESHBEAN
+
+#-------------------------------------------------------------------------------
+# BOARD_MESHBEAN board specific options:
+#-------------------------------------------------------------------------------
+ifeq ($(BOARD), BOARD_MESHBEAN)
+  # Microcontroller's type declaration. The following variants are possible:
+  HAL = ATMEGA1281
+
+  # Controller reference frequency.
+  HAL_FREQUENCY = HAL_8MHz
+
+  # RF chip type declaration.  The following variants are possible:
+  RFCHIP = AT86RF230
+endif # BOARD_MESHBEAN
+
+#-------------------------------------------------------------------------------
+# Stack type to use
+#-------------------------------------------------------------------------------
+STACK_TYPE = ALL_DEVICES_TYPES
+#STACK_TYPE = COORDINATOR
+#STACK_TYPE = ROUTER
+
+#-------------------------------------------------------------------------------
+# Security usage option
+#-------------------------------------------------------------------------------
+SECURITY_MODE = NO_SECURITY_MODE
+#SECURITY_MODE = STANDARD_SECURITY_MODE
+
+#-------------------------------------------------------------------------------
+# Application parameters
+#-------------------------------------------------------------------------------
+DEBUG = ON
+
+APP_BLINK_PERIOD     = 1000
+APP_MIN_BLINK_PERIOD = 100
+APP_MAX_BLINK_PERIOD = 10000
+

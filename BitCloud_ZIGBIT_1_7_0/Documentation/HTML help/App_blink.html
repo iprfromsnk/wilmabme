@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Blink Application</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="classes.html"><span>Data&nbsp;Structures</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Functions&nbsp;Summary</span></a></li>
+    <li id="current"><a href="Sample_app.html"><span>Sample&nbsp;Applications</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="App_blink.html"><span>Blink</span></a></li>
+    <li><a href="App_low.html"><span>Lowpower</span></a></li>
+    <li><a href="App_p2p.html"><span>Peer2peer</span></a></li>
+    <li><a href="App_ping.html"><span>Ping-pong</span></a></li>
+    <li><a href="App_thr.html"><span>Throughput&nbsp;Test</span></a></li>
+    <li><a href="App_zbn.html"><span>WSNDemo</span></a></li>
+  </ul>
+</div>
+
+<h1>Blink Application</h1>
+<p>This example introduces the simplest application that uses timer and LEDs.
+When started, the application makes all the MeshBean's LEDs blink
+synchronously with certain period.
+<p>The frequency of blinking may be varied manually within range specified at compile time. Namely,
+it increases or decreases by a factor of two on pressing the 
+<tt>SW1</tt> or <tt>SW2</tt> button on the MeshBean board, respectively.
+Minimum, maximum and initial period values (in milliseconds) are defined in configuration file.
+<p>It is not recommended to set the initial period outside the 
+minimum..maximum range, or set the minimum value to less than 2.
+In these cases, the application may behave inconsistently. 
+(The corresponding error checking was omitted intentionally in order to keep
+the application code as simple as possible.)
+
+<h2>Configuration parameters</h2>
+<table>
+	<tr><td class="indexkey"><tt>APP_BLINK_PERIOD</tt></td><td class="indexvalue">Initial blinking period (ms)</td></tr>
+	<tr><td class="indexkey"><tt>APP_MIN_BLINK_PERIOD</tt></td><td class="indexvalue">Minimum blinking period (ms)</td></tr>
+	<tr><td class="indexkey"><tt>APP_MAX_BLINK_PERIOD</tt></td><td class="indexvalue">Maximum blinking period (ms)</td></tr>
+</table>
+
+<p>Description of parameters common for all applications can be found in <a href="Sample_app.html#ConfigParam">Sample Applications overview</a>.
+
+<p>The source code and Makefile of Blink application are located at
+<tt><nobr>[SDK]\Sample&nbsp;Applications\Blink</nobr></tt> directory.
+
+<hr size="1"><address style="align: right;"><small>Generated on Mon Oct 6 15:21:36 2008 for BitCloud Stack Documentation by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1-p1 </small></address>
+</body>
+</html>

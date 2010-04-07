@@ -1,0 +1,32 @@
+#----------------------------------------------
+#HAL makerules - should be included into components Makerules
+#----------------------------------------------
+
+#-Compiler type definition---------------------
+COMPILER_TYPE = GCC
+COMPILER_AND_MICRO_TYPE = GCC_AVR
+#-Tools definitions----------------------------
+AS      = avr-as
+LD      = avr-ld
+CC      = avr-gcc
+CPP     = avr-g++
+AR      = avr-ar
+NM      = avr-nm
+STRIP   = avr-strip
+OBJCOPY = avr-objcopy
+OBJDUMP = avr-objdump
+SIZE    = avr-size
+
+#-Compiler flags-------------------------------
+CFLAGS = -Os -c -Wall -W -ffunction-sections -mmcu=atmega1281 -mcall-prologues -fshort-enums -DATMEGA1281 -DHAL_8MHz -DPLATFORM_ZIGBIT -DNONE_OS
+AR_KEYS = cr
+
+
+#-Platform definitions-------------------------
+HAL   = ATMEGA1281
+PLATFORM = PLATFORM_ZIGBIT
+
+#-Objects to be linked with app----------------
+PLATFORM_SPECIFIC_OBJECTS  = WdtInitatmega1281Gcc.o
+
+SE_PATH      = $(COMPONENTS_PATH)/./SystemEnvironment

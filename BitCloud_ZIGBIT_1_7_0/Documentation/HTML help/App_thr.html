@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>Throughput Test Application</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<div class="tabs">
+  <ul>
+    <li id="current"><a href="main.html"><span>Main&nbsp;Page</span></a></li>
+    <li><a href="classes.html"><span>Data&nbsp;Structures</span></a></li>
+    <li><a href="files.html"><span>Files</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Functions&nbsp;Summary</span></a></li>
+    <li id="current"><a href="Sample_app.html"><span>Sample&nbsp;Applications</span></a></li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="App_blink.html"><span>Blink</span></a></li>
+    <li><a href="App_low.html"><span>Lowpower</span></a></li>
+    <li><a href="App_p2p.html"><span>Peer2peer</span></a></li>
+    <li><a href="App_ping.html"><span>Ping-pong</span></a></li>
+    <li id="current"><a href="App_thr.html"><span>Throughput&nbsp;Test</span></a></li>
+    <li><a href="App_zbn.html"><span>WSNDemo</span></a></li>
+  </ul>
+</div>
+<h1>Throughput Test Application</h1>
+
+<p>This application allows to perform measurement of maximum application data throughput in various transmission scenarios, such as
+with/without encryption, with/without APS level acknowledgments, with different payload sizes, etc. One coordinator and one router
+nodes are participating. Same firmware image should be used on both devices with role defined by DIP-switches configuration as follows:
+device type is detetmined by DIP switches of the MeshBean board as follows:
+<p>
+<table>
+<tr><th>Device type </th><th colspan=3>DIP switches</th>
+<tr><td></td><td class="indexkey">SW4:1</td><td class="indexkey">SW4:2</td><td class="indexkey">SW4:3
+<tr><td class="indexkey">Coordinator</td><td class="indexvalue">ON</td><td class="indexvalue">OFF</td><td class="indexvalue">OFF</td></td>
+<tr><td class="indexkey">Router</td><td class="indexvalue">OFF</td><td class="indexvalue">ON</td><td class="indexvalue">OFF</td></td>
+</table>
+
+<p>The network start procedure is initiated automatically on device startup. Green LED is periodically blinking with 
+500ms interval when device is joining the network and is ON if it is in the network.
+
+<p>Upon network join the router node after <tt>TIMER_DELAY_PERIOD</tt> starts to continuously send data packets over the air to coordinator.
+Packet transmission is indicated on the router by red LED. The coordinator receives data frames and measures the application level 
+throughput based on number of payload bits received from the air and forwards this value to PC via USART once every <tt>TIMER_TRACK_PERIOD</tt> ms.
+Thus measured values can be observed in terminal window (e.g. Windows HyperTerminal). See <a href="Sample_app.html#Connection"> COM port
+connection settings</a>. Yellow LED is flashing when coordinator is receiving data and red LED is flashing when coordinator is 
+forwarding measureds value to USART interface.
+
+<p>In order to measure maximum data throughput with encrypted data frames application shall be compiled with properly configured 
+<a href="Sample_app.html#Security">security-related parameters</a>.
+
+<h2>Important configuration parameters</h2>
+<table>
+	<tr><td class="indexkey"><tt>APP_DEVICE_TYPE</tt></td><td class="indexvalue">Specifies device type for platforms without DIP-switches.</td></tr>
+	<tr><td class="indexkey"><tt>APP_USE_APS_ACK</tt></td><td class="indexvalue">Specifies whether APS level acknowledgement (end-to-end) shall be requested for transmitted data frame.</td></tr>
+	<tr><td class="indexkey"><tt>TIMER_DELAY_PERIOD</tt></td><td class="indexvalue">Time interval (ms) after network join when coordinator starts measuring throughput and router starts sending frames.</td></tr>
+	<tr><td class="indexkey"><tt>TIMER_TRACK_PERIOD</tt></td><td class="indexvalue">Time interval (ms) used on coordinator for throughput measurement and output to serial interface.</td></tr>
+    <tr><td class="indexkey"><tt>CS_CHANNEL_MASK</tt></td><td class="indexvalue">Specifies channel mask to be used for network operation.</td></tr>
+    <tr><td class="indexkey"><tt>CS_CHANNEL_PAGE</tt></td><td class="indexvalue">Specifies channel page to be used on SubGHz frequency band.</td></tr>
+    <tr><td class="indexkey"><tt>CS_EXT_PANID</tt></td><td class="indexvalue">Specifies network's extended PANID. Should be unique in given location.</td></tr>
+    <tr><td class="indexkey"><tt>CS_UID</tt></td><td class="indexvalue">Extended address for platforms where it is not available via special UID chip or external EEPROM. If used <tt>CS_UID</tt> shall be added to <tt>CS_PARAMS</tt> list in application <tt>Makefile</tt>.</td></tr>
+</table>
+
+<p>Note that description of parameters common for all applications can be found in <a href="Sample_app.html#ConfigParam">Sample Applications overview</a>.
+ConfigServer parameters are described in documentation of <a href="config_server_8h.html"> ConfigServer.h file</a>.
+
+<p>The source codes of Throughput Test application are located at
+<tt><nobr>[SDK]\Sample&nbsp;Applications\ThroughputTest</nobr></tt> directory.
+
+<hr size="1"><address style="align: right;"><small>Generated on Wed Oct 8 12:23:50 2008 for BitCloud Stack Documentation by&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1-p1 </small></address>
+</body>
+</html>
